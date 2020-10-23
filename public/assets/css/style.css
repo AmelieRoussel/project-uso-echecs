@@ -1,0 +1,13 @@
+:root {
+    --main-color: #334166;
+    --second-color: #87A7FF;
+    --third-color: #6B91FA;
+    --highlight: #FAD26B;
+    --highlight-dark: #AD8828;
+    --title-font: 'Open Sans', sans-serif;
+    --p-font: 'Raleway', sans-serif;
+    --spacing: 8px;
+    --spacing2: calc(var(--spacing) * 2);
+    --spacing3: calc(var(--spacing) * 4);
+    --spacing4: calc(var(--spacing) * 8);
+}
