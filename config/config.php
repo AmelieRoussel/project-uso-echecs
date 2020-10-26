@@ -1,6 +1,7 @@
 <?php
+
 /**
- * This file define config constants .
+ * This file defines config constants .
  *
  * PHP version 7
  *
@@ -8,7 +9,6 @@
  *
  * @link     https://github.com/WildCodeSchool/simple-mvc
  */
-
 
 define('APP_DEV', true);
 
