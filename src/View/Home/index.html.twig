@@ -1,5 +1,52 @@
 {% extends 'layout.html.twig' %}
 
+{% block stylesheet %}
+    <link rel="stylesheet" href="assets/css/home.css">
+{% endblock %}
+
 {% block content %}
-    <h1>Hello Wilder !</h1>
+    <h1>U.S. Orléans Échecs</h1>
+
+    <section id="carousel-news" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-news" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-news" data-slide-to="1"></li>
+            <li data-target="#carousel-news" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="assets/images/actualite_1.jpg" class="d-block w-100" alt="Première slide">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>First slide label</h5>
+                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                    <button class="button-dark">En savoir plus</button>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="assets/images/actualite_2.jpg" class="d-block w-100" alt="Deuxième slide">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Second slide label</h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <button class="button-dark">En savoir plus</button>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="assets/images/actualite_3.jpg" class="d-block w-100" alt="Troisième slide">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Third slide label</h5>
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                    <button class="button-dark">En savoir plus</button>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carousel-news" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Précèdent</span>
+        </a>
+        <a class="carousel-control-next" href="#carousel-news" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Suivant</span>
+        </a>
+    </section>
+
 {% endblock %}
