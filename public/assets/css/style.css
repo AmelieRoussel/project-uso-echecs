@@ -1,13 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans&display=swap');
+
 :root {
     --main-color: #334166;
     --second-color: #87A7FF;
     --third-color: #6B91FA;
     --highlight: #FAD26B;
-    --highlight-dark: #AD8828;
-    --title-font: 'Open Sans', sans-serif;
-    --p-font: 'Raleway', sans-serif;
+    --dark: #151928;
+    --light: #F2F3F8;
+    --light-transparent: rgba(242, 243, 248, 0.6);
+    --option-background: #A5ACBF;
+    --text-font: 'Open Sans', sans-serif;
+    --title-font: 'Lato', sans-serif;
     --spacing: 8px;
     --spacing2: calc(var(--spacing) * 2);
     --spacing3: calc(var(--spacing) * 4);
     --spacing4: calc(var(--spacing) * 8);
+    --box-shadow: 3px 3px 15px 0px rgba(0, 0, 0, 0.75);
+    --border-radius: 3px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: var(--text-font);
+    font-size: 0.875rem;
+    background-color: var(--light);
+    color: var(--dark);
+}
+
+h1, h2, h3 {
+    font-family: var(--title-font);
+    color: var(--main-color);
+}
+
+.title-light, .text-light {
+    color: var(--light);
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 1.75rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+button {
+    border-radius: var(--border-radius);
+    padding: var(--spacing) var(--spacing2);
+}
+
+.button-light {
+    background-color: var(--main-color);
+    border: 2px solid var(--main-color);
+    color: var(--light);
+}
+
+.button-light:hover {
+    background-color: var(--second-color);
+    border: 2px solid var(--second-color);
+    color: var(--light);
+}
+
+.button-dark {
+    background-color: transparent;
+    border: 2px solid var(--light);
+    color: var(--light);
+}
+
+.button-dark:hover {
+    background-color: var(--second-color);
+    border: 2px solid var(--second-color);
+    color: var(--light);
+}
+
+input, textarea, select {
+    border: none;
+    padding: var(--spacing);
+    border-bottom: 2px solid var(--light);
+    background-color: var(--light-transparent);
+    border-radius: var(--border-radius) var(--border-radius);
+    color: var(--light);
+}
+
+select option {
+    background-color: var(--option-background);
+    color: var(--light);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-bottom: 2px solid var(--highlight);
 }
