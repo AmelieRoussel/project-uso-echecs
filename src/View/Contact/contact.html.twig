@@ -1,0 +1,52 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}{{ parent() }} | Contact{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/contact.css">
+{% endblock %}
+
+{% block content %}
+    <header class="contact">
+
+    </header>
+    <h2 class="contactForm">Envoyez-nous un message</h2>
+    <form method="POST">
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="lastname">Nom</label>
+                <input type="text" class="form-control" id="lastname" name="lastname">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="firstname">Prénom</label>
+                <input type="text" class="form-control" id="firstname" name="firstname">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="number">Téléphone</label>
+                <input type="tel" class="form-control" id="number" name="number">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="mail">Email</label>
+                <input type="email" class="form-control" id="mail" name="mail">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="subject">Objet</label>
+                <select id="subject" class="form-control" name="subject">
+                    <option>Choose...</option>
+                    <option>...</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="message">Message</label>
+                <textarea id="message" class="message" name="message"></textarea>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+    </form>
+{% endblock %}
