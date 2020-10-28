@@ -18,6 +18,12 @@ nav {
     font-family: var(--title-font);
     padding-right: var(--spacing);
 }
+
+.logo {
+    height: var(--logo-height);
+    padding-right: var(--spacing2);
+}
+
 nav a {
     text-decoration: none;
 }
