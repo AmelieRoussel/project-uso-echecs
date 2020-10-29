@@ -1,6 +1,31 @@
-.carousel-item{
-    height: 640px;
+:root {
+    --carousel-height: 640px;
 }
-.carousel-item img{
-    height: 640px;
+
+.carousel-item {
+    width: 100%;
+    height: var(--carousel-height);
+}
+
+.carousel-item1 {
+    background-size: cover;
+    background: var(--image-gradient),
+    url("/assets/images/actualite_1.jpg") center no-repeat;
+}
+
+.carousel-item2 {;
+    background-size: cover;
+    background: var(--image-gradient),
+    url("/assets/images/actualite_2.jpg") center no-repeat;
+}
+
+.carousel-item3 {
+    background-size: cover;
+    background: var(--image-gradient),
+    url("/assets/images/actualite_3.jpg") center no-repeat;
+
+}
+
+.carousel-caption {
+    margin-bottom: var(--spacing2);
 }
