@@ -11,11 +11,13 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/style.css">
     {% block stylesheet %}{% endblock %}
-    <link rel="icon" href="/assets/images/favicon.png">
+    <link rel="icon" href="/assets/images/logo.svg">
 </head>
 
 <body>
-{% block header %}{% endblock %}
+{% block header %}
+    {% include 'includes/_navbar.html.twig' %}
+{% endblock %}
 
 {% block content %}{% endblock %}
 
