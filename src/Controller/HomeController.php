@@ -41,6 +41,8 @@ class HomeController extends AbstractController
 
     private function validate(array $message): array
     {
+        $errors = [];
+
         if (empty(htmlentities($message['firstname']))) {
             $errors[] = 'Le prénom ne doit pas être vide';
         }
@@ -59,4 +61,3 @@ class HomeController extends AbstractController
         return $errors ?? [];
     }
 }
-
