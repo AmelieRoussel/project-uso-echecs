@@ -7,46 +7,53 @@
 {% endblock %}
 
 {% block content %}
-    <header class="contact">
-
+    <header class="contact-header">
+        <h1 class="title-light">Contact</h1>
     </header>
-    <h2 class="contactForm">Envoyez-nous un message</h2>
-    <form method="POST">
-        <div class="form-row">
-            <div class="form-group col-md-4">
-                <label for="lastname">Nom</label>
-                <input type="text" class="form-control" id="lastname" name="lastname">
+    <div class=" row form-contact" id="formulaire">
+        <form class="test" method="post">
+            <div class="form-title">
+                <img src="/assets/images/chess-knight.svg" alt="Pièce d'échec">
+                <h2 class="contact-form-title title-light">Contactez-nous</h2>
+                <img src="/assets/images/chess-knight-reverse.png" alt="Pièce d'échec">
             </div>
-            <div class="form-group col-md-4">
-                <label for="firstname">Prénom</label>
-                <input type="text" class="form-control" id="firstname" name="firstname">
+            <div class="col-md-6 offset-md-3">
+                {% for error in errors %}
+                    <p class="errors">{{ error }}</p>
+                {% endfor %}
+                <p class="required-field">(*) Champs obligatoires</p>
+                <div class="form-group">
+                    <label for="lastname">Nom *</label>
+                    <input type="text" class="lastname form-control" id="lastname" name="lastname"
+                           placeholder="Martin" required>
+                </div>
+                <div class="form-group">
+                    <label for="firstname">Prénom *</label>
+                    <input type="text" class="firstname form-control" id="firstname" name="firstname"
+                           placeholder="Paul" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" class="email form-control" id="email" name="email"
+                           placeholder="paul.martin@email.fr" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Objet</label>
+                    <select id="subject" class="subject custom-select" name="subject">
+                        <option>Renseignement sur l'association</option>
+                        <option>Adhésion</option>
+                        <option>Les compétitions</option>
+                        <option>Autre</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <textarea class="form-control message" name="message"
+                              placeholder="Votre message" required></textarea>
+                </div>
+                <div class="col button">
+                    <button class="button-dark">Envoyer</button>
+                </div>
             </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-4">
-                <label for="number">Téléphone</label>
-                <input type="tel" class="form-control" id="number" name="number">
-            </div>
-            <div class="form-group col-md-4">
-                <label for="mail">Email</label>
-                <input type="email" class="form-control" id="mail" name="mail">
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-4">
-                <label for="subject">Objet</label>
-                <select id="subject" class="form-control" name="subject">
-                    <option>Choose...</option>
-                    <option>...</option>
-                </select>
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-4">
-                <label for="message">Message</label>
-                <textarea id="message" class="message" name="message"></textarea>
-            </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Envoyer</button>
-    </form>
+        </form>
+    </div>
 {% endblock %}
