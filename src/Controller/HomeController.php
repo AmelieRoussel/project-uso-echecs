@@ -32,7 +32,6 @@ class HomeController extends AbstractController
         if ($_SERVER["REQUEST_METHOD"] === 'POST') {
             $message = array_map('trim', $_POST);
             $errors = $this->validate($message);
-
             header('Location: /home/contact/#message');
         }
 
