@@ -2,6 +2,11 @@
     --carousel-height: 640px;
 }
 
+.img-responsive {
+    max-width: 640px;
+    height: auto;
+}
+
 .carousel-item {
     width: 100%;
     height: var(--carousel-height);
