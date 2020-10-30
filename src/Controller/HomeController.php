@@ -44,13 +44,13 @@ class HomeController extends AbstractController
     {
         $errors = [];
 
-        if (empty(htmlentities($message['firstname']))) {
+        if (empty($message['firstname'])) {
             $errors[] = 'Le prénom ne doit pas être vide';
         }
-        if (empty(htmlentities($message['lastname']))) {
+        if (empty($message['lastname'])) {
             $errors[] = 'Le nom ne doit pas être vide';
         }
-        if (empty(htmlentities($message['email']))) {
+        if (empty($message['email'])) {
             $errors[] = 'L\'email ne doit pas être vide';
         }
         if (!filter_var($message['email'], FILTER_VALIDATE_EMAIL)) {

@@ -13,7 +13,7 @@
     --text-font: 'Open Sans', sans-serif;
     --title-font: 'Lato', sans-serif;
     --text-font-size: 1rem;
-    --h1-font-size: 7rem;
+    --h1-font-size: 6rem;
     --h2-font-size: 1.75rem;
     --h3-font-size: 1.5rem;
     --bold: 700;
@@ -172,10 +172,4 @@ nav a:hover {
 
 .navbar-toggler {
     margin-bottom: 0;
-}
-
-@media screen and (max-width: 800px) {
-    html {
-        font-size: 80%;
-    }
 }

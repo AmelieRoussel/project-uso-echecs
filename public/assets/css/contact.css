@@ -57,9 +57,9 @@ input, textarea, select, .input-group, button{
 
 .form-control:focus,
 .custom-select:focus {
-    border-color: transparent !important;
-    box-shadow: none !important;
-    border-bottom: 3px solid var(--highlight) !important;
+    border-color: transparent;
+    box-shadow: none;
+    border-bottom: 3px solid var(--highlight);
 }
 
 label {
@@ -74,9 +74,3 @@ form img {
 .errors {
     color: var(--highlight);
 }
-
-.required-field {
-    color: var(--light);
-}
-
-
