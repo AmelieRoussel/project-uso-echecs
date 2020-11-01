@@ -28,15 +28,35 @@ class HomeController extends AbstractController
     public function contact()
     {
         $errors = [];
+        $message = [];
+        $subjects = [
+            [
+                'value' => 'association',
+                'name' => 'Renseignement sur l\'association'
+            ],
+            [
+                'value' => 'registration',
+                'name' => 'Adhésion'
+            ],
+            [
+                'value' => 'competitions',
+                'name' => 'Les compétitions'
+            ],
+            [
+                'value' => 'other',
+                'name' => 'Autre'
+            ],
+        ];
 
         if ($_SERVER["REQUEST_METHOD"] === 'POST') {
             $message = array_map('trim', $_POST);
             $errors = $this->validate($message);
-            header('Location: /home/contact/#message');
         }
 
         return $this->twig->render('Contact/contact.html.twig', [
             'errors' => $errors,
+            'message' => $message,
+            'subjects' => $subjects,
         ]);
     }
 
@@ -52,13 +72,15 @@ class HomeController extends AbstractController
         }
         if (empty($message['email'])) {
             $errors[] = 'L\'email ne doit pas être vide';
-        }
-        if (!filter_var($message['email'], FILTER_VALIDATE_EMAIL)) {
+        } elseif (!filter_var($message['email'], FILTER_VALIDATE_EMAIL)) {
             $errors[] = 'Format email invalide';
         }
         if (empty($message['message'])) {
             $errors[] = 'Veuillez écrire un message';
         }
-        return $errors ?? [];
+        if (empty($errors)) {
+            $errors[] = 'Merci pour votre message';
+        }
+        return $errors;
     }
 }
