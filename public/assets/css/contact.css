@@ -7,15 +7,56 @@
     align-items: center;
 }
 
-.form-contact {
-    background-color: var(--main-color);
+.contact h1 {
+    font-size : var(--h1-font-size);
+    font-weight: var(--bold);
+}
+
+.title-card {
+    margin-top: var(--spacing5);
+    margin-bottom: var(--spacing4);
     display: flex;
     justify-content: center;
 }
 
-.contact h1 {
-    font-size : var(--h1-font-size);
-    font-weight: var(--bold);
+.contact-card-title {
+    padding: var(--spacing);
+}
+
+.contact-informations {
+    margin-bottom: var(--spacing4);
+}
+
+.title-card img {
+    height: var(--icon-height);
+}
+
+.card img {
+    height: calc(var(--icon-height)*3);
+}
+
+.card {
+    --card-height: 335px;
+    --card-width: 350px;
+    padding: var(--spacing2);
+    margin: var(--spacing2);
+    border: 2px solid var(--second-color);
+    height: var(--card-height);
+    width: var(--card-width);
+}
+
+.card-row {
+    --column-gap: 80px;
+    --row-gap: 40px;
+    justify-content: center;
+    column-gap: var(--column-gap);
+    row-gap: var(--row-gap);
+}
+
+.form-contact {
+    background-color: var(--main-color);
+    display: flex;
+    justify-content: center;
 }
 
 form {
@@ -24,11 +65,12 @@ form {
     width: 100%;
     padding-right: var(--spacing2);
     padding-left: var(--spacing2);
+    margin-bottom: var(--spacing3);
 }
 
 .form-title {
     margin-top: var(--spacing5);
-    margin-bottom: var(--spacing3);
+    margin-bottom: var(--spacing4);
     display: flex;
     align-self: center;
 }
@@ -74,3 +116,4 @@ form img {
 .errors {
     color: var(--highlight);
 }
+
