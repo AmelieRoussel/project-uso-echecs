@@ -5,23 +5,25 @@
 {% endblock %}
 
 {% block content %}
-    {#<section id="carousel-news" class="carousel slide" data-ride="carousel">
+    <section id="carousel-news" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carousel-news" data-slide-to="0" class="active"></li>
             <li data-target="#carousel-news" data-slide-to="1"></li>
             <li data-target="#carousel-news" data-slide-to="2"></li>
         </ol>
-        {% for %}
         <div class="carousel-inner">
-            <div class="carousel-item active carousel-item1">
-                <div class="carousel-caption">
-                    <h3 class="title-light">{{  }}</h3>
-                    <p>{{ }}</p>
-                    <button class="button-dark">En savoir plus</button>
+            {% for newsItem in news %}
+                <div class="carousel-item {% if loop.index0 == 0 %} active {% endif %} carousel-gradient">
+                    <img class="d-block w-100" src="/assets/images/{{ newsItem.cover_image }}"
+                    alt="First slide">
+                    <div class="carousel-caption">
+                        <h3 class="title-light">{{ newsItem.title }}</h3>
+                        <p>{{ newsItem.excerpt }}</p>
+                        <button class="button-dark">En savoir plus</button>
+                    </div>
                 </div>
-            </div>
             {% endfor %}
-
+        </div>
         <a class="carousel-control-prev" href="#carousel-news" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Précèdent</span>
@@ -30,5 +32,5 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Suivant</span>
         </a>
-    </section>#}
+    </section>
 {% endblock %}
