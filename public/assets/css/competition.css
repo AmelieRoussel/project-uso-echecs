@@ -1,5 +1,5 @@
 h2 {
-    padding-bottom: 50px;
+    padding-bottom: var(--spacing3);
 }
 
 img {
@@ -10,21 +10,21 @@ img {
 .icon-before-date:before {
     content: url("/assets/images/icon_date.png");
     position: relative;
-    top: 10px;
+    top: var(--spacing);
     margin-right: var(--spacing);
 }
 
 .icon-before-position:before {
     content: url("/assets/images/icon_adresse.png");
     position: relative;
-    top: 10px;
+    top: var(--spacing);
     margin-right: var(--spacing);
 }
 
 .archive {
     text-align: center;
     background-color: var(--main-color);
-    padding: 50px 40px;
+    padding: var(--spacing4) var(--spacing3);
 }
 
 .card p, h3 {
@@ -32,18 +32,18 @@ img {
 }
 
 .card h3 {
-    margin-bottom: 20px;
+    margin-bottom: var(--spacing2);
 }
 
 .card {
     background: var(--highlight);
     border: none;
     box-shadow: var(--box-shadow);
-    margin-bottom: 50px;
+    margin-bottom: var(--spacing4);
     padding-left: 0;
     padding-right: 0;
 }
 
 .archive .btn {
-    margin-top: 20px;
+    margin-top: var(--spacing2);
 }
