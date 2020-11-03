@@ -7,11 +7,6 @@
     object-fit: cover;
 }
 
-.carousel-item {
-    width: 100%;
-    height: var(--carousel-height);
-}
-
 .carousel-item:after {
     content:'';
     position:absolute;
