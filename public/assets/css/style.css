@@ -9,7 +9,7 @@
     --light: #f2f3f8;
     --light-transparent: rgba(242, 243, 248, 0.8);
     --option-background: #A5ACBF;
-    --image-gradient: linear-gradient(70deg, rgba(21,25,40,0.6), rgba(21,25,40,0.5970763305322129));
+    --darken-image: rgba(21,25,40,0.6);
     --text-font: 'Open Sans', sans-serif;
     --title-font: 'Lato', sans-serif;
     --text-font-size: 1rem;
