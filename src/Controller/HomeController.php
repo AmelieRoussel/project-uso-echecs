@@ -28,7 +28,6 @@ class HomeController extends AbstractController
 
     public function inscription()
     {
-        return $this->twig->render( 'Home/inscription.html.twig');
-
-        }
+        return $this->twig->render('Home/inscription.html.twig');
+    }
 }
