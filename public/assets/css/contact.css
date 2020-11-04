@@ -1,6 +1,6 @@
 .contact-header {
     height: var(--header-height);
-    background: var(--image-gradient), url("../images/header_contact.jpg") no-repeat center;
+    background: url("../images/header_contact.jpg");
     background-size: cover;
     display: flex;
     justify-content: center;

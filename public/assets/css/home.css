@@ -2,16 +2,24 @@
     --carousel-height: 640px;
 }
 
+.home-header {
+    height: var(--header-height);
+    background: linear-gradient(var(--darken-image), var(--darken-image)), url("../images/header_accueil.jpg") no-repeat;
+    background-size: contain, cover;
+}
+
 .carousel-item > img {
     height: var(--carousel-height);
     object-fit: cover;
 }
 
 .carousel-item:after {
-    content:'';
-    position:absolute;
-    left:0; top:0;
-    width:100%; height:100%;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
     background: var(--darken-image);
 }
 
