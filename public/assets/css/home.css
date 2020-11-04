@@ -2,28 +2,17 @@
     --carousel-height: 640px;
 }
 
-.carousel-item {
-    width: 100%;
+.carousel-item > img {
     height: var(--carousel-height);
+    object-fit: cover;
 }
 
-.carousel-item1 {
-    background-size: cover;
-    background: var(--image-gradient),
-    url("/assets/images/actualite_1.jpg") center no-repeat;
-}
-
-.carousel-item2 {;
-    background-size: cover;
-    background: var(--image-gradient),
-    url("/assets/images/actualite_2.jpg") center no-repeat;
-}
-
-.carousel-item3 {
-    background-size: cover;
-    background: var(--image-gradient),
-    url("/assets/images/actualite_3.jpg") center no-repeat;
-
+.carousel-item:after {
+    content:'';
+    position:absolute;
+    left:0; top:0;
+    width:100%; height:100%;
+    background: var(--darken-image);
 }
 
 .carousel-caption {

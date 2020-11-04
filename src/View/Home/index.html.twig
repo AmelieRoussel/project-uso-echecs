@@ -12,27 +12,17 @@
             <li data-target="#carousel-news" data-slide-to="2"></li>
         </ol>
         <div class="carousel-inner">
-            <div class="carousel-item active carousel-item1">
-                <div class="carousel-caption">
-                    <h3 class="title-light">Bilan de la saison 2019-2020</h3>
-                    <p>Retrouvez notre bilan pour cette saison !</p>
-                    <button class="button-dark">En savoir plus</button>
+            {% for newsItem in news %}
+                <div class="carousel-item {% if loop.index0 == 0 %} active {% endif %} carousel-gradient">
+                    <img class="d-block w-100" src="/assets/images/{{ newsItem.cover_image }}"
+                    alt="First slide">
+                    <div class="carousel-caption">
+                        <h3 class="title-light">{{ newsItem.title }}</h3>
+                        <p>{{ newsItem.excerpt }}</p>
+                        <button class="button-dark">En savoir plus</button>
+                    </div>
                 </div>
-            </div>
-            <div class="carousel-item carousel-item2">
-                <div class="carousel-caption">
-                    <h5>Nouvelles dates ateliers et cours</h5>
-                    <p>Découvrez notre nouveau calendrier des cours.</p>
-                    <button class="button-dark">En savoir plus</button>
-                </div>
-            </div>
-            <div class="carousel-item carousel-item3">
-                <div class="carousel-caption">
-                    <h3 class="title-light">Journée au parc</h3>
-                    <p>Préparez vos sandwichs pour des parties endiablées !</p>
-                    <button class="button-dark">En savoir plus</button>
-                </div>
-            </div>
+            {% endfor %}
         </div>
         <a class="carousel-control-prev" href="#carousel-news" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -44,4 +34,3 @@
         </a>
     </section>
 {% endblock %}
-
