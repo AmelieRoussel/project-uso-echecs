@@ -1,0 +1,49 @@
+h2 {
+    padding-bottom: var(--spacing3);
+}
+
+img {
+    width: 100%;
+    display: block;
+}
+
+.icon-before-date:before {
+    content: url("/assets/images/icon_date.png");
+    position: relative;
+    top: var(--spacing);
+    margin-right: var(--spacing);
+}
+
+.icon-before-position:before {
+    content: url("/assets/images/icon_adresse.png");
+    position: relative;
+    top: var(--spacing);
+    margin-right: var(--spacing);
+}
+
+.archive {
+    text-align: center;
+    background-color: var(--main-color);
+    padding: var(--spacing4) var(--spacing3);
+}
+
+.card p, h3 {
+    text-align: left;
+}
+
+.card h3 {
+    margin-bottom: var(--spacing2);
+}
+
+.card {
+    background: var(--highlight);
+    border: none;
+    box-shadow: var(--box-shadow);
+    margin-bottom: var(--spacing4);
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.archive .btn {
+    margin-top: var(--spacing2);
+}

@@ -166,7 +166,7 @@ nav a:hover {
     padding: var(--spacing2) var(--spacing3) var(--spacing2) var(--spacing);
 }
 
-.nav-link:hover {
+.nav-link:hover, .navbar-brand:hover{
     color: var(--second-color);
 }
 
