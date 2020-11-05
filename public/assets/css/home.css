@@ -2,10 +2,42 @@
     --carousel-height: 640px;
 }
 
+html {
+    display: flex;
+}
+
 .home-header {
     height: var(--header-height);
     background: linear-gradient(var(--darken-image), var(--darken-image)), url("../images/header_accueil.jpg") no-repeat;
     background-size: contain, cover;
+    width: 100%;
+}
+
+.presentation {
+    background: url("../images/chess_pattern.jpg");
+    background-size: cover;
+    padding: var(--spacing5) 0;
+}
+
+.presentation img {
+    display: block;
+    width: 100%;
+}
+
+.presentation-text {
+    margin-bottom: var(--spacing3);
+}
+
+.presentation h2 {
+    margin-bottom: var(--spacing2);
+}
+
+.presentation h2:before {
+    content: url("../images/chess-knight-small.png");
+}
+
+.presentation img {
+    box-shadow: var(--box-shadow);
 }
 
 .carousel-item > img {
