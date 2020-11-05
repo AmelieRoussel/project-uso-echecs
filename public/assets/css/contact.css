@@ -148,8 +148,13 @@ label {
     height: var(--map-height);
     width: var(--map-width);
     margin: var(--spacing3);
+    justify-content: center;
 }
 
 iframe {
     height: 100%;
+}
+
+small a, small a:hover {
+    color: var(--dark);
 }
