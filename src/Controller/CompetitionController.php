@@ -23,10 +23,13 @@ class CompetitionController extends AbstractController
      */
     public function index()
     {
+
         $competitionManager = new CompetitionManager();
-        $competitions = $competitionManager->selectAll();
+        $competitions = $competitionManager->competitionDateArchive();
+        $newCompetitions = $competitionManager->competitionNewDate();
         return $this->twig->render('Competition/competition.html.twig', [
             'competitions' => $competitions,
+            'newCompetitions' => $newCompetitions,
         ]);
     }
 }
