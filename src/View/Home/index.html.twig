@@ -5,6 +5,25 @@
 {% endblock %}
 
 {% block content %}
+    <header class="d-flex text-center justify-content-around align-items-center home-header">
+        <h1 class="title-light animated fadeIn slower">U.S. Orléans Échecs</h1>
+    </header>
+    <section class="container-fluid presentation">
+        <div class="row text-justify d-flex justify-content-center align-items-center no-gutters">
+            <div class="col-lg-4 col-sm-8 col-10 presentation-text">
+                <h2>Découvrez l'association !</h2>
+                <p>Installé à la Maison des sports, <strong>le club d'échecs d'Orléans</strong> propose des cours pour
+                    les jeunes et les adultes, des séances libres et de véritables cours pour ceux qui souhaitent se perfectionner et
+                    participer aux différentes compétitions.<br>
+                    Très actif et impliqué, le club participe à tous les
+                    challenges locaux. Les tournois se font en équipe ou en individuel, on peut aisément <strong>intégrer une
+                        équipe en fonction de son niveau et pouvoir évoluer grâce aux conseils des autres adhérents.</strong></p>
+            </div>
+            <div class="col-lg-4 col-sm-8 offset-lg-1">
+                <img src="assets/images/presentation_asso_accueil.jpg" alt="Association USO Orléans">
+            </div>
+        </div>
+    </section>
     <section id="carousel-news" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carousel-news" data-slide-to="0" class="active"></li>
@@ -15,7 +34,7 @@
             {% for newsItem in news %}
                 <div class="carousel-item {% if loop.index0 == 0 %} active {% endif %} carousel-gradient">
                     <img class="d-block w-100" src="/assets/images/{{ newsItem.cover_image }}"
-                    alt="First slide">
+                         alt="First slide">
                     <div class="carousel-caption">
                         <h3 class="title-light">{{ newsItem.title }}</h3>
                         <p>{{ newsItem.excerpt }}</p>
