@@ -1,0 +1,65 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}{{ parent() }} | Contact{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/contact.css">
+{% endblock %}
+
+{% block content %}
+    <header class="contact-header">
+        <h1 class="title-light">Contact</h1>
+    </header>
+    <div class=" row form-contact" id="message">
+        <form method="post" action="#message">
+            <div class="form-title">
+                <img src="/assets/images/chess-knight.svg" alt="Pièce d'échec">
+                <h2 class="contact-form-title title-light">Contactez-nous</h2>
+                <img src="/assets/images/chess-knight-reverse.png" alt="Pièce d'échec">
+            </div>
+            <div class="col-md-6 offset-md-3">
+                {% for error in errors %}
+                    <p class="errors">{{ error }}</p>
+                {% endfor %}
+                <div class="form-group">
+                    <label for="lastname">Nom</label>
+                    <input type="text" class="lastname form-control" id="lastname" name="lastname"
+                           placeholder="Martin" value="{{ message.lastname ?? '' }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="firstname">Prénom</label>
+                    <input type="text" class="firstname form-control" id="firstname" name="firstname"
+                           placeholder="Paul" value="{{ message.firstname ?? '' }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="email form-control" id="email" name="email"
+                           placeholder="paul.martin@email.fr" value="{{ message.email ?? '' }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Objet</label>
+                    <select id="subject" class="subject custom-select" name="subject">
+                        {% for subject in subjects %}
+                            <option
+                                    {% if message.subject is not empty and subject.value == message.subject %}
+                                        selected
+                                    {% endif %}
+                                    value="{{ subject.value }}"
+                            >
+                                {{ subject.name }}
+                            </option>
+                            {{ subjectvalue }}
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="input-group">
+                    <textarea class="form-control message" name="message"
+                              placeholder="Votre message" required>{{ message.message ?? '' }}</textarea>
+                </div>
+                <div class="col button">
+                    <button class="button-dark">Envoyer</button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

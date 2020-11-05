@@ -137,9 +137,11 @@ nav a:hover {
 .navbar-expand-md .navbar-nav .nav-link {
     padding: var(--spacing2) var(--spacing3) var(--spacing2) var(--spacing);
 }
-.nav-link:hover {
+
+.nav-link:hover, .navbar-brand:hover{
     color: var(--second-color);
 }
+
 .navbar-toggler {
     margin-bottom: 0;
 }
