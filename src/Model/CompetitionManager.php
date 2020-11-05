@@ -27,4 +27,20 @@ class CompetitionManager extends AbstractManager
     {
         parent::__construct(self::TABLE);
     }
+
+    /**
+     * @return array
+     */
+    public function competitionDateArchive(): array
+    {
+        return $this->pdo->query("SELECT * FROM $this->table WHERE date < NOW()")->fetchAll();
+    }
+
+    /**
+     * @return array
+     */
+    public function competitionNewDate(): array
+    {
+        return $this->pdo->query("SELECT * FROM $this->table WHERE date > NOW()")->fetchAll();
+    }
 }
