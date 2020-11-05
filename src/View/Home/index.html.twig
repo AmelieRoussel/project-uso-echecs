@@ -13,11 +13,14 @@
             <div class="col-lg-4 col-sm-8 col-10 presentation-text">
                 <h2>Découvrez l'association !</h2>
                 <p>Installé à la Maison des sports, <strong>le club d'échecs d'Orléans</strong> propose des cours pour
-                    les jeunes et les adultes, des séances libres et de véritables cours pour ceux qui souhaitent se perfectionner et
+                    les jeunes et les adultes, des séances libres et de véritables cours pour ceux qui souhaitent se
+                    perfectionner et
                     participer aux différentes compétitions.<br>
                     Très actif et impliqué, le club participe à tous les
-                    challenges locaux. Les tournois se font en équipe ou en individuel, on peut aisément <strong>intégrer une
-                        équipe en fonction de son niveau et pouvoir évoluer grâce aux conseils des autres adhérents.</strong></p>
+                    challenges locaux. Les tournois se font en équipe ou en individuel, on peut aisément <strong>intégrer
+                        une
+                        équipe en fonction de son niveau et pouvoir évoluer grâce aux conseils des autres
+                        adhérents.</strong></p>
             </div>
             <div class="col-lg-4 col-sm-8 offset-lg-1">
                 <img src="assets/images/presentation_asso_accueil.jpg" alt="Association USO Orléans">
@@ -51,5 +54,23 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Suivant</span>
         </a>
+    </section>
+    <section class="competitions">
+        <h2 class="title-light">Nos compétitions</h2>
+        <div class="container-fluid">
+            <div class="row justify-content-around">
+                {% for competition in competitions %}
+                    <div class="card col-12 col-sm-8 col-md-8 col-lg-3">
+                        <img src="{{ competition.picture }}" alt="Image archive">
+                        <div class="card-body">
+                            <h3 class="card-title">{{ competition.name }}</h3>
+                            <p class="card-date icon-before-date">{{ competition.date|date("d m Y") }}</p>
+                            <p class="card-position icon-before-position">{{ competition.address }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <button class="button-dark">En savoir plus</button>
+        </div>
     </section>
 {% endblock %}
