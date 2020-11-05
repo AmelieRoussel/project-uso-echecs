@@ -1,10 +1,36 @@
-h2 {
-    padding-bottom: var(--spacing3);
+.competition-picture {
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
+    padding-left: 0;
+    padding-right: 0;
 }
 
-img {
+.competitions h2 {
+    padding-top: var(--spacing4);
+    padding-bottom: var(--spacing4);
+    color: var(--main-color);
+    text-align: center;
+}
+
+.competition-description h3 {
+    margin-bottom: var(--spacing3);
+}
+
+.competition-img, .archive-img {
     width: 100%;
     display: block;
+}
+
+.competitions .row:nth-child(2n) {
+    flex-direction: row-reverse;
+}
+
+.competition-block {
+    margin-bottom: var(--spacing4);
+}
+
+.competition-description {
+    padding: 0;
 }
 
 .icon-before-date:before {
@@ -25,6 +51,13 @@ img {
     text-align: center;
     background-color: var(--main-color);
     padding: var(--spacing4) var(--spacing3);
+}
+
+.archive h2 {
+    padding-top: var(--spacing2);
+    padding-bottom: var(--spacing4);
+    color: var(--light);
+    text-align: center;
 }
 
 .card p, h3 {
