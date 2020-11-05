@@ -10,12 +10,51 @@
     <header class="contact-header">
         <h1 class="title-light">Contact</h1>
     </header>
-    <div class=" row form-contact" id="message">
+    <section class="contact-informations">
+        <div class="title-card">
+            <img class=icon src="/assets/images/chess_icon/bishop.svg" alt="Pièce d'échec">
+            <h2 class="contact-card-title title-dark">Nos informations</h2>
+            <img class=icon src="/assets/images/chess_icon/bishop.svg" alt="Pièce d'échec">
+        </div>
+        <div class="row card-row">
+            <div class="card-group">
+                <div class="card align-items-center">
+                    <img src="/assets/images/contact_icon/home-page_white.svg" class="card-img-top" alt="home icon">
+                    <div class="card-body text-center">
+                        <h3 class="card-title">Adresse</h3>
+                        <p class="card-text">Complexe sportif Argonaute</p>
+                        <p class="card-text">73 bld Marie Stuart</p>
+                        <p class="card-text">45000 Orléans</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-group">
+                <div class="card align-items-center">
+                    <img src="/assets/images/contact_icon/telephone_white.svg" class="card-img-top"
+                         alt="telephone icon">
+                    <div class="card-body text-center">
+                        <h3 class="card-title">Téléphone</h3>
+                        <p class="card-text">06.06.06.06.06</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-group">
+                <div class="card align-items-center">
+                    <img src="/assets/images/contact_icon/email_white.svg" class="card-img-top" alt="email icon">
+                    <div class="card-body text-center">
+                        <h3 class="card-title">E-mail</h3>
+                        <p class="card-text">contact@us-orleans-echecs.fr</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="row form-contact" id="message">
         <form method="post" action="#message">
             <div class="form-title">
-                <img src="/assets/images/chess-knight.svg" alt="Pièce d'échec">
+                <img class=icon src="/assets/images/chess_icon/chess-knight.svg" alt="Pièce d'échec">
                 <h2 class="contact-form-title title-light">Contactez-nous</h2>
-                <img src="/assets/images/chess-knight-reverse.png" alt="Pièce d'échec">
+                <img class=icon src="/assets/images/chess_icon/chess-knight-reverse.png" alt="Pièce d'échec">
             </div>
             <div class="col-md-6 offset-md-3">
                 {% for error in errors %}
@@ -62,4 +101,28 @@
             </div>
         </form>
     </div>
+    <section class="map-schedule">
+        <div class="find-us">
+            <img class=icon src="/assets/images/chess_icon/chess-pawn.svg" alt="Pièce d'échec">
+            <h2 class="schedule-title title-dark">Retrouvez-nous</h2>
+            <img class=icon src="/assets/images/chess_icon/chess-pawn.svg" alt="Pièce d'échec">
+        </div>
+        <div class="row row-find-us">
+            <div class="card map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2674.3106056956344!2d1.9295818!3d47.9110272!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e4fb54772611e5%3A0xb3e9f4578dfca35c!2sL&#39;Argonaute%20-%20Complexe%20Sportif%20Et%20Culturel!5e0!3m2!1sfr!2sfr!4v1604399129919!5m2!1sfr!2sfr"
+                        frameborder="0" style="border:0;" allowfullscreen=""
+                        aria-hidden="false" tabindex="0"></iframe>
+            </div>
+            <div class="card schedule">
+                <h3>Nos horaires</h3>
+                <p>Lundi : fermé</p>
+                <p>Mardi : 17h - 19h</p>
+                <p>Mercredi : 15h - 18h</p>
+                <p>Jeudi : 9h45 - 11h45 — 17h - 19h</p>
+                <p>Vendredi : 14h30 - 16h30</p>
+                <p>Samedi : 14h - 18h30</p>
+                <p>Dimanche : fermé</p>
+            </div>
+        </div>
+    </section>
 {% endblock %}
