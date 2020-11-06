@@ -169,11 +169,3 @@ nav a {
 .navbar-toggler {
     margin-bottom: 0;
 }
-
-.navbar .dropdown-menu a:not(.active) {
-    color: var(--light);
-}
-
-.navbar .dropdown-menu a:hover {
-    color: var(--dark);
-}
