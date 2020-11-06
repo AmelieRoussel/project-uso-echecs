@@ -11,7 +11,7 @@
 
 .contact-header {
     height: var(--header-height);
-    background: linear-gradient(var(--darken-image), var(--darken-image)), url("../images/header_contact.jpg") no-repeat center;
+    background: linear-gradient(var(--darken-image), var(--darken-image)), url("../images/header_contact.jpg") no-repeat center fixed;
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -35,7 +35,7 @@
     height: calc(var(--icon-height)*2);
 }
 
-.card {
+.contact-card {
     --card-height: 300px;
     --card-width: 350px;
     padding: var(--spacing2);
@@ -91,6 +91,10 @@ input, textarea, select, .input-group {
     margin-bottom: var(--spacing3);
 }
 
+.selected-subject {
+    margin-bottom: 0;
+}
+
 .form-control .custom-select{
     border: none;
     padding: var(--spacing);
@@ -122,6 +126,10 @@ label {
     margin-bottom: var(--spacing4);
 }
 
+.schedule-title {
+ padding: var(--spacing);
+}
+
 .row-find-us {
     align-items: center;
     justify-content: center;
@@ -149,6 +157,8 @@ label {
     width: var(--map-width);
     margin: var(--spacing3);
     justify-content: center;
+    background-color: transparent;
+    border: none;
 }
 
 iframe {

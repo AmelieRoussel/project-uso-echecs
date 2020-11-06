@@ -18,7 +18,7 @@
         </div>
         <div class="row card-row">
             <div class="card-group">
-                <div class="card align-items-center">
+                <div class="card align-items-center contact-card">
                     <img src="/assets/images/contact_icon/home-page_white.svg" class="card-img-top" alt="home icon">
                     <div class="card-body text-center">
                         <h3 class="card-title">Adresse</h3>
@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class="card-group">
-                <div class="card align-items-center">
+                <div class="card align-items-center contact-card">
                     <img src="/assets/images/contact_icon/telephone_white.svg" class="card-img-top"
                          alt="telephone icon">
                     <div class="card-body text-center">
@@ -39,7 +39,7 @@
                 </div>
             </div>
             <div class="card-group">
-                <div class="card align-items-center">
+                <div class="card align-items-center contact-card">
                     <img src="/assets/images/contact_icon/email_white.svg" class="card-img-top" alt="email icon">
                     <div class="card-body text-center">
                         <h3 class="card-title">E-mail</h3>
@@ -75,7 +75,7 @@
                     <input type="email" class="email form-control" id="email" name="email"
                            placeholder="paul.martin@email.fr" value="{{ message.email ?? '' }}" required>
                 </div>
-                <div class="form-group">
+                <div class="form-group selected-subject">
                     <label for="subject">Objet</label>
                     <select id="subject" class="subject custom-select" name="subject">
                         {% for subject in subjects %}
@@ -91,8 +91,9 @@
                         {% endfor %}
                     </select>
                 </div>
-                <div class="input-group">
-                    <textarea class="form-control message" name="message"
+                <div class="form-group">
+                    <label for="text-message">Message</label>
+                    <textarea class="form-control message" name="message" id="text-message"
                               placeholder="Votre message" required>{{ message.message ?? '' }}</textarea>
                 </div>
                 <div class="col button">
@@ -119,7 +120,7 @@
                 <p>Lundi : fermé</p>
                 <p>Mardi : 17h - 19h</p>
                 <p>Mercredi : 15h - 18h</p>
-                <p>Jeudi : 9h45 - 11h45 — 17h - 19h</p>
+                <p>Jeudi : 9h45 - 11h45 / 17h - 19h</p>
                 <p>Vendredi : 14h30 - 16h30</p>
                 <p>Samedi : 14h - 18h30</p>
                 <p>Dimanche : fermé</p>
