@@ -9,6 +9,9 @@
 
 namespace App\Controller;
 
+use App\Model\CompetitionManager;
+use App\Model\NewsManager;
+
 class HomeController extends AbstractController
 {
 
@@ -22,7 +25,14 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        return $this->twig->render('Home/index.html.twig');
+        $newsManager = new NewsManager();
+        $news = $newsManager->selectAll();
+        $competitionManager = new CompetitionManager();
+        $competitions = $competitionManager->competitionNewDate();
+        return $this->twig->render('Home/index.html.twig', [
+            'news' => $news,
+            'competitions' => $competitions,
+        ]);
     }
 
     public function contact()
