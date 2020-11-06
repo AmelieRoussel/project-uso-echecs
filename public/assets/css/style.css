@@ -177,3 +177,7 @@ nav a {
 .navbar .dropdown-menu a:hover {
     color: var(--dark);
 }
+
+.navbar .dropdown-menu {
+    position: static !important;
+}
