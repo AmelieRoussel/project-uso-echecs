@@ -1,6 +1,6 @@
 .inscriptionHeader {
     height: var(--header-height);
-    background: var(--image-gradient), url("../images/happy_child_chess.jpg") no-repeat center;
+    background: var(--image-gradient), url("../images/header_inscription.jpg") no-repeat center;
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -41,3 +41,26 @@ input, button{
     display: flex;
     justify-content: center;
 }
+
+.form-control:focus {
+    border-color: transparent;
+    box-shadow: none;
+    border-bottom: 3px solid var(--highlight);
+}
+
+.errors {
+    color: var(--highlight);
+}
+
+.card {
+    margin-top: var(--spacing4);
+    background-color: var(--highlight);
+}
+.link {
+    text-align: right;
+}
+.link a {
+    text-decoration: none;
+}
+
+

@@ -7,62 +7,76 @@
         <h1 class="title-light">Tarifs et inscription</h1>
     </header>
     <section class="inscriptionForm">
-
         <form action="" method="post" novalidate>
             <div class="imageTitle">
                 <img class="image" src="/assets/images/chess-pieces.svg" alt="Tour échec">
                 <h2 class="title-light">Inscription</h2>
                 <img class="image" src="/assets/images/chess-pieces.svg" alt="Tour échec">
             </div>
-            {% for error in errors %}
-                {{ error }}
-            {% endfor %}
-            <div class="row">
-                <div class="col-md-5 offset-md-1 ">
+            <div class="row mx-0">
+                <div class="col-md-6 offset-md-3">
+                    {% for error in errors %}
+                        <p class="errors">{{ error }}</p>
+                    {% endfor %}
+                </div>
+                <div class="col-md-6 offset-md-3">
                     <div class="form-group">
                         <label for="inputFirstname">Prénom</label>
-                        <input type="text" id="inputFirstname" class="form-control" name="inputFirstname" placeholder="Martin" required>
+                        <input type="text" id="inputFirstname" class="form-control" name="inputFirstname"
+                               placeholder="Martin" value="{{ data.inputFirstname ?? '' }}" required>
                     </div>
                     <div class="form-group">
                         <label for="inputLastname">Nom</label>
-                        <input type="text" id="inputLastname" class="form-control" name="inputLastname" placeholder="Paul" required>
+                        <input type="text" id="inputLastname" class="form-control" name="inputLastname"
+                               placeholder="Paul" value="{{ data.inputLastname ?? '' }}" required>
                     </div>
                     <div class="form-group">
                         <label for="inputEmail">Email</label>
-                        <input type="email" id="inputEmail" class="form-control" name="inputEmail" placeholder="martin.paul@email.com " required>
+                        <input type="email" id="inputEmail" class="form-control" name="inputEmail"
+                               placeholder="paul.martin@email.com" value="{{ data.inputEmail ?? '' }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPhone">Numéro de téléphone</label>
+                        <input type="tel" id="inputPhone" class="form-control" name="inputPhone"
+                               placeholder="0601020304" value="{{ data.inputPhone ?? '' }}" required>
                     </div>
                     <div class="form-group">
                         <label for="inputBirthday">Date de naissance</label>
-                        <input type="date" id="inputBirthday" class="form-control" name="inputBirthday" id="inputBirthday"
-                               min="1920-01-01" max="2015-01-05" required>
+                        <input type="date" id="inputBirthday" class="form-control" name="inputBirthday"
+                               min="1920-01-01" max="2015-01-05" value="{{ data.inputBirthday ?? '' }}" required>
                     </div>
                     <div class="form-group">
                         <label for="inputAddress">Adresse</label>
-                        <input type="text" id="inputAddress" class="form-control" name="inputAdress" id="inputAddress" placeholder="2 rue du clos" required>
+                        <input type="text" id="inputAddress" class="form-control" name="inputAddress"
+                               placeholder="2 rue du clos" value="{{ data.inputAddress ?? '' }}" required>
                     </div>
                     <div class="form-group">
                         <label for="inputPostalCode">Code Postal</label>
-                        <input type="text" id="inputPostalCode" class="form-control" name="inputPostalCode" id="inputPostalCode" placeholder="45000" required>
+                        <input type="text" id="inputPostalCode" class="form-control" name="inputPostalCode"
+                               placeholder="45000" value="{{ data.inputPostalCode ?? '' }}" required>
                     </div>
                     <div class="form-group">
                         <label for="inputCity">Ville</label>
-                        <input type="text" id="inputCity" class="form-control" name="inputCity" id="inputCity" placeholder="Orléans" required>
+                        <input type="text" id="inputCity" class="form-control" name="inputCity"
+                               placeholder="Orléans" value="{{ data.inputCity ?? '' }}" required>
                     </div>
                     <div class="button">
                         <button type="submit" class="button-dark">S'inscrire</button>
                     </div>
                 </div>
-                <div class="card col-3 offset-2 h-50 mt-50">
-                    <div class="card-body">
-                        <h5 class="card-title">Vous préférez le papier ?</h5>
-                        <p class="card-text">Pas de problème, voici notre formulaire de contact !</p>
-                        <a href="/assets/Documents/registration_form.jpg"
-                           download="/assets/Documents/registration_form.jpg"
-                           title="Télécharger le formulaire PDF"
-                           class="button-light">Télécharger</a>
-                    </div>
-                </div>
             </div>
         </form>
+        <div class="card col-md-4 offset-md-4 sm-6 h-25">
+            <div class="card-body">
+                <h5 class="card-title">Vous préférez le papier ?</h5>
+                <p class="card-text">Pas de problème, voici notre formulaire de contact !</p>
+                <div class="link">
+                    <a href="/assets/Documents/registration_form.jpg"
+                       download="/assets/Documents/registration_form.jpg"
+                       title="Télécharger le formulaire PDF"
+                       class="button-light btn btn-primary" >Télécharger</a>
+                </div>
+            </div>
+        </div>
     </section>
 {% endblock %}
