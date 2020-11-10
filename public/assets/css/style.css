@@ -27,7 +27,7 @@
     --border-radius: 3px;
     --logo-height: 55px;
     --navbar-height: 80px;
-    --header-height: 90vh;
+    --header-height: 94vh;
     --icon-height: 40px;
 }
 
@@ -182,12 +182,12 @@ footer {
     font-size: var(--footer-font-size);
 }
 
-footer a {
+footer a, .copyright a {
     padding: calc(var(--spacing)/2);
     color: var(--light);
 }
 
-footer a:hover {
+footer a:hover, .copyright a:hover {
     color: var(--second-color);
     text-decoration: none;
 }
