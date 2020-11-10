@@ -1,6 +1,6 @@
 .inscriptionHeader {
     height: var(--header-height);
-    background: var(--image-gradient), url("../images/header_inscription.jpg") no-repeat center;
+    background: linear-gradient(var(--darken-image), var(--darken-image)), url("../images/header_inscription.jpg") no-repeat center fixed;
     background-size: cover;
     display: flex;
     justify-content: center;
