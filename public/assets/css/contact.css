@@ -1,10 +1,65 @@
+.icon {
+    height: var(--icon-height);
+}
+
+.form-title, .title-card, .find-us {
+    margin-top: var(--spacing5);
+    margin-bottom: var(--spacing4);
+    display: flex;
+    justify-content: center;
+}
+
 .contact-header {
     height: var(--header-height);
-    background: var(--image-gradient), url("../images/header_contact.jpg") no-repeat center;
+    background: linear-gradient(var(--darken-image), var(--darken-image)), url("../images/header_contact.jpg") no-repeat center fixed;
     background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.contact h1 {
+    font-size : var(--h1-font-size);
+    font-weight: var(--bold);
+}
+
+.contact-card-title {
+    padding: var(--spacing);
+}
+
+.contact-informations {
+    margin-bottom: var(--spacing4);
+}
+
+.card img {
+    height: calc(var(--icon-height)*2);
+}
+
+.contact-card {
+    --card-height: 300px;
+    --card-width: 350px;
+    padding: var(--spacing2);
+    margin: var(--spacing2);
+    height: var(--card-height);
+    width: var(--card-width);
+    box-shadow: var(--box-shadow);
+}
+
+.card-row {
+    --column-gap: 80px;
+    --row-gap: 40px;
+    justify-content: center;
+    column-gap: var(--column-gap);
+    row-gap: var(--row-gap);
+    padding-bottom: var(--spacing3);
+}
+
+.card-body {
+    display: grid;
+}
+
+.card-title {
+    font-weight: var(--bold);
 }
 
 .form-contact {
@@ -13,24 +68,13 @@
     justify-content: center;
 }
 
-.contact h1 {
-    font-size : var(--h1-font-size);
-    font-weight: var(--bold);
-}
-
 form {
     display: flex;
     flex-direction: column;
     width: 100%;
     padding-right: var(--spacing2);
     padding-left: var(--spacing2);
-}
-
-.form-title {
-    margin-top: var(--spacing5);
     margin-bottom: var(--spacing3);
-    display: flex;
-    align-self: center;
 }
 
 .contact-form-title {
@@ -40,10 +84,15 @@ form {
 .button {
     display: flex;
     justify-content: center;
+    margin-bottom: var(--spacing4);
 }
 
-input, textarea, select, .input-group, button{
+input, textarea, select, .input-group {
     margin-bottom: var(--spacing3);
+}
+
+.selected-subject {
+    margin-bottom: 0;
 }
 
 .form-control .custom-select{
@@ -67,10 +116,55 @@ label {
     color: var(--light);
 }
 
-form img {
-    height: var(--icon-height);
-}
 
 .errors {
     color: var(--highlight);
+}
+
+
+.map-schedule {
+    margin-bottom: var(--spacing4);
+}
+
+.schedule-title {
+ padding: var(--spacing);
+}
+
+.row-find-us {
+    align-items: center;
+    justify-content: center;
+    --column-gap: 150px;
+    --row-gap: 40px;
+    row-gap: var(--row-gap);
+    column-gap: var(--column-gap);
+}
+
+.schedule h3 {
+    padding-bottom: var(--spacing2);
+    font-weight: var(--bold);
+}
+
+.schedule {
+    flex-direction: column;
+    justify-content: center;
+    padding-left: var(--spacing4);
+}
+
+.map, .schedule {
+    --map-height: 400px;
+    --map-width: 500px;
+    height: var(--map-height);
+    width: var(--map-width);
+    margin: var(--spacing3);
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+}
+
+iframe {
+    height: 100%;
+}
+
+small a, small a:hover {
+    color: var(--dark);
 }
