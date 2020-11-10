@@ -13,6 +13,7 @@
     --text-font: 'Open Sans', sans-serif;
     --title-font: 'Lato', sans-serif;
     --text-font-size: 1rem;
+    --footer-font-size: 0.85rem;
     --h1-font-size: 5rem;
     --h2-font-size: 1.75rem;
     --h3-font-size: 1.5rem;
@@ -173,3 +174,42 @@ nav a {
 .navbar-toggler {
     margin-bottom: 0;
 }
+
+footer {
+    background-color: var(--dark);
+    color: var(--light);
+    border-top: solid 2px var(--light);
+    font-size: var(--footer-font-size);
+}
+
+footer a {
+    padding: calc(var(--spacing)/2);
+    color: var(--light);
+}
+
+footer a:hover {
+    color: var(--second-color);
+    text-decoration: none;
+}
+
+.copyright {
+    text-align: center;
+    padding-bottom: var(--spacing);
+}
+
+.footer-presentation > p {
+    text-align: justify;
+    line-height: 200%;
+}
+
+.footer-logo {
+    width: 100%;
+    height: 80%;
+}
+
+.footer-logo a {
+    padding: var(--spacing);
+}
+ .footer-association > a, h5 {
+     padding: var(--spacing);
+ }
