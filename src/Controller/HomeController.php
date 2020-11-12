@@ -108,6 +108,7 @@ class HomeController extends AbstractController
         return $this->twig->render('Home/inscription.html.twig', [
             'errors' => $errors, 'data' => $data]);
     }
+
     /**
      * Display home page
      *
@@ -172,8 +173,8 @@ class HomeController extends AbstractController
         }
         return $errors;
     }
-  
-   public function legalNotice()
+
+    public function legalNotice()
     {
         return $this->twig->render('Home/legalNotice.html.twig');
     }
