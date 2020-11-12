@@ -1,14 +1,18 @@
 {% extends 'layout.html.twig' %}
+{% block title %}{{ parent() }} | Compétitions{% endblock %}
 {% block stylesheet %}
     <link rel="stylesheet" href="/assets/css/competition.css">
 {% endblock %}
 
 {% block content %}
+    <header class="d-flex text-center justify-content-around align-items-center competition-header">
+        <h1 class="title-light">Compétitions</h1>
+    </header>
     <section class="competitions">
         <h2 class="title-light">Compétitions à venir</h2>
         <div class="container">
             {% for newCompetition in newCompetitions %}
-                <div class="competition-block row justify-content-around section">
+                <div class="competition-block row mx-0 justify-content-around section">
                     <div class="competition-picture col-10 col-sm-12 mb-4 col-md-12 col-lg-5">
                         <img class="competition-img" src="{{ newCompetition.picture }}" alt="Image archive">
                     </div>
@@ -24,11 +28,11 @@
     </section>
 
     <section class="archive">
-        <h2 class="title-light">Archives</h2>
+        <h2 class="title-light">Compétitions passées</h2>
         <div class="container-fluid">
-            <div class="row justify-content-around partners">
+            <div class="row mx-0 justify-content-around">
                 {% for competition in competitions %}
-                    <div class="card col-12 col-sm-12 col-md-3 col-lg-3">
+                    <div class="card col-12 col-sm-8 col-md-5 col-lg-3">
                         <img class="archive-img" src="{{ competition.picture }}" alt="Image archive">
                         <div class="card-body">
                             <h3 class="card-title">{{ competition.name }}</h3>
