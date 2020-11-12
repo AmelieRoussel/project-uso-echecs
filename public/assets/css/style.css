@@ -122,7 +122,8 @@ select:focus {
 }
 
 nav {
-    background-color: var(--main-color);
+    background-color: var(--dark);
+    opacity: 0.9;
     font-family: var(--title-font);
     padding-right: var(--spacing);
     min-height: var(--navbar-height);
@@ -146,7 +147,8 @@ nav a {
 }
 
 .dropdown-menu {
-    background-color: var(--main-color);
+    background-color: var(--dark);
+    opacity: 0.9;
     border: none;
 }
 
