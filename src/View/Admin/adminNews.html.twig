@@ -10,7 +10,35 @@
             <h1>Actualités - administration</h1>
         </div>
         <div class="container news-add">
-            <a href="#" class="btn btn-primary button-light">Ajouter une actualité</a>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                Ajouter une actualité
+            </button>
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title" id="exampleModalLongTitle">Ajouter une actualité</h3>
+                            <button type="button" class="closecover_image" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form class="add-form" method="post" action="">
+                            <div class="d-flex flex-column modal-body">
+                                <label for="title">Titre</label>
+                                <input type="text" name="title" id="title" placeholder="Titre de l'actualité">
+                                <label for="content">Article</label>
+                                <textarea name="content" id="content" cols="30" rows="10" placeholder="Contenu de l'article"></textarea>
+                                <label for="excerpt">Résumé</label>
+                                <textarea name="excerpt" id="excerpt" cols="30" rows="3" placeholder="Résumé de l'article"></textarea>
+                                <label for="cover_image">Image</label>
+                                <input type="file" name="cover_image" id="cover_image">
+                                <button class="btn btn-primary">Publier l'article</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
         <hr>
         <div class="container d-flex flex-column">
@@ -19,8 +47,8 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <a href="#" class="view">{{ newsItem.title }}</a>
                         <div class="buttons">
-                        <a href="#" class="btn btn-primary button-light edit">Modifier</a>
-                        <a href="#" class="btn btn-primary button-light delete">Supprimer</a>
+                            <a href="#" class="btn btn-primary button-light edit">Modifier</a>
+                            <a href="#" class="btn btn-primary button-light delete">Supprimer</a>
                         </div>
                     </div>
                 </div>
