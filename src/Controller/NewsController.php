@@ -18,6 +18,7 @@ class NewsController extends AbstractController
      * @throws \Twig\Error\LoaderError
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
+     *
      */
     public function admin()
     {
@@ -28,8 +29,11 @@ class NewsController extends AbstractController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $news = array_map('trim', $_POST);
-            $errors = $this->newsValidate($news);
+            $errors = $this->newsValidate($news, $_FILES['cover_image']);
             if (empty($errors)) {
+                $filename = uniqid() . '.' . pathinfo($_FILES['cover_image']['name'], PATHINFO_EXTENSION);
+                move_uploaded_file($_FILES['cover_image']['tmp_name'], 'uploads/' . $filename);
+                $news['cover_image'] = 'file.jpg';
                 $newsManager = new NewsManager();
                 $newsManager->addNews($news);
 
@@ -43,9 +47,18 @@ class NewsController extends AbstractController
         ]);
     }
 
-    private function newsValidate(array $news): array
+    /**
+     * @param array $news
+     * @param array $files
+     * @return array
+     *
+     *  @SuppressWarnings(PHPMD)
+     */
+    private function newsValidate(array $news, array $files): array
     {
         $errors = [];
+        $fileSize = 1000000;
+        $authorizedMimes = ['image/jpeg', 'image/png', 'image/gif'];
 
         if (empty($news['title'])) {
             $errors[] = 'Le titre ne doit pas être vide';
@@ -65,9 +78,13 @@ class NewsController extends AbstractController
         if (strlen($news['excerpt']) > self::EXCERPT_LENGTH) {
             $errors[] = 'L\'extrait doit faire moins de 1000 caractères';
         }
-        if (empty($news['cover_image'])) {
-            $errors[] = 'Le contenu de l\'image ne doit pas être vide';
+        if ($files['size'] > $fileSize) {
+            $errors[] = 'Le fichier ne doit pas excéder ' . $fileSize / 1000000 . ' Mo';
         }
+        if (!in_array(mime_content_type($files['tmp_name']), $authorizedMimes)) {
+            $errors[] = 'Ce type de fichier n\'est pas valide';
+        }
+
         return $errors ?? [];
     }
 }

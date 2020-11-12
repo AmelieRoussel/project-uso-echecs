@@ -23,14 +23,23 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form class="add-form" method="post" action="">
+                        <form id="news-form" class="add-form" method="post" action="" enctype="multipart/form-data">
                             <div class="d-flex flex-column modal-body">
+                                {% if errors is not empty %}
+                                <ul class="text-danger">
+                                    {% for error in errors %}
+                                    <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
                                 <label for="title">Titre</label>
                                 <input type="text" name="title" id="title" placeholder="Titre de l'actualité">
                                 <label for="content">Article</label>
-                                <textarea name="content" id="content" cols="30" rows="10" placeholder="Contenu de l'article"></textarea>
+                                <textarea name="content" id="content" cols="30" rows="10"
+                                          placeholder="Contenu de l'article"></textarea>
                                 <label for="excerpt">Résumé</label>
-                                <textarea name="excerpt" id="excerpt" cols="30" rows="3" placeholder="Résumé de l'article"></textarea>
+                                <textarea name="excerpt" id="excerpt" cols="30" rows="3"
+                                          placeholder="Résumé de l'article"></textarea>
                                 <label for="cover_image">Image</label>
                                 <input type="file" name="cover_image" id="cover_image">
                                 <button class="btn btn-primary">Publier l'article</button>
@@ -55,4 +64,10 @@
             {% endfor %}
         </div>
     </section>
+{% endblock %}
+
+{% block javascript %}
+{% if errors is not empty %}
+<script src="/assets/js/openmodal.js"></script>
+{% endif %}
 {% endblock %}

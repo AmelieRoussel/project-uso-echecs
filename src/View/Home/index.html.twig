@@ -36,8 +36,8 @@
         <div class="carousel-inner">
             {% for newsItem in news %}
                 <div class="carousel-item {% if loop.index0 == 0 %} active {% endif %} carousel-gradient">
-                    <img class="d-block w-100" src="/assets/images/{{ newsItem.cover_image }}"
-                         alt="First slide">
+                    <img class="d-block w-100" src="/uploads/{{ newsItem.cover_image }}"
+                         alt="Background image">
                     <div class="carousel-caption">
                         <h3 class="title-light">{{ newsItem.title }}</h3>
                         <p>{{ newsItem.excerpt }}</p>
