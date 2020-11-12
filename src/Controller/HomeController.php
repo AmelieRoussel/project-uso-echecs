@@ -156,7 +156,7 @@ class HomeController extends AbstractController
         if (empty($data['inputPostalCode'])) {
             $errors[] = 'Le code Postal est requis';
         }
-        if ((!is_numeric($_POST['inputPostalCode'])) || (strlen($_POST['inputPostalCode']) != 5)) {
+        if ((!is_numeric($data['inputPostalCode'])) || (strlen($data['inputPostalCode']) != 5)) {
             $errors[] = 'Votre Code postal n\'est pas correct';
         }
         if (empty($data['inputCity'])) {
