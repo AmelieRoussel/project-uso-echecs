@@ -4,7 +4,7 @@
 
 .home-header {
     height: var(--header-height);
-    background: linear-gradient(var(--darken-image), var(--darken-image)), url("../images/header_accueil.jpg") no-repeat;
+    background: linear-gradient(var(--darken-image), var(--darken-image)), url("../images/header_accueil.jpg") no-repeat fixed;
     background-size: contain, cover;
     width: 100%;
 }
@@ -15,13 +15,24 @@
     padding: var(--spacing5) 0;
 }
 
+.image-presentation {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.presentation img {
+    --height-image-presentation: 500px;
+    height: var(--height-image-presentation);
+}
+
 .presentation img, .competitions img {
     display: block;
-    width: 100%;
+    max-width: 100%;
 }
 
 .presentation-text {
     margin-bottom: var(--spacing3);
+    line-height: 200%;
 }
 
 .presentation h2 {
