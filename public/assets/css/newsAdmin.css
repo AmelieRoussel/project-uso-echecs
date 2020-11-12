@@ -1,0 +1,20 @@
+section {
+    margin-top: var(--spacing5);
+}
+
+.title, .news-add {
+    margin-top: var(--spacing3);
+    margin-bottom: var(--spacing3);
+}
+
+.news-item {
+    margin-top: var(--spacing2);
+}
+
+.view {
+    color: var(--main-color);
+}
+
+.edit, .delete {
+    margin-left: var(--spacing2);
+}
