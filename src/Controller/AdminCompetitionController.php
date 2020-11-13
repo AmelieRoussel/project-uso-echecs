@@ -77,15 +77,15 @@ class AdminCompetitionController extends AbstractController
         }
 
         if (empty($_FILES['picture']['name'])) {
-            $errors[] = "Erreur! Aucun fichier(s) séléctionné.";
+            $errors[] = "Erreur! Aucune image séléctionné.";
         }
 
         if ($_FILES['picture']['size'] > 1000000) {
-            $errors[] = "Erreur! Fichier(s) trop volumineux.";
+            $errors[] = "Erreur! Image trop volumineux.";
         }
 
         if (!in_array($_FILES['picture']['type'], $mime)) {
-            $errors[] = "Erreur! Type de fichier(s) invalide.";
+            $errors[] = "Erreur! Type d'image invalide.";
         }
         return $errors;
     }
