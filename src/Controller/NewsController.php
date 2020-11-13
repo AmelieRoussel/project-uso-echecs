@@ -91,4 +91,19 @@ class NewsController extends AbstractController
 
         return $errors ?? [];
     }
+
+    /**
+     * Handle item deletion
+     *
+     * @param int $id
+     */
+    public function delete(int $id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+            $newsManager = new NewsManager();
+            $newsManager->deleteNews($id);
+            header('Location:/news/admin');
+        }
+    }
 }
