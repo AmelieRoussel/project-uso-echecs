@@ -16,9 +16,9 @@
             <h2 class="contact-card-title title-dark">Nos informations</h2>
             <img class=icon src="/assets/images/chess_icon/bishop.svg" alt="Pièce d'échec">
         </div>
-        <div class="row card-row">
+        <div class="row mx-0 card-row">
             <div class="card-group">
-                <div class="card align-items-center">
+                <div class="card align-items-center contact-card">
                     <img src="/assets/images/contact_icon/home-page_white.svg" class="card-img-top" alt="home icon">
                     <div class="card-body text-center">
                         <h3 class="card-title">Adresse</h3>
@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class="card-group">
-                <div class="card align-items-center">
+                <div class="card align-items-center contact-card">
                     <img src="/assets/images/contact_icon/telephone_white.svg" class="card-img-top"
                          alt="telephone icon">
                     <div class="card-body text-center">
@@ -39,7 +39,7 @@
                 </div>
             </div>
             <div class="card-group">
-                <div class="card align-items-center">
+                <div class="card align-items-center contact-card">
                     <img src="/assets/images/contact_icon/email_white.svg" class="card-img-top" alt="email icon">
                     <div class="card-body text-center">
                         <h3 class="card-title">E-mail</h3>
@@ -49,7 +49,7 @@
             </div>
         </div>
     </section>
-    <div class="row form-contact" id="message">
+    <div class="row mx-0 form-contact" id="message">
         <form method="post" action="#message">
             <div class="form-title">
                 <img class=icon src="/assets/images/chess_icon/chess-knight.svg" alt="Pièce d'échec">
@@ -75,7 +75,7 @@
                     <input type="email" class="email form-control" id="email" name="email"
                            placeholder="paul.martin@email.fr" value="{{ message.email ?? '' }}" required>
                 </div>
-                <div class="form-group">
+                <div class="form-group selected-subject">
                     <label for="subject">Objet</label>
                     <select id="subject" class="subject custom-select" name="subject">
                         {% for subject in subjects %}
@@ -91,8 +91,9 @@
                         {% endfor %}
                     </select>
                 </div>
-                <div class="input-group">
-                    <textarea class="form-control message" name="message"
+                <div class="form-group">
+                    <label for="text-message">Message</label>
+                    <textarea class="form-control message" name="message" id="text-message"
                               placeholder="Votre message" required>{{ message.message ?? '' }}</textarea>
                 </div>
                 <div class="col button">
@@ -107,7 +108,7 @@
             <h2 class="schedule-title title-dark">Retrouvez-nous</h2>
             <img class=icon src="/assets/images/chess_icon/chess-pawn.svg" alt="Pièce d'échec">
         </div>
-        <div class="row row-find-us">
+        <div class="row mx-0 row-find-us">
             <div class="card map">
                 <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
                         src="https://www.openstreetmap.org/export/embed.html?bbox=1.9293156266212466%2C47.91025122108417%2C1.933601796627045%2C47.911912424659214&amp;layer=mapnik&amp;marker=47.91108182953731%2C1.9314587116241455"></iframe>
@@ -119,7 +120,7 @@
                 <p>Lundi : fermé</p>
                 <p>Mardi : 17h - 19h</p>
                 <p>Mercredi : 15h - 18h</p>
-                <p>Jeudi : 9h45 - 11h45 — 17h - 19h</p>
+                <p>Jeudi : 9h45 - 11h45 / 17h - 19h</p>
                 <p>Vendredi : 14h30 - 16h30</p>
                 <p>Samedi : 14h - 18h30</p>
                 <p>Dimanche : fermé</p>

@@ -13,6 +13,8 @@
     --text-font: 'Open Sans', sans-serif;
     --title-font: 'Lato', sans-serif;
     --text-font-size: 1rem;
+    --footer-font-size: 0.85rem;
+    --footer-title-size: 1.35rem;
     --h1-font-size: 5rem;
     --h2-font-size: 1.75rem;
     --h3-font-size: 1.5rem;
@@ -26,7 +28,7 @@
     --border-radius: 3px;
     --logo-height: 55px;
     --navbar-height: 80px;
-    --header-height: 90vh;
+    --header-height: 94vh;
     --icon-height: 40px;
 }
 
@@ -41,6 +43,7 @@ html {
 strong {
     font-weight: var(--bold);
 }
+
 body {
     margin: 0;
     margin-top: var(--navbar-height);
@@ -122,7 +125,8 @@ select:focus {
 }
 
 nav {
-    background-color: var(--main-color);
+    background-color: var(--dark);
+    opacity: 0.9;
     font-family: var(--title-font);
     padding-right: var(--spacing);
     min-height: var(--navbar-height);
@@ -146,7 +150,8 @@ nav a {
 }
 
 .dropdown-menu {
-    background-color: var(--main-color);
+    background-color: var(--dark);
+    opacity: 0.9;
     border: none;
 }
 
@@ -166,10 +171,53 @@ nav a {
     padding: var(--spacing2) var(--spacing3) var(--spacing2) var(--spacing);
 }
 
-.nav-link:hover, .navbar-brand:hover{
+.nav-link:hover, .navbar-brand:hover {
     color: var(--second-color);
 }
 
 .navbar-toggler {
     margin-bottom: 0;
+}
+
+footer {
+    background-color: var(--dark);
+    color: var(--light);
+    border-top: solid 2px var(--light);
+    font-size: var(--footer-font-size);
+}
+
+footer a, .copyright a {
+    padding: calc(var(--spacing) / 2);
+    color: var(--light);
+}
+
+footer a:hover, .copyright a:hover {
+    color: var(--second-color);
+    text-decoration: none;
+}
+
+.copyright {
+    text-align: center;
+    padding-bottom: var(--spacing);
+}
+
+.footer-presentation > p {
+    text-align: justify;
+    line-height: 200%;
+}
+
+.social-networks {
+    padding: var(--spacing);
+}
+
+.social-networks img {
+    height: var(--icon-height);
+}
+
+.footer-association > a, h5 {
+    padding: var(--spacing);
+}
+
+.footer-association-title {
+    font-size: var(--footer-title-size);
 }
