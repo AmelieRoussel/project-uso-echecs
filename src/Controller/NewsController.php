@@ -33,7 +33,7 @@ class NewsController extends AbstractController
             if (empty($errors)) {
                 $filename = uniqid() . '.' . pathinfo($_FILES['cover_image']['name'], PATHINFO_EXTENSION);
                 move_uploaded_file($_FILES['cover_image']['tmp_name'], 'uploads/' . $filename);
-                $newsData['cover_image'] = 'file.jpg';
+                $newsData['cover_image'] = $filename;
                 $newsManager = new NewsManager();
                 $newsManager->addNews($newsData);
 
