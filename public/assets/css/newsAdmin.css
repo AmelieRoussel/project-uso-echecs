@@ -39,3 +39,11 @@ section {
 span {
     color: var(--light);
 }
+
+.buttons a {
+    margin: var(--spacing) 0 var(--spacing);
+}
+
+.article-link a {
+    margin-top: var(--spacing);
+}

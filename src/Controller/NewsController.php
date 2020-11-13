@@ -24,7 +24,7 @@ class NewsController extends AbstractController
     {
         $newsManager = new NewsManager();
         $news = $newsManager->selectAll();
-
+        $newsData = [];
         $errors = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -43,6 +43,7 @@ class NewsController extends AbstractController
 
         return $this->twig->render('Admin/adminNews.html.twig', [
             'news' => $news,
+            'newsData' => $newsData,
             'errors' => $errors,
         ]);
     }
