@@ -6,6 +6,41 @@
     <header class="inscriptionHeader">
         <h1 class="title-light">Tarifs et inscription</h1>
     </header>
+    <section class="inscriptionPrice">
+        <div class="imageTitle">
+            <img class="image" src="/assets/images/chess_icon/chess-pawn.svg" alt="Tour échec">
+            <h2 class="title-dark">Tarifs</h2>
+            <img class="image" src="/assets/images/chess_icon/chess-pawn.svg" alt="Tour échec">
+        </div>
+        <div class="row mx-0 card-row">
+            <div class="card-group md-4 offset-md-2 sm-6">
+                <div class="card align-items-center">
+                    <div class="card-body">
+                        {% for price in prices %}
+                            <h3 class="card-title text-center">{{ price.title }}</h3>
+                            <p class="card-text">{{ price.value }} <span>{{ price.price }}</span></p>
+                            <ul>
+                                <li>{{ price.name }}</li>
+                            </ul>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="card-group md-4 offset-md-2 sm-6">
+                <div class="card align-items-center">
+                    <div class="card-body">
+                        {% for rate in rates %}
+                            <h3 class="card-title text-center">{{ rate.title }}</h3>
+                            <p class="card-text">{{ rate.value }} <span>{{ rate.price }}</span></p>
+                            <ul>
+                                <li>{{ rate.name }} </li>
+                            </ul>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="inscriptionForm">
         <form action="" method="post">
             <div class="imageTitle">
@@ -74,7 +109,7 @@
                     <a href="/assets/Documents/registration_form.jpg"
                        download="/assets/Documents/registration_form.jpg"
                        title="Télécharger le formulaire PDF"
-                       class="button-light btn btn-primary" >Télécharger</a>
+                       class="button-light btn btn-primary">Télécharger</a>
                 </div>
             </div>
         </div>

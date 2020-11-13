@@ -101,12 +101,48 @@ class HomeController extends AbstractController
     {
         $data = [];
         $errors = [];
+        $prices = [
+            [
+                'title' => 'Licenciés A (Compétitions)',
+                'value' => 'Adultes',
+                'name' => 'Tarif normal',
+                'price' => '110€',
+            ],
+            [
+                'value' => 'Enfants',
+                'name' => '8-18 ans',
+                'price' => '90€',
+            ],
+            [
+                'value' => 'Tarif réduit',
+                'name' => 'Étudiants, chômeurs, retraités, handicapés',
+                'price' => '90€',
+            ],
+        ];
+        $rates = [
+            [
+                'title' => 'Licenciés B (Loisir)',
+                'value' => 'Adultes',
+                'name' => 'Tarif normal',
+                'price' => '80€',
+            ],
+            [
+                'value' => 'Enfants',
+                'name' => '8-18 ans',
+                'price' => '90€',
+            ],
+            [
+                'value' => 'Tarif réduit',
+                'name' => 'Étudiants, chômeurs, retraités, handicapés',
+                'price' => '60€',
+            ],
+        ];
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $data = array_map('trim', $_POST);
             $errors = $this->registration($data);
         }
         return $this->twig->render('Home/inscription.html.twig', [
-            'errors' => $errors, 'data' => $data]);
+            'errors' => $errors, 'data' => $data, 'prices' => $prices, 'rates' => $rates]);
     }
 
     /**
