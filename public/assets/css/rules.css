@@ -1,0 +1,23 @@
+.rules-header {
+    height: var(--header-height);
+    background: linear-gradient(var(--darken-image), var(--darken-image)), url("../images/header_rules.jpg") no-repeat center fixed;
+    background-size: cover;
+}
+
+.rules-title {
+    margin-top: var(--spacing5);
+    margin-bottom: var(--spacing4);
+}
+
+.rules-title h2 {
+    padding: var(--spacing);
+    text-align: center;
+}
+
+.icon {
+    height: var(--icon-height);
+}
+
+.rules-section {
+    margin-bottom: var(--spacing4);
+}

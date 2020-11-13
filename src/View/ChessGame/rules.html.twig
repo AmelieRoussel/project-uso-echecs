@@ -1,0 +1,20 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}{{ parent() }} | Règles{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/rules.css">
+{% endblock %}
+
+{% block content %}
+    <header class="d-flex text-center justify-content-around align-items-center rules-header">
+        <h1 class="title-light">Règles du jeu</h1>
+    </header>
+    <section class="rules-section">
+        <div class="d-flex justify-content-center rules-title">
+            <img class="icon" src="/assets/images/chess_icon/bishop.svg" alt="Pièce d'échec">
+            <h2 class="title-dark">Apprendre les règles du jeu d'échecs</h2>
+            <img class="icon" src="/assets/images/chess_icon/bishop.svg" alt="Pièce d'échec">
+        </div>
+    </section>
+{% endblock %}
