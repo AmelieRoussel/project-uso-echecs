@@ -1,8 +1,14 @@
 .partner-header {
     height: var(--header-height);
-    background: linear-gradient(var(--darken-image), var(--darken-image)), url("../images/header_partner.jpg") no-repeat fixed;
+    background: linear-gradient(var(--darken-image), var(--darken-image)), url("../images/header_partner.jpg") no-repeat center fixed;
     background-size: contain, cover;
     width: 100%;
+}
+
+@media screen and (max-width: 550px) {
+    .partner-header h1 {
+        font-size: calc(var(--h2-font-size) * 2);
+    }
 }
 
 .partners:nth-child(2n) {
@@ -17,7 +23,15 @@
     margin-bottom: var(--spacing4);
 }
 
-.partners-section h2 {
+.partners-title {
     margin-top: var(--spacing5);
     margin-bottom: var(--spacing4);
+}
+
+.partners-title h2 {
+    padding: var(--spacing);
+}
+
+.icon {
+    height: var(--icon-height);
 }
