@@ -22,7 +22,7 @@
                         équipe en fonction de son niveau et pouvoir évoluer grâce aux conseils des autres
                         adhérents.</strong></p>
             </div>
-            <div class="col-lg-4 col-sm-8 offset-lg-1">
+            <div class="col-lg-4 col-sm-8 offset-lg-1 image-presentation">
                 <img src="assets/images/presentation_asso_accueil.jpg" alt="Association USO Orléans">
             </div>
         </div>
@@ -60,8 +60,8 @@
         <div class="container-fluid">
             <div class="row justify-content-around">
                 {% for competition in competitions %}
-                    <div class="card col-12 col-sm-8 col-md-8 col-lg-3">
-                        <img src="{{ competition.picture }}" alt="Image archive">
+                    <div class="card col-12 col-sm-8 col-md-5 col-lg-3">
+                        <img src="{{ competition.picture }}" alt="Image archive" class="card-img-top">
                         <div class="card-body">
                             <h3 class="card-title">{{ competition.name }}</h3>
                             <p class="card-date icon-before-date">{{ competition.date|date("d m Y") }}</p>
