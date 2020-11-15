@@ -19,7 +19,7 @@
         <div class="container-fluid">
             <div class="row mx-0 align-items-center justify-content-center partners">
                 {% for partner in partners %}
-                <div class="col-md-4 d-flex justify-content-center my-3">
+                <div class="col-md-6 col-lg-4 d-flex justify-content-center my-3">
                     <a href="{{ partner.website }}"><img src="{{ partner.image }}" alt="logo {{ partner.name }}"></a>
                 </div>
                 {% endfor %}
