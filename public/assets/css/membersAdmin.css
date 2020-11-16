@@ -24,3 +24,25 @@ section {
 .info-member {
     margin: var(--spacing2);
 }
+
+.members-add button {
+    background-color: var(--main-color);
+}
+
+.members-add button:hover {
+    background-color: var(--second-color);
+}
+
+.members-add button.close {
+    background-color: transparent;
+    opacity: 1;
+}
+
+.form label, .form button {
+    font-weight: var(--bold);
+    margin-top: var(--spacing2);
+}
+
+span {
+    color: var(--main-color);
+}
