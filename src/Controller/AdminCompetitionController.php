@@ -89,14 +89,4 @@ class AdminCompetitionController extends AbstractController
         }
         return $errors;
     }
-
-    public function delete()
-    {
-        if ($_SERVER["REQUEST_METHOD"] === 'POST') {
-            $id = $_POST['id'];
-            $adminCompetition = new AdminCompetitionManager();
-            $adminCompetition->delete($id);
-            header('Location: /AdminCompetition/index');
-        }
-    }
 }
