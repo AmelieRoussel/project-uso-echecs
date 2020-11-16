@@ -15,15 +15,3 @@
     width: 100%;
     display: block;
 }
-
-.picture {
-    padding-left: 200px;
-}
-
-.modal-body input {
-    width: 100%;
-}
-
-.modal-body li {
-    color:red;
-}
