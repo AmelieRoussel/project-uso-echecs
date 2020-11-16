@@ -16,22 +16,26 @@
             <div class="card-group md-4 offset-md-2 sm-6">
                 <div class="card align-items-center">
                     <div class="card-body">
-                            <h3 class="card-title text-center"></h3>
-                            <p class="card-text"><span></span></p>
+                        <h3 class="card-title text-center">Licence A (Compétition)</h3>
+                        {% for competition in competitions %}
+                            <p class="card-text">{{ competition.category }}<span>{{ competition.price }} €</span></p>
                             <ul>
-                                <li></li>
+                                <li>{{ competition.rate }}</li>
                             </ul>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
             <div class="card-group md-4 offset-md-2 sm-6">
                 <div class="card align-items-center">
                     <div class="card-body">
-                            <h3 class="card-title text-center">{{ rate.title }}</h3>
-                            <p class="card-text">{{ rate.value }} <span>{{ rate.price }}</span></p>
+                        <h3 class="card-title text-center">Licence B (Loisir)</h3>
+                        {% for hobby in hobbies %}
+                            <p class="card-text"> {{ hobby.category }} <span>{{ hobby.price }} €</span></p>
                             <ul>
-                                <li>{{ rate.name }} </li>
+                                <li>{{ hobby.rate }}</li>
                             </ul>
+                        {% endfor %}
                     </div>
                 </div>
             </div>

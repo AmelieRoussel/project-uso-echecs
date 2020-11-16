@@ -18,7 +18,7 @@ class LicenseCompetitionManager extends AbstractManager
     /**
      *
      */
-    public const TABLE = 'license_A';
+    public const TABLE = 'licenseA';
 
     /**
      *  Initializes this class.
@@ -26,13 +26,5 @@ class LicenseCompetitionManager extends AbstractManager
     public function __construct()
     {
         parent::__construct(self::TABLE);
-    }
-
-    /**
-     * @return array
-     */
-    public function competitionDateArchive(): array
-    {
-        return $this->pdo->query("SELECT * FROM $this->table")->fetchAll();
     }
 }
