@@ -16,26 +16,22 @@
             <div class="card-group md-4 offset-md-2 sm-6">
                 <div class="card align-items-center">
                     <div class="card-body">
-                        {% for price in prices %}
-                            <h3 class="card-title text-center">{{ price.title }}</h3>
-                            <p class="card-text">{{ price.value }} <span>{{ price.price }}</span></p>
+                            <h3 class="card-title text-center"></h3>
+                            <p class="card-text"><span></span></p>
                             <ul>
-                                <li>{{ price.name }}</li>
+                                <li></li>
                             </ul>
-                        {% endfor %}
                     </div>
                 </div>
             </div>
             <div class="card-group md-4 offset-md-2 sm-6">
                 <div class="card align-items-center">
                     <div class="card-body">
-                        {% for rate in rates %}
                             <h3 class="card-title text-center">{{ rate.title }}</h3>
                             <p class="card-text">{{ rate.value }} <span>{{ rate.price }}</span></p>
                             <ul>
                                 <li>{{ rate.name }} </li>
                             </ul>
-                        {% endfor %}
                     </div>
                 </div>
             </div>
