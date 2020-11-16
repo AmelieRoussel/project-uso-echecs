@@ -1,0 +1,61 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}{{ parent() }} | Admin | Membres{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/membersAdmin.css">
+{% endblock %}
+
+{% block content %}
+    <section>
+        <div class="text-center title">
+            <h1>Membres - administration</h1>
+        </div>
+        <hr>
+        <div class="container d-flex flex-column">
+            {% for member in members %}
+                <div class="container members_list">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center">
+                        <div class="col-md-4 col-sm-8 offset-lg-1 members-link">
+                            <button type="button" class="members-link" data-toggle="modal"
+                                    data-target="#modalForm{{ member.id }}">
+                                {{ member.firstname|capitalize }} {{ member.lastname|capitalize }}
+                            </button>
+                            <div class="modal fade" id="modalForm{{ member.id }}" tabindex="-1" role="dialog"
+                                 aria-labelledby="modalFormTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h3 class="modal-title" id="modalFormLongTitle">
+                                                {{ member.firstname|capitalize }} {{ member.lastname|capitalize }}
+                                            </h3>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="info-member">
+                                            <p>Prénom : {{ member.firstname|capitalize }}</p>
+                                            <p>Nom : {{ member.lastname|capitalize }}</p>
+                                            <p>Email : {{ member.email }}</p>
+                                            <p>Téléphone : {{ member.phone }}</p>
+                                            <p>Date de naissance : {{ member.birthday }}</p>
+                                            <p>Adresse : {{ member.address }}
+                                                , {{ member.postal_code }} {{ member.city|capitalize }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascript %}
+{% if errors is not empty %}
+<script src="/assets/js/openModal.js"></script>
+{% endif %}
+{% endblock %}
