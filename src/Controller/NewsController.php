@@ -24,6 +24,16 @@ class NewsController extends AbstractController
     {
         $newsManager = new NewsManager();
         $news = $newsManager->selectAll();
+
+        return $this->twig->render('Admin/adminNews.html.twig', [
+            'news' => $news,
+        ]);
+    }
+
+    public function add()
+    {
+        $newsManager = new NewsManager();
+        $news = $newsManager->selectAll();
         $newsData = [];
         $errors = [];
 
@@ -33,19 +43,28 @@ class NewsController extends AbstractController
             if (empty($errors)) {
                 $filename = uniqid() . '.' . pathinfo($_FILES['cover_image']['name'], PATHINFO_EXTENSION);
                 move_uploaded_file($_FILES['cover_image']['tmp_name'], 'uploads/' . $filename);
-                $newsData['cover_image'] = 'file.jpg';
+                $newsData['cover_image'] = $filename;
                 $newsManager = new NewsManager();
                 $newsManager->addNews($newsData);
 
                 header('Location: /news/admin');
             }
         }
-
         return $this->twig->render('Admin/adminNews.html.twig', [
-            'news' => $news,
-            'newsData' => $newsData,
             'errors' => $errors,
+            'newsData' => $newsData,
+            'news' => $news
         ]);
+    }
+
+    public function delete()
+    {
+        if ($_SERVER["REQUEST_METHOD"] === 'POST') {
+            $id = $_POST['id'];
+            $newsManager = new NewsManager();
+            $newsManager->deleteNews($id);
+            header('Location: /news/admin');
+        }
     }
 
     /**
@@ -53,7 +72,7 @@ class NewsController extends AbstractController
      * @param array $files
      * @return array
      *
-     *  @SuppressWarnings(PHPMD)
+     * @SuppressWarnings(PHPMD)
      */
     private function newsValidate(array $newsData, array $files): array
     {
@@ -65,19 +84,19 @@ class NewsController extends AbstractController
             $errors[] = 'Le titre ne doit pas être vide';
         }
         if (strlen($newsData['title']) > self::TITLE_LENGTH) {
-            $errors[] = 'Le titre doit faire moins de 255 caractères';
+            $errors[] = 'Le titre doit faire moins de ' . self::TITLE_LENGTH . ' caractères';
         }
         if (empty($newsData['content'])) {
             $errors[] = 'Le contenu de l\'article ne doit pas être vide';
         }
         if (strlen($newsData['content']) > self::CONTENT_LENGTH) {
-            $errors[] = 'Le contenu doit faire moins de 100000 caractères';
+            $errors[] = 'Le contenu doit faire moins de ' . self::CONTENT_LENGTH . ' caractères';
         }
         if (empty($newsData['excerpt'])) {
             $errors[] = 'Le contenu de l\'extrait ne doit pas être vide';
         }
         if (strlen($newsData['excerpt']) > self::EXCERPT_LENGTH) {
-            $errors[] = 'L\'extrait doit faire moins de 1000 caractères';
+            $errors[] = 'L\'extrait doit faire moins de ' . self::EXCERPT_LENGTH . ' caractères';
         }
         if ($files['size'] > $fileSize) {
             $errors[] = 'Le fichier ne doit pas excéder ' . $fileSize / 1000000 . ' Mo';

@@ -24,4 +24,14 @@ class NewsManager extends AbstractManager
         $statement->bindValue(':cover_image', $news['cover_image']);
         $statement->execute();
     }
+
+    /**
+     * @param int $id
+     */
+    public function deleteNews(int $id): void
+    {
+        $statement = $this->pdo->prepare("DELETE FROM " . self::TABLE . " WHERE id=:id");
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+    }
 }

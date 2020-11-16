@@ -25,7 +25,7 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form id="news-form" class="add-form" method="post" action="" enctype="multipart/form-data">
+                        <form id="news-form" class="add-form" method="post" action="/news/admin" enctype="multipart/form-data">
                             <div class="d-flex flex-column modal-body">
                                 {% if errors is not empty %}
                                     <ul class="text-danger">
@@ -62,7 +62,10 @@
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-12 col-8 offset-lg-1 buttons">
                             <a href="#" class="btn btn-primary button-light edit">Modifier</a>
-                            <a href="#" class="btn btn-primary button-light delete">Supprimer</a>
+                            <form method="post" action="/news/delete">
+                            <input type="hidden" name="id" value="{{ newsItem.id }}">
+                            <button class="btn btn-primary button-light delete">Supprimer</button>
+                            </form>
                         </div>
                     </div>
                     <hr>
