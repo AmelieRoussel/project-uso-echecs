@@ -99,7 +99,6 @@ class AdminCompetitionController extends AbstractController
 
     public function update(int $id)
     {
-        $item = [];
         $errors = [];
         $competitionManager = new CompetitionManager();
         $item = $competitionManager->selectOneById($id);

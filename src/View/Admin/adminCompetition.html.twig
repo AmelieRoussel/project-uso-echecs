@@ -73,20 +73,22 @@
                         <p class="competition-date icon-before-date">{{ competition.date|date("d m Y") }}</p>
                         <p class="competition-position icon-before-position">{{ competition.address }}</p>
                     </div>
-                    <form class="competition-button-delete" action="/AdminCompetition/delete" method="post">
+                    <div class="competition-button-update">
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary button-light" data-toggle="modal" data-target="#modalForm{{ competition.id }}">
+                            Modifier
+                        </button>
+                    </div>
+                    <form class="competition-button-delete offset-1 offset-lg-0" action="/AdminCompetition/delete" method="post">
                         <div>
                             <input type="hidden" name="id" value="{{ competition.id }}">
                             <button class="btn btn-primary button-light">Supprimer</button>
                         </div>
                     </form>
+
                 </div>
 
-                <div class="competition-button-update ">
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary button-light" data-toggle="modal" data-target="#modalForm{{ competition.id }}">
-                        Modifier
-                    </button>
-                </div>
+
 
                 <div>
 
@@ -117,7 +119,7 @@
                                         </div>
                                         <div>
                                             <label for="date">Date</label>
-                                            <input type="date" name="date" id="date" value="{{ competition.date|date("d m Y") }}">
+                                            <input type="date" name="date" id="date" value="{{ competition.date }}">
                                         </div>
                                         <div>
                                             <label for="address">Adresse</label>
