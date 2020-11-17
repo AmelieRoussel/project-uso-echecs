@@ -31,14 +31,32 @@ class InscriptionManager extends AbstractManager
         VALUES (:inputFirstname,:inputLastname, :inputEmail, :inputPhone, :inputBirthday, :inputAddress, 
         :inputPostalCode, :inputCity)");
         $statement = $this->pdo->prepare($query);
-        $statement->bindValue(':inputFirstname', $data['inputFirstname']);
-        $statement->bindValue(':inputLastname', $data['inputLastname']);
-        $statement->bindValue(':inputEmail', $data['inputEmail']);
-        $statement->bindValue(':inputPhone', $data['inputPhone']);
-        $statement->bindValue(':inputBirthday', $data['inputBirthday']);
-        $statement->bindValue(':inputAddress', $data['inputAddress']);
-        $statement->bindValue(':inputPostalCode', $data['inputPostalCode']);
-        $statement->bindValue(':inputCity', $data['inputCity']);
+        $statement->bindValue(':inputFirstname', $data['firstname']);
+        $statement->bindValue(':inputLastname', $data['lastname']);
+        $statement->bindValue(':inputEmail', $data['email']);
+        $statement->bindValue(':inputPhone', $data['phone']);
+        $statement->bindValue(':inputBirthday', $data['birthday']);
+        $statement->bindValue(':inputAddress', $data['address']);
+        $statement->bindValue(':inputPostalCode', $data['postal_code']);
+        $statement->bindValue(':inputCity', $data['city']);
+        $statement->execute();
+    }
+
+    public function updateMember(array $member)
+    {
+        $query = ('UPDATE ' . self::TABLE . ' SET firstname = :firstname, lastname = :lastname, email = :email, ' .
+            'phone = :phone, birthday = :birthday, address = :address, postal_code = :postal_code, city = :city ' .
+            'WHERE id = :id');
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(':id', $member['id'], \PDO::PARAM_INT);
+        $statement->bindValue(':firstname', $member['firstname'], \PDO::PARAM_STR);
+        $statement->bindValue(':lastname', $member['lastname'], \PDO::PARAM_STR);
+        $statement->bindValue(':email', $member['email'], \PDO::PARAM_STR);
+        $statement->bindValue(':phone', $member['phone']);
+        $statement->bindValue(':birthday', $member['birthday']);
+        $statement->bindValue(':address', $member['address'], \PDO::PARAM_STR);
+        $statement->bindValue(':postal_code', $member['postal_code']);
+        $statement->bindValue(':city', $member['city'], \PDO::PARAM_STR);
         $statement->execute();
     }
 }
