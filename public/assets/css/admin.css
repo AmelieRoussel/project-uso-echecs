@@ -1,0 +1,17 @@
+.competition-button-add {
+    margin-bottom: var(--spacing3);
+}
+
+.competition-description h3 {
+    margin-bottom: var(--spacing2);
+}
+
+.competition-button-delete {
+    margin-bottom: var(--spacing4);
+}
+
+
+.competitions img {
+    width: 100%;
+    display: block;
+}
