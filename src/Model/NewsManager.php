@@ -24,4 +24,28 @@ class NewsManager extends AbstractManager
         $statement->bindValue(':cover_image', $news['cover_image']);
         $statement->execute();
     }
+
+    /**
+     * @param int $id
+     */
+    public function deleteNews(int $id): void
+    {
+        $statement = $this->pdo->prepare("DELETE FROM " . self::TABLE . " WHERE id=:id");
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+    }
+
+    public function updateNews(array $news)
+    {
+        $query = ('UPDATE ' . self::TABLE .
+            ' SET title = :title, excerpt = :excerpt, content = :content, cover_image = :cover_image 
+            WHERE id = :id');
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(':title', $news['title'], \PDO::PARAM_STR);
+        $statement->bindValue(':excerpt', $news['excerpt'], \PDO::PARAM_STR);
+        $statement->bindValue(':content', $news['content'], \PDO::PARAM_STR);
+        $statement->bindValue(':cover_image', $news['cover_image']);
+        $statement->bindValue('id', $news['id'], \PDO::PARAM_INT);
+        $statement->execute();
+    }
 }
