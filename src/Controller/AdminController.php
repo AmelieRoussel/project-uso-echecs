@@ -52,26 +52,24 @@ class AdminController extends AbstractController
     public function editMember(int $id)
     {
         $inscriptionManager = new InscriptionManager();
-        $member = $inscriptionManager->selectOneById($id);
-        $edits = [];
+        $memberEdit = $inscriptionManager->selectOneById($id);
         $errorsEdit = [];
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $edits = array_map('trim', $_POST);
             $errorsEdit = $this->memberValidation($edits);
             if (empty($errorsEdit)) {
                 foreach ($edits as $label => $edit) {
-                    $member[$label] = $edit;
+                    $memberEdit[$label] = $edit;
                 }
-                $inscriptionManager->updateMember($member);
-
+                $inscriptionManager->updateMember($memberEdit);
                 header('Location: /admin/members');
             }
         }
         $members = $inscriptionManager->selectAll();
         return $this->twig->render('Admin/Members/adminMembers.html.twig', [
             'errorsEdit' => $errorsEdit,
-            'edit' => $edits,
-            'members' => $members
+            'members' => $members,
+            'memberEdit' => $memberEdit
         ]);
     }
 
