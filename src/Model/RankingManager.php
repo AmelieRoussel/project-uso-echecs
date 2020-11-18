@@ -8,6 +8,8 @@ class RankingManager extends AbstractManager
      *
      */
     public const TABLE = 'ranking';
+    public const COMPETITION_TABLE = 'competition';
+    public const PLAYER_TABLE = 'player';
 
     /**
      * RankingManager constructor.
@@ -25,7 +27,7 @@ class RankingManager extends AbstractManager
         return $this->pdo->query("
 SELECT position, lastname, firstname, club, name, category, points, performance 
 FROM " . self::TABLE . " 
-        JOIN competition ON competition.id = ranking.competition_id
-        JOIN player ON player.id = ranking.player_id")->fetchAll();
+        JOIN " . self::COMPETITION_TABLE . " competition ON competition.id = ranking.competition_id
+        JOIN " . self::PLAYER_TABLE . " ON player.id = ranking.player_id")->fetchAll();
     }
 }

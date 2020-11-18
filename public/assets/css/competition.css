@@ -93,4 +93,9 @@
 
 .archive .btn {
     margin-top: var(--spacing2);
-}p
+}
+
+.ranking-table {
+    table-layout: fixed;
+}
+

@@ -1,26 +1,32 @@
 {% extends 'layout.html.twig' %}
 
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/competition.css">
+{% endblock %}
+
 {% block content %}
+    <table class="ranking-table">
         <tr>
-            <td>Position</td>
-            <td>Nom</td>
-            <td>Prénom</td>
-            <td>Club</td>
-            <td>Compétition</td>
-            <td>Catégories</td>
-            <td>Points</td>
-            <td>Performance</td>
+            <th>Position</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Club</th>
+            <th>Compétition</th>
+            <th>Catégories</th>
+            <th>Points</th>
+            <th>Performance</th>
         </tr>
             {% for item in items %}
                 <tr>
-                    <td>{{ ranking.position }}</td>
-                    <td>{{ player.lastname }}</td>
-                    <td>{{ player.firstname }}</td>
-                    <td>{{ ranking.club }}</td>
-                    <td>{{ competition.name }}</td>
-                    <td>{{ ranking.category }}</td>
-                    <td>{{ ranking.points }}</td>
-                    <td>{{ ranking.performance }}</td>
+                    <td>{{ item.position }}</td>
+                    <td>{{ item.lastname }}</td>
+                    <td>{{ item.firstname }}</td>
+                    <td>{{ item.club }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.category }}</td>
+                    <td>{{ item.points }}</td>
+                    <td>{{ item.performance }}</td>
                 </tr>
             {% endfor %}
+    </table>
 {% endblock %}
