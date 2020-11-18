@@ -18,8 +18,6 @@
             <form id="news-form" class="add-form" method="post" action="/news/edit/{{ newsItem.id }}"
                   enctype="multipart/form-data">
                 <div class="d-flex flex-column modal-body">
-                    {{ dump(newsItem.cover_image) }}
-                    {{ dump(newsItem) }}
                     {% if errors is not empty %}
                         <ul class="text-danger">
                             {% for error in errors %}
