@@ -45,13 +45,13 @@ class AdminCompetitionController extends AbstractController
             $errors[] = 'Le champ concernant la date ne doit pas être vide';
         }
         if (empty($item['address'])) {
-            $errors[] = "Le champ concernant l'adrese ne doit pas être vide";
+            $errors[] = "Le champ concernant l'adresse ne doit pas être vide";
         }
         if (empty($_FILES['picture']['name'])) {
-            $errors[] = "Erreur! Aucune image séléctionné.";
+            $errors[] = "Erreur! Aucune image séléctionnée.";
         }
         if ($_FILES['picture']['size'] > 1000000) {
-            $errors[] = "Erreur! Image trop volumineux.";
+            $errors[] = "Erreur! Image trop volumineuse.";
         }
 
         if (!in_array($_FILES['picture']['type'], $mime)) {
