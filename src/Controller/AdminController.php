@@ -70,6 +70,16 @@ class AdminController extends AbstractController
         ]);
     }
 
+    public function deleteMember()
+    {
+        if ($_SERVER["REQUEST_METHOD"] === 'POST') {
+            $id = $_POST['id'];
+            $inscriptionManager = new InscriptionManager();
+            $inscriptionManager->delete($id);
+            header('Location: /admin/members');
+        }
+    }
+
     /**
      * Display home page
      *
