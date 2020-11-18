@@ -21,3 +21,7 @@
 .rules-section {
     margin-bottom: var(--spacing4);
 }
+
+.size {
+    font-size: var(--h4-font-size);
+}
