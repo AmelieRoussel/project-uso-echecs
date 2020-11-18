@@ -30,33 +30,6 @@ class AdminCompetitionController extends AbstractController
         ]);
     }
 
-    public function add()
-    {
-        $errors = [];
-        $competitionManager = new CompetitionManager();
-        $competition = $competitionManager->selectAll();
-
-        if ($_SERVER["REQUEST_METHOD"] === 'POST') {
-            $item = array_map('trim', $_POST);
-            $errors = $this->validate($item);
-            if (empty($errors)) {
-                $uploadDir = 'uploads/';
-                $extension = pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION);
-                $filename = uniqid() . '.' . $extension;
-                $uploadFile = $uploadDir . basename($filename);
-                move_uploaded_file($_FILES['picture']['tmp_name'], $uploadFile);
-                $item['picture'] = $filename;
-                $adminCompetition = new CompetitionManager();
-                $adminCompetition->add($item);
-                header('Location: /AdminCompetition/index');
-            }
-        }
-        return $this->twig->render('Admin/adminCompetition.html.twig', [
-            'errors' => $errors,
-            'competitions' => $competition
-            ]);
-    }
-
     public function validate(array $item)
     {
         $errors = [];
