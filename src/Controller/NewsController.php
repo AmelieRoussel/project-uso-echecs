@@ -20,6 +20,15 @@ class NewsController extends AbstractController
      * @throws \Twig\Error\SyntaxError
      *
      */
+
+    public function show(int $id)
+    {
+        $newsManager = new NewsManager();
+        $newsItem = $newsManager->selectOneById($id);
+
+        return $this->twig->render('News/show.html.twig', ['newsItem' => $newsItem]);
+    }
+
     public function admin()
     {
         $newsManager = new NewsManager();

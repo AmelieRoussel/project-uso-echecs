@@ -1,0 +1,34 @@
+:root {
+    --news-image-size: 480px;
+}
+
+.news-header {
+    height: calc(var(--header-height) / 2);
+    background: linear-gradient(var(--darken-image), var(--darken-image)), url("../images/header_news.jpg") no-repeat fixed;
+    background-size: contain, cover;
+    width: 100%;
+}
+
+.news-title {
+    padding: 0 var(--spacing4) var(--spacing3) var(--spacing3);
+}
+
+@media screen and (max-width: 550px) {
+    .news-header h1 {
+        font-size: calc(var(--h2-font-size) * 2);
+    }
+}
+
+.news {
+    padding: var(--spacing5) 0;
+}
+
+.cover-image {
+    width: var(--news-image-size);
+    height: var(--news-image-size);
+    object-fit: cover;
+    box-shadow: var(--box-shadow);
+    display: block;
+    max-width: 100%;
+    margin: var(--spacing3) 0;
+}
