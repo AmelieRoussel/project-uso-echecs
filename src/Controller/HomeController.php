@@ -14,7 +14,6 @@ use App\Model\CompetitionManager;
 use App\Model\NewsManager;
 use App\Model\LicenseManager;
 
-
 class HomeController extends AbstractController
 {
 
