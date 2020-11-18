@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Model\PartnersManager;
+use App\Model\PartnerManager;
 
 class AssociationController extends AbstractController
 {
@@ -18,8 +18,8 @@ class AssociationController extends AbstractController
      */
     public function partner()
     {
-        $partnersmanager = new PartnersManager();
-        $partners = $partnersmanager->selectAll();
+        $partnermanager = new PartnerManager();
+        $partners = $partnermanager->selectAll();
 
         return $this->twig->render('Association/partner.html.twig', [
             'partners' => $partners

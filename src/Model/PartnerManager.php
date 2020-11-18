@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-class PartnersManager extends AbstractManager
+class PartnerManager extends AbstractManager
 {
     /**
      *
