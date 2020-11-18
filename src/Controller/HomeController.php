@@ -13,6 +13,9 @@ use App\Model\InscriptionManager;
 use App\Model\CompetitionManager;
 use App\Model\NewsManager;
 use App\Model\LicenseManager;
+use Symfony\Component\Mailer\Mailer;
+use Symfony\Component\Mailer\Transport;
+use Symfony\Component\Mime\Email;
 
 class HomeController extends AbstractController
 {
@@ -65,6 +68,20 @@ class HomeController extends AbstractController
         if ($_SERVER["REQUEST_METHOD"] === 'POST') {
             $message = array_map('trim', $_POST);
             $errors = $this->validate($message);
+            if (empty($errors)) {
+                $errors[] = 'Merci pour votre message';
+                $transport = Transport::fromDsn(MAILER_DSN);
+                $mailer = new Mailer($transport);
+                $email = (new Email())
+                    ->from($message['email'])
+                    ->to(MAIL_TO)
+                    ->subject('Message du site web U.S.O. Echecs')
+                    ->html($this->twig->render('Contact/email.html.twig', [
+                        'message' => $message,
+                    ]));
+                $mailer->send($email);
+                $message = [];
+            }
         }
 
         return $this->twig->render('Contact/contact.html.twig', [
@@ -91,9 +108,6 @@ class HomeController extends AbstractController
         }
         if (empty($message['message'])) {
             $errors[] = 'Veuillez écrire un message';
-        }
-        if (empty($errors)) {
-            $errors[] = 'Merci pour votre message';
         }
         return $errors;
     }
