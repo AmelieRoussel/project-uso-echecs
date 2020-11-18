@@ -23,7 +23,6 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-
                                     <form action="/AdminCompetition/add" method="post" enctype="multipart/form-data">
                                         <input type="hidden" name="id" value="{{ competition.id }}">
                                         <ul>
@@ -85,14 +84,8 @@
                             <button class="btn btn-primary button-light">Supprimer</button>
                         </div>
                     </form>
-
                 </div>
-
-
-
                 <div>
-
-                    <!-- Modal -->
                     <div class="modal fade" id="modalForm{{ competition.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
