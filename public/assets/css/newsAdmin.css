@@ -47,3 +47,7 @@ span {
 .article-link a {
     margin-top: var(--spacing);
 }
+
+.closecover_image {
+    background: var(--main-color);
+}

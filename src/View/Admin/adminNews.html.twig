@@ -25,12 +25,8 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-<<<<<<< HEAD
                         <form id="news-form" class="add-form" method="post" action="/news/add"
                               enctype="multipart/form-data" novalidate>
-=======
-                        <form id="news-form" class="add-form" method="post" action="/news/admin" enctype="multipart/form-data">
->>>>>>> b1f3339d6597c192e17c25c29f81097ac625d854
                             <div class="d-flex flex-column modal-body">
                                 {% if errors is not empty %}
                                     <ul class="text-danger">
@@ -68,11 +64,12 @@
                             <a href="#" class="view">{{ newsItem.title }}</a>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-12 col-8 offset-lg-1 buttons">
-                            <a href="#" class="btn btn-primary button-light edit">Modifier</a>
+                            <div class="edit-form">
+                                {% include 'Admin/_newsEdit.html.twig' %}
+                            </div>
                             <form action="/news/delete" method="post">
                                 <input type="hidden" name="id" value="{{ newsItem.id }}">
                                 <button class="btn btn-primary button-light delete">Supprimer</button>
-
                             </form>
                         </div>
                     </div>
