@@ -1,0 +1,26 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+        <tr>
+            <td>Position</td>
+            <td>Nom</td>
+            <td>Prénom</td>
+            <td>Club</td>
+            <td>Compétition</td>
+            <td>Catégories</td>
+            <td>Points</td>
+            <td>Performance</td>
+        </tr>
+            {% for item in items %}
+                <tr>
+                    <td>{{ ranking.position }}</td>
+                    <td>{{ player.lastname }}</td>
+                    <td>{{ player.firstname }}</td>
+                    <td>{{ ranking.club }}</td>
+                    <td>{{ competition.name }}</td>
+                    <td>{{ ranking.category }}</td>
+                    <td>{{ ranking.points }}</td>
+                    <td>{{ ranking.performance }}</td>
+                </tr>
+            {% endfor %}
+{% endblock %}

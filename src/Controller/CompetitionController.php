@@ -10,6 +10,7 @@
 namespace App\Controller;
 
 use App\Model\CompetitionManager;
+use App\Model\RankingManager;
 
 class CompetitionController extends AbstractController
 {
@@ -29,6 +30,15 @@ class CompetitionController extends AbstractController
         return $this->twig->render('Competition/competition.html.twig', [
             'competitions' => $competitions,
             'newCompetitions' => $newCompetitions,
+        ]);
+    }
+
+    public function ranking()
+    {
+        $rankingManager = new RankingManager();
+        $items = $rankingManager->ranking();
+        return $this->twig->render('Competition/ranking.html.twig', [
+            'items' => $items,
         ]);
     }
 }
