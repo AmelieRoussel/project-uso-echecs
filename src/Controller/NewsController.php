@@ -20,6 +20,15 @@ class NewsController extends AbstractController
      * @throws \Twig\Error\SyntaxError
      *
      */
+
+    public function show(int $id)
+    {
+        $newsManager = new NewsManager();
+        $newsItem = $newsManager->selectOneById($id);
+
+        return $this->twig->render('News/show.html.twig', ['newsItem' => $newsItem]);
+    }
+
     public function admin()
     {
         $newsManager = new NewsManager();
@@ -181,9 +190,6 @@ class NewsController extends AbstractController
         if ($files['size'] > $fileSize) {
             $errors[] = 'Le fichier ne doit pas excéder ' . $fileSize / 1000000 . ' Mo';
         }
-/*        if (empty($files['tmp_name'])) {
-            $errors[] = 'Le fichier ne peux pas être manquant';
-        }*/
         if (!empty($files['tmp_name']) && !in_array(mime_content_type($files['tmp_name']), $authorizedMimes)) {
             $errors[] = 'Ce type de fichier n\'est pas valide';
         }
