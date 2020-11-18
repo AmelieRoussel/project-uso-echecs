@@ -30,11 +30,11 @@ class AdminController extends AbstractController
         $inscriptionManager = new InscriptionManager();
         $members = $inscriptionManager->selectAll();
         $data = [];
-        $errors = [];
+        $errorsAdd = [];
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $data = array_map('trim', $_POST);
-            $errors = $this->memberValidation($data);
-            if (empty($errors)) {
+            $errorsAdd = $this->memberValidation($data);
+            if (empty($errorsAdd)) {
                 $inscriptionManager = new InscriptionManager();
                 $inscriptionManager->addMember($data);
 
@@ -43,7 +43,7 @@ class AdminController extends AbstractController
         }
 
         return $this->twig->render('Admin/Members/adminMembers.html.twig', [
-            'errors' => $errors,
+            'errorsAdd' => $errorsAdd,
             'data' => $data,
             'members' => $members
         ]);
@@ -52,14 +52,13 @@ class AdminController extends AbstractController
     public function editMember(int $id)
     {
         $inscriptionManager = new InscriptionManager();
-        $members = $inscriptionManager->selectAll();
         $member = $inscriptionManager->selectOneById($id);
         $edits = [];
-        $errors = [];
+        $errorsEdit = [];
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $edits = array_map('trim', $_POST);
-            $errors = $this->memberValidation($edits);
-            if (empty($errors)) {
+            $errorsEdit = $this->memberValidation($edits);
+            if (empty($errorsEdit)) {
                 foreach ($edits as $label => $edit) {
                     $member[$label] = $edit;
                 }
@@ -68,9 +67,9 @@ class AdminController extends AbstractController
                 header('Location: /admin/members');
             }
         }
-
+        $members = $inscriptionManager->selectAll();
         return $this->twig->render('Admin/Members/adminMembers.html.twig', [
-            'errors' => $errors,
+            'errorsEdit' => $errorsEdit,
             'edit' => $edits,
             'members' => $members
         ]);
@@ -130,6 +129,6 @@ class AdminController extends AbstractController
         } elseif (strlen($data['city']) > $maxlength) {
             $errors[] = 'La ville ne doit pas avoir plus de ' . $maxlength . ' caractères.';
         }
-        return $errors ?? [];
+        return $errors;
     }
 }

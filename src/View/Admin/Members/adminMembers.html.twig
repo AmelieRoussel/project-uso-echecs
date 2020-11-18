@@ -34,7 +34,10 @@
 {% endblock %}
 
 {% block javascript %}
-{% if errors is not empty %}
-<script src="/assets/js/openModal.js"></script>
+{% if errorsAdd is not empty %}
+<script src="/assets/js/openModalAdd.js"></script>
+{% endif %}
+{% if errorsEdit is not empty %}
+<script src="/assets/js/openModalEdit.js"></script>
 {% endif %}
 {% endblock %}

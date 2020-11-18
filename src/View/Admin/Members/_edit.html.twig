@@ -12,11 +12,11 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form id="members-form" class="form" method="post" action="/admin/editMember/{{ member.id }}">
+            <form id="members-form" class="form" method="post" action="/admin/editMember/{{ member.id }}" novalidate>
                 <div class="d-flex flex-column modal-body pt-0">
-                    {% if errors is not empty %}
+                    {% if errorsEdit is not empty %}
                         <ul class="text-danger">
-                            {% for error in errors %}
+                            {% for error in errorsEdit %}
                                 <li>{{ error }}</li>
                             {% endfor %}
                         </ul>
