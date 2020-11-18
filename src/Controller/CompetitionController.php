@@ -23,7 +23,6 @@ class CompetitionController extends AbstractController
      */
     public function index()
     {
-
         $competitionManager = new CompetitionManager();
         $competitions = $competitionManager->competitionDateArchive();
         $newCompetitions = $competitionManager->competitionNewDate();

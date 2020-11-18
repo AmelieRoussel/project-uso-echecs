@@ -1,0 +1,118 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}{{ parent() }} | Admin | Membres{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/membersAdmin.css">
+{% endblock %}
+
+{% block content %}
+    <section>
+        <div class="text-center title">
+            <h1>Membres - administration</h1>
+        </div>
+        <hr>
+        <div class="container d-flex flex-column">
+            <div class="container members-add">
+                <button type="button" class="btn button-light" data-toggle="modal"
+                        data-target="#modalForm{{ member.id }}">
+                    Ajouter un membre
+                </button>
+                <div class="modal fade" id="modalForm{{ member.id }}" tabindex="-1" role="dialog"
+                     aria-labelledby="modalFormTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title" id="modalFormLongTitle">Ajouter un membre</h3>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form id="members-form" class="form" method="post" action="/admin/addMemberAdmin">
+                                <div class="d-flex flex-column modal-body pt-0">
+                                    {% if errors is not empty %}
+                                        <ul class="text-danger">
+                                            {% for error in errors %}
+                                                <li>{{ error }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                    <label for="inputFirstname">Prénom</label>
+                                    <input type="text" id="inputFirstname" class="form-control" name="inputFirstname"
+                                           placeholder="Martin" value="{{ data.inputFirstname ?? '' }}" required>
+                                    <label for="inputLastname">Nom</label>
+                                    <input type="text" id="inputLastname" class="form-control" name="inputLastname"
+                                           placeholder="Paul" value="{{ data.inputLastname ?? '' }}" required>
+                                    <label for="inputEmail">Email</label>
+                                    <input type="email" id="inputEmail" class="form-control" name="inputEmail"
+                                           placeholder="paul.martin@email.com" value="{{ data.inputEmail ?? '' }}"
+                                           required>
+                                    <label for="inputPhone">Numéro de téléphone</label>
+                                    <input type="tel" id="inputPhone" class="form-control" name="inputPhone"
+                                           placeholder="0601020304" value="{{ data.inputPhone ?? '' }}" required>
+                                    <label for="inputBirthday">Date de naissance</label>
+                                    <input type="date" id="inputBirthday" class="form-control" name="inputBirthday"
+                                           min="1920-01-01" max="2015-01-05" value="{{ data.inputBirthday ?? '' }}"
+                                           required>
+                                    <label for="inputAddress">Adresse</label>
+                                    <input type="text" id="inputAddress" class="form-control" name="inputAddress"
+                                           placeholder="2 rue du clos" value="{{ data.inputAddress ?? '' }}" required>
+                                    <label for="inputPostalCode">Code Postal</label>
+                                    <input type="text" id="inputPostalCode" class="form-control" name="inputPostalCode"
+                                           placeholder="45000" value="{{ data.inputPostalCode ?? '' }}" required>
+                                    <label for="inputCity">Ville</label>
+                                    <input type="text" id="inputCity" class="form-control" name="inputCity"
+                                           placeholder="Orléans" value="{{ data.inputCity ?? '' }}" required>
+                                    <button class="btn button-light modal-button">Ajouter le membre</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% for member in members %}
+                <div class="container members_list">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center">
+                        <div class="col-md-4 col-sm-8 offset-lg-1 members-link">
+                            <button type="button" class="members-link" data-toggle="modal"
+                                    data-target="#modalForm{{ member.id }}">
+                                {{ member.firstname|capitalize }} {{ member.lastname|capitalize }}
+                            </button>
+                            <div class="modal fade" id="modalForm{{ member.id }}" tabindex="-1" role="dialog"
+                                 aria-labelledby="modalFormTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h3 class="modal-title" id="modalFormLongTitle">
+                                                {{ member.firstname|capitalize }} {{ member.lastname|capitalize }}
+                                            </h3>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="info-member">
+                                            <p>Prénom : {{ member.firstname|capitalize }}</p>
+                                            <p>Nom : {{ member.lastname|capitalize }}</p>
+                                            <p>Email : {{ member.email }}</p>
+                                            <p>Téléphone : {{ member.phone }}</p>
+                                            <p>Date de naissance : {{ member.birthday }}</p>
+                                            <p>Adresse : {{ member.address }}
+                                                , {{ member.postal_code }} {{ member.city|capitalize }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascript %}
+{% if errors is not empty %}
+<script src="/assets/js/openModal.js"></script>
+{% endif %}
+{% endblock %}

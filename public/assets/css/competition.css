@@ -19,8 +19,8 @@
 }
 
 .competitions h2 {
-    padding-top: var(--spacing4);
-    padding-bottom: var(--spacing4);
+    padding-top: var(--spacing5);
+    padding-bottom: var(--spacing5);
     color: var(--main-color);
     text-align: center;
 }
@@ -93,4 +93,4 @@
 
 .archive .btn {
     margin-top: var(--spacing2);
-}
+}p

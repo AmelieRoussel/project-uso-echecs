@@ -28,7 +28,7 @@ class Connection
     /**
      * @var PDO
      *
-     * @access private
+     * @access privateS
      */
     private $pdoConnection;
 
