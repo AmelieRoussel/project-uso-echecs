@@ -12,33 +12,20 @@
             <h2 class="title-dark">Tarifs</h2>
             <img class="image" src="/assets/images/chess_icon/chess-pawn.svg" alt="Tour échec">
         </div>
-        <div class="row mx-0 card-row">
-            <div class="card-group md-4 offset-md-2 sm-6">
-                <div class="card align-items-center">
+        <div class="row p-0 col-md-9 mx-auto d-flex justify-content-around">
+            {% for key, license in licenses %}
+                <div class="card col-md-4">
                     <div class="card-body">
-                        <h3 class="card-title text-center">Licence A (Compétition)</h3>
-                        {% for competition in competitions %}
-                            <p class="card-text">{{ competition.category }}<span>{{ competition.price }} €</span></p>
+                        <h3 class="card-title text-center">{{ key }}</h3>
+                        {% for category in license %}
+                            <p class="card-text">{{ category.category }}</p>
                             <ul>
-                                <li>{{ competition.rate }}</li>
+                                <li>{{ category.rate }}<span>{{ category.price }} €</span></li>
                             </ul>
                         {% endfor %}
                     </div>
                 </div>
-            </div>
-            <div class="card-group md-4 offset-md-2 sm-6">
-                <div class="card align-items-center">
-                    <div class="card-body">
-                        <h3 class="card-title text-center">Licence B (Loisir)</h3>
-                        {% for hobby in hobbies %}
-                            <p class="card-text"> {{ hobby.category }} <span>{{ hobby.price }} €</span></p>
-                            <ul>
-                                <li>{{ hobby.rate }}</li>
-                            </ul>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </section>
     <section class="inscriptionForm">

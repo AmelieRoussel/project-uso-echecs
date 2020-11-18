@@ -12,8 +12,8 @@ namespace App\Controller;
 use App\Model\InscriptionManager;
 use App\Model\CompetitionManager;
 use App\Model\NewsManager;
-use App\Model\LicenseCompetitionManager;
-use App\Model\LicenseHobbyManager;
+use App\Model\LicenseManager;
+
 
 class HomeController extends AbstractController
 {
@@ -107,12 +107,17 @@ class HomeController extends AbstractController
             $data = array_map('trim', $_POST);
             $errors = $this->registration($data);
         }
-        $licenseA = new LicenseCompetitionManager();
-        $competitions = $licenseA->selectAll();
-        $licenseB = new LicenseHobbyManager();
-        $hobbies = $licenseB->selectAll();
+        $license = new LicenseManager();
+        $licenses = $license->selectAll();
+        $licensesOrder = [];
+        foreach ($licenses as $license) {
+            $licensesOrder[$license['license']][] = $license;
+        }
         return $this->twig->render('Home/inscription.html.twig', [
-            'errors' => $errors, 'data' => $data, 'competitions' => $competitions, 'hobbies' => $hobbies]);
+            'errors' => $errors,
+            'data' => $data,
+            'licenses' => $licensesOrder
+        ]);
     }
 
     /**

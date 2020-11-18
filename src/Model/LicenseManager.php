@@ -13,12 +13,12 @@ namespace App\Model;
 /**
  *
  */
-class LicenseCompetitionManager extends AbstractManager
+class LicenseManager extends AbstractManager
 {
     /**
      *
      */
-    public const TABLE = 'licenseA';
+    public const TABLE = 'listPrice';
 
     /**
      *  Initializes this class.
