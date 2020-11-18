@@ -22,7 +22,9 @@ class RankingManager extends AbstractManager
      */
     public function ranking(): array
     {
-        return $this->pdo->query("SELECT position, lastname, firstname, club, name, category, points, performance FROM " . self::TABLE . " 
+        return $this->pdo->query("
+SELECT position, lastname, firstname, club, name, category, points, performance 
+FROM " . self::TABLE . " 
         JOIN competition ON competition.id = ranking.competition_id
         JOIN player ON player.id = ranking.player_id")->fetchAll();
     }
