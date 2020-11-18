@@ -33,10 +33,10 @@ class CompetitionController extends AbstractController
         ]);
     }
 
-    public function ranking()
+    public function ranking($id)
     {
         $rankingManager = new RankingManager();
-        $items = $rankingManager->ranking();
+        $items = $rankingManager->ranking($id);
         return $this->twig->render('Competition/ranking.html.twig', [
             'items' => $items,
         ]);

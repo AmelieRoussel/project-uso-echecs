@@ -95,7 +95,25 @@
     margin-top: var(--spacing2);
 }
 
+.ranking-title {
+    font-size: var(--h1-font-size);
+    text-align: center;
+    padding: var(--spacing4) 0;
+}
+
 .ranking-table {
-    table-layout: fixed;
+    margin-bottom: var(--spacing5);
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 80%;
+}
+.ranking-table th {
+    padding-top: var(--spacing2);
+    padding-bottom: var(--spacing2);
+}
+
+.ranking-table td {
+    color: var(--main-color);
 }
 
