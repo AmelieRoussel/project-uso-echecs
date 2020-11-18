@@ -44,43 +44,43 @@
                 <div class="col-md-6 offset-md-3">
                     <div class="form-group">
                         <label for="inputFirstname">Prénom</label>
-                        <input type="text" id="inputFirstname" class="form-control" name="inputFirstname"
-                               placeholder="Martin" value="{{ data.inputFirstname ?? '' }}" required>
+                        <input type="text" id="inputFirstname" class="form-control" name="firstname"
+                               placeholder="Martin" value="{{ data.firstname ?? '' }}" required>
                     </div>
                     <div class="form-group">
                         <label for="inputLastname">Nom</label>
-                        <input type="text" id="inputLastname" class="form-control" name="inputLastname"
-                               placeholder="Paul" value="{{ data.inputLastname ?? '' }}" required>
+                        <input type="text" id="inputLastname" class="form-control" name="lastname"
+                               placeholder="Paul" value="{{ data.lastname ?? '' }}" required>
                     </div>
                     <div class="form-group">
                         <label for="inputEmail">Email</label>
-                        <input type="email" id="inputEmail" class="form-control" name="inputEmail"
-                               placeholder="paul.martin@email.com" value="{{ data.inputEmail ?? '' }}" required>
+                        <input type="email" id="inputEmail" class="form-control" name="email"
+                               placeholder="paul.martin@email.com" value="{{ data.email ?? '' }}" required>
                     </div>
                     <div class="form-group">
                         <label for="inputPhone">Numéro de téléphone</label>
-                        <input type="tel" id="inputPhone" class="form-control" name="inputPhone"
-                               placeholder="0601020304" value="{{ data.inputPhone ?? '' }}" required>
+                        <input type="tel" id="inputPhone" class="form-control" name="phone"
+                               placeholder="0601020304" value="{{ data.phone ?? '' }}" required>
                     </div>
                     <div class="form-group">
                         <label for="inputBirthday">Date de naissance</label>
-                        <input type="date" id="inputBirthday" class="form-control" name="inputBirthday"
-                               min="1920-01-01" max="2015-01-05" value="{{ data.inputBirthday ?? '' }}" required>
+                        <input type="date" id="inputBirthday" class="form-control" name="birthday"
+                               min="1920-01-01" max="2015-01-05" value="{{ data.birthday ?? '' }}" required>
                     </div>
                     <div class="form-group">
                         <label for="inputAddress">Adresse</label>
-                        <input type="text" id="inputAddress" class="form-control" name="inputAddress"
-                               placeholder="2 rue du clos" value="{{ data.inputAddress ?? '' }}" required>
+                        <input type="text" id="inputAddress" class="form-control" name="address"
+                               placeholder="2 rue du clos" value="{{ data.address ?? '' }}" required>
                     </div>
                     <div class="form-group">
                         <label for="inputPostalCode">Code Postal</label>
-                        <input type="text" id="inputPostalCode" class="form-control" name="inputPostalCode"
-                               placeholder="45000" value="{{ data.inputPostalCode ?? '' }}" required>
+                        <input type="text" id="inputPostalCode" class="form-control" name="postal_code"
+                               placeholder="45000" value="{{ data.postal_code ?? '' }}" required>
                     </div>
                     <div class="form-group">
                         <label for="inputCity">Ville</label>
-                        <input type="text" id="inputCity" class="form-control" name="inputCity"
-                               placeholder="Orléans" value="{{ data.inputCity ?? '' }}" required>
+                        <input type="text" id="inputCity" class="form-control" name="city"
+                               placeholder="Orléans" value="{{ data.city ?? '' }}" required>
                     </div>
                     <div class="button">
                         <button type="submit" class="button-dark">S'inscrire</button>
