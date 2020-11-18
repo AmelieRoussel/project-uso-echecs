@@ -55,12 +55,9 @@ class AdminController extends AbstractController
         $memberEdit = $inscriptionManager->selectOneById($id);
         $errorsEdit = [];
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            $edits = array_map('trim', $_POST);
-            $errorsEdit = $this->memberValidation($edits);
+            $memberEdit = array_map('trim', $_POST);
+            $errorsEdit = $this->memberValidation($memberEdit);
             if (empty($errorsEdit)) {
-                foreach ($edits as $label => $edit) {
-                    $memberEdit[$label] = $edit;
-                }
                 $inscriptionManager->updateMember($memberEdit);
                 header('Location: /admin/members');
             }
