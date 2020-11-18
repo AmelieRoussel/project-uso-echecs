@@ -1,3 +1,3 @@
 $(document).ready(function () {
-    $('#modalFormEdit').modal();
+    $('.modalFormUpdate').modal();
 });

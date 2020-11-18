@@ -38,6 +38,8 @@
 <script src="/assets/js/openModalAdd.js"></script>
 {% endif %}
 {% if errorsEdit is not empty %}
-<script src="/assets/js/openModalEdit.js"></script>
+<script>$(document).ready(function () {
+    $('#modalFormEdit{{ memberEdit.id }}').modal();
+});</script>
 {% endif %}
 {% endblock %}

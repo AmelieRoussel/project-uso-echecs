@@ -1,8 +1,8 @@
 <button type="button" class="btn button-light" data-toggle="modal"
-        data-target="#modalFormEdit{{ member.id }}">
+        data-target="#modalFormEdit{{ memberEdit.id ?? member.id }}">
     Modifier
 </button>
-<div class="modal fade" id="modalFormEdit{{ member.id }}" tabindex="-1" role="dialog"
+<div class="modal fade modalFormUpdate" id="modalFormEdit{{ memberEdit.id ?? member.id }}" tabindex="-1" role="dialog"
      aria-labelledby="modalFormTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -12,8 +12,8 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form id="members-form" class="form" method="post" action="/admin/editMember/{{ member.id }}" novalidate>
-                <div class="d-flex flex-column modal-body pt-0">
+            <form id="members-form" class="form" method="post" action="/admin/editMember/{{ memberEdit.id ?? member.id }}" novalidate>
+                <div class="d-flex flex-column modal-body">
                     {% if errorsEdit is not empty %}
                         <ul class="text-danger">
                             {% for error in errorsEdit %}
@@ -25,43 +25,43 @@
                     <input type="text" id="inputFirstname" class="form-control"
                            name="firstname"
                            placeholder="Martin"
-                           value="{{ edit.firstname ?? member.firstname }}" required>
+                           value="{{ memberEdit.firstname ?? member.firstname }}" required>
                     <label for="inputLastname">Nom</label>
                     <input type="text" id="inputLastname" class="form-control"
                            name="lastname"
                            placeholder="Paul"
-                           value="{{ edit.lastname ?? member.lastname }}" required>
+                           value="{{ memberEdit.lastname ?? member.lastname }}" required>
                     <label for="inputEmail">Email</label>
                     <input type="email" id="inputEmail" class="form-control"
                            name="email"
                            placeholder="paul.martin@email.com"
-                           value="{{ edit.email ?? member.email }}" required>
+                           value="{{ memberEdit.email ?? member.email }}" required>
                     <label for="inputPhone">Numéro de téléphone</label>
                     <input type="tel" id="inputPhone" class="form-control" name="phone"
                            placeholder="0601020304"
-                           value="{{ edit.phone ?? member.phone }}" required>
+                           value="{{ memberEdit.phone ?? member.phone }}" required>
                     <label for="inputBirthday">Date de naissance</label>
                     <input type="date" id="inputBirthday" class="form-control"
                            name="birthday"
                            min="1920-01-01" max="2015-01-05"
-                           value="{{ edit.birthday ?? member.birthday }}"
+                           value="{{ memberEdit.birthday ?? member.birthday }}"
                            required>
                     <label for="inputAddress">Adresse</label>
                     <input type="text" id="inputAddress" class="form-control"
                            name="address"
                            placeholder="2 rue du clos"
-                           value="{{ edit.address ?? member.address }}" required>
+                           value="{{ memberEdit.address ?? member.address }}" required>
                     <label for="inputPostalCode">Code Postal</label>
                     <input type="text" id="inputPostalCode" class="form-control"
                            name="postal_code"
                            placeholder="45000"
-                           value="{{ edit.postal_code ?? member.postal_code }}"
+                           value="{{ memberEdit.postal_code ?? member.postal_code }}"
                            required>
                     <label for="inputCity">Ville</label>
                     <input type="text" id="inputCity" class="form-control" name="city"
-                           placeholder="Orléans" value="{{ edit.city ?? member.city }}"
+                           placeholder="Orléans" value="{{ memberEdit.city ?? member.city }}"
                            required>
-                    <button class="btn button-light">Modifier le membre</button>
+                    <button id="update" class="btn button-light">Modifier le membre</button>
                 </div>
             </form>
         </div>
