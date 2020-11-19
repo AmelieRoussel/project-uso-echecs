@@ -24,6 +24,11 @@ class InscriptionManager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
+    public function selectStatus()
+    {
+        return $this->pdo->query('SELECT * FROM ' . self::TABLE . ' WHERE status IS NOT NULL')->fetchAll();
+    }
+
     public function addMember($data)
     {
         $query = ("INSERT INTO " . self::TABLE . " 
