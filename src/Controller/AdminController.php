@@ -15,6 +15,20 @@ class AdminController extends AbstractController
      * @throws \Twig\Error\SyntaxError
      *
      */
+    public function home()
+    {
+        return $this->twig->render('Admin/home.html.twig');
+    }
+
+    /**
+     * Display members admin page
+     *
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     *
+     */
     public function members()
     {
         $inscriptionManager = new InscriptionManager();
