@@ -14,9 +14,12 @@
     align-items: center;
 }
 h2 {
-    color: var(--light);
     text-align: center;
     padding: var(--spacing);
+}
+
+h3 {
+    padding-bottom: var(--spacing2);
 }
 
 .image {
@@ -24,17 +27,33 @@ h2 {
     padding-bottom: var(--spacing);
 }
 
+.inscriptionPrice {
+    background: url("../images/chess_pattern.jpg");
+    padding-bottom: var(--spacing4);
+}
+p {
+    font-weight: var(--bold);
+}
+
+span {
+    position: absolute;
+    right: var(--spacing2);
+    font-weight: var(--bold);
+    margin-left: var(--spacing);
+}
+
 .inscriptionForm {
     background-color: var(--main-color);
+    padding-bottom: var(--spacing4);
 }
 
 label {
-    margin: var(--spacing2) 0;
+    margin: var(--spacing) 0;
     color: var(--light);
 }
 
 input, button{
-    margin-bottom: var(--spacing3);
+    margin-bottom: var(--spacing2);
 }
 
 .button {
@@ -53,8 +72,8 @@ input, button{
 }
 
 .card {
+    background-color: var(--light);
     margin-top: var(--spacing4);
-    background-color: var(--highlight);
 }
 .link {
     text-align: right;
