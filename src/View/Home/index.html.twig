@@ -41,7 +41,7 @@
                     <div class="carousel-caption">
                         <h3 class="title-light">{{ newsItem.title }}</h3>
                         <p>{{ newsItem.excerpt }}</p>
-                        <button class="button-dark">En savoir plus</button>
+                        <a class="btn btn-primary button-dark" href="/news/show/{{ newsItem.id }}">En savoir plus</a>
                     </div>
                 </div>
             {% endfor %}

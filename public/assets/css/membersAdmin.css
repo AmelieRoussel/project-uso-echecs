@@ -6,48 +6,47 @@ section {
     font-size: var(--h2-font-size);
 }
 
-.title, .news-add {
+.title, .members-add {
     margin-top: var(--spacing3);
     margin-bottom: var(--spacing3);
 }
 
-.news-item {
+.members_list {
     margin-top: var(--spacing2);
 }
 
-.view {
+.members-link {
+    border: none;
+    background-color: transparent;
     color: var(--main-color);
 }
 
-.edit, .delete {
-    margin-left: var(--spacing2);
+.info-member {
+    margin: var(--spacing2);
 }
 
-.news-add button {
+.members-add button {
     background-color: var(--main-color);
 }
 
-.news-add button:hover {
+.members-add button:hover {
     background-color: var(--second-color);
 }
 
-.add-form label, .add-form button {
+.members-add button.close {
+    background-color: transparent;
+    opacity: 1;
+}
+
+.form label, .form button {
     font-weight: var(--bold);
     margin-top: var(--spacing2);
 }
 
 span {
-    color: var(--light);
+    color: var(--main-color);
 }
 
-.buttons a {
-    margin: var(--spacing) 0 var(--spacing);
-}
-
-.article-link a {
-    margin-top: var(--spacing);
-}
-
-.closecover_image {
-    background: var(--main-color);
+.buttons button {
+    margin: var(--spacing);
 }

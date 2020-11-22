@@ -12,6 +12,10 @@ namespace App\Controller;
 use App\Model\InscriptionManager;
 use App\Model\CompetitionManager;
 use App\Model\NewsManager;
+use App\Model\LicenseManager;
+use Symfony\Component\Mailer\Mailer;
+use Symfony\Component\Mailer\Transport;
+use Symfony\Component\Mime\Email;
 
 class HomeController extends AbstractController
 {
@@ -64,6 +68,20 @@ class HomeController extends AbstractController
         if ($_SERVER["REQUEST_METHOD"] === 'POST') {
             $message = array_map('trim', $_POST);
             $errors = $this->validate($message);
+            if (empty($errors)) {
+                $errors[] = 'Merci pour votre message';
+                $transport = Transport::fromDsn(MAILER_DSN);
+                $mailer = new Mailer($transport);
+                $email = (new Email())
+                    ->from($message['email'])
+                    ->to(MAIL_TO)
+                    ->subject('Message du site web U.S.O. Echecs')
+                    ->html($this->twig->render('Contact/email.html.twig', [
+                        'message' => $message,
+                    ]));
+                $mailer->send($email);
+                $message = [];
+            }
         }
 
         return $this->twig->render('Contact/contact.html.twig', [
@@ -91,9 +109,6 @@ class HomeController extends AbstractController
         if (empty($message['message'])) {
             $errors[] = 'Veuillez écrire un message';
         }
-        if (empty($errors)) {
-            $errors[] = 'Merci pour votre message';
-        }
         return $errors;
     }
 
@@ -105,8 +120,17 @@ class HomeController extends AbstractController
             $data = array_map('trim', $_POST);
             $errors = $this->registration($data);
         }
+        $license = new LicenseManager();
+        $licenses = $license->selectAll();
+        $licensesOrder = [];
+        foreach ($licenses as $license) {
+            $licensesOrder[$license['license']][] = $license;
+        }
         return $this->twig->render('Home/inscription.html.twig', [
-            'errors' => $errors, 'data' => $data]);
+            'errors' => $errors,
+            'data' => $data,
+            'licenses' => $licensesOrder
+        ]);
     }
 
     /**
@@ -124,46 +148,46 @@ class HomeController extends AbstractController
         $errors = [];
         $maxlength = 100;
 
-        if (empty($data['inputFirstname'])) {
+        if (empty($data['firstname'])) {
             $errors[] = 'Le prénom est requis';
         }
-        if (strlen($data['inputFirstname']) > $maxlength) {
+        if (strlen($data['firstname']) > $maxlength) {
             $errors[] = 'Le prénom ne doit pas avoir plus de ' . $maxlength . ' caractères.';
         }
-        if (empty($data['inputLastname'])) {
+        if (empty($data['lastname'])) {
             $errors[] = 'Le nom est requis';
         }
-        if (strlen($data['inputLastname']) > $maxlength) {
+        if (strlen($data['lastname']) > $maxlength) {
             $errors[] = 'Le nom ne doit pas avoir plus de ' . $maxlength . ' caractères.';
         }
-        if (empty($data['inputEmail'])) {
+        if (empty($data['email'])) {
             $errors[] = 'L\'Email est requis';
         }
-        if (!filter_var($data['inputEmail'], FILTER_VALIDATE_EMAIL)) {
+        if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
             $errors[] = 'Le format de l\'Email est invalide';
         }
-        if (empty($data['inputPhone'])) {
+        if (empty($data['phone'])) {
             $errors[] = 'Le numéro de téléphone est requis';
         }
-        if (empty($data['inputBirthday'])) {
+        if (empty($data['birthday'])) {
             $errors[] = 'La date de naissance est requise';
         }
-        if (empty($data['inputAddress'])) {
+        if (empty($data['address'])) {
             $errors[] = 'L\'adresse est requise';
         }
-        if (strlen($data['inputAddress']) > $maxlength) {
+        if (strlen($data['address']) > $maxlength) {
             $errors[] = 'L\'adresse ne doit pas avoir plus de ' . $maxlength . ' caractères.';
         }
-        if (empty($data['inputPostalCode'])) {
+        if (empty($data['postal_code'])) {
             $errors[] = 'Le code Postal est requis';
         }
-        if ((!is_numeric($data['inputPostalCode'])) || (strlen($data['inputPostalCode']) != 5)) {
+        if ((!is_numeric($data['postal_code'])) || (strlen($data['postal_code']) != 5)) {
             $errors[] = 'Votre Code postal n\'est pas correct';
         }
-        if (empty($data['inputCity'])) {
+        if (empty($data['city'])) {
             $errors[] = 'La ville  est requise';
         }
-        if (strlen($data['inputCity']) > $maxlength) {
+        if (strlen($data['city']) > $maxlength) {
             $errors[] = 'La ville ne doit pas avoir plus de ' . $maxlength . ' caractères.';
         }
         if (empty($errors)) {
