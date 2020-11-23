@@ -1,5 +1,7 @@
 {% extends 'layout.html.twig' %}
 
+{% block title %}{{ parent() }} | Admin | Compétitions{% endblock %}
+
 {% block stylesheet %}
     <link rel="stylesheet" href="/assets/css/admin.css">
 {% endblock %}
@@ -14,14 +16,20 @@
         <div class="container">
             <div class="row">
                 <div class="competition-button-add col-1 offset-7 offset-sm-9 offset-lg-10 mb-lg-5">
-                    <button type="button" class="btn btn-primary button-light" data-toggle="modal" data-target="#modalForm{{ competition.id }}">Ajouter</button>
+                    <button type="button" class="btn btn-primary button-light" data-toggle="modal"
+                            data-target="#modalForm{{ competition.id }}">
+                        Ajouter
+                    </button>
                 </div>
                 <div>
-                    <div class="modal fade" id="modalForm{{ competition.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal fade" id="modalForm{{ competition.id }}" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLongTitle">Ajouter une nouvelle compétition</h5>
+                                    <h3 class="modal-title" id="exampleModalLongTitle">
+                                        Ajouter une nouvelle compétition
+                                    </h3>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -30,9 +38,9 @@
                                     <form action="/AdminCompetition/add" method="post" enctype="multipart/form-data">
                                         <input type="hidden" name="id" value="{{ competition.id }}">
                                         <ul>
-                                        {% for error in errors %}
-                                            <li>{{ error }}</li>
-                                        {% endfor %}
+                                            {% for error in errors %}
+                                                <li>{{ error }}</li>
+                                            {% endfor %}
                                         </ul>
                                         <div>
                                             <label for="picture">Image</label>
@@ -55,7 +63,9 @@
                                             <input type="text" name="address" id="address">
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                Fermer
+                                            </button>
                                             <button type="submit" class="btn btn-primary button-light">Ajouter</button>
                                         </div>
                                     </form>
@@ -78,11 +88,13 @@
                     </div>
                     <div class="competition-button-update">
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary button-light" data-toggle="modal" data-target="#modalForm{{ competition.id }}">
+                        <button type="button" class="btn btn-primary button-light" data-toggle="modal"
+                                data-target="#modalForm{{ competition.id }}">
                             Modifier
                         </button>
                     </div>
-                    <form class="competition-button-delete offset-1 offset-lg-0" action="/AdminCompetition/delete" method="post">
+                    <form class="competition-button-delete offset-1 offset-lg-0" action="/AdminCompetition/delete"
+                          method="post">
                         <div>
                             <input type="hidden" name="id" value="{{ competition.id }}">
                             <button class="btn btn-primary button-light">Supprimer</button>
@@ -139,17 +151,19 @@
                     </div>
                 </div>
                 <div>
-                    <div class="modal fade" id="modalForm{{ competition.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal fade" id="modalForm{{ competition.id }}" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLongTitle">{{ competition.name }}</h5>
+                                    <h3 class="modal-title" id="exampleModalLongTitle">{{ competition.name }}</h3>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="/AdminCompetition/update/{{ competition.id }}" method="post" enctype="multipart/form-data">
+                                    <form action="/AdminCompetition/update/{{ competition.id }}" method="post"
+                                          enctype="multipart/form-data">
                                         <input type="hidden" name="id" value="{{ competition.id }}">
                                         <div>
                                             <label for="picture">Image</label>
@@ -161,7 +175,8 @@
                                         </div>
                                         <div>
                                             <label for="description">Contenu</label>
-                                            <input type="text" name="description" id="description" value="{{ competition.description }}">
+                                            <input type="text" name="description" id="description"
+                                                   value="{{ competition.description }}">
                                         </div>
                                         <div>
                                             <label for="date">Date</label>
@@ -169,11 +184,15 @@
                                         </div>
                                         <div>
                                             <label for="address">Adresse</label>
-                                            <input type="text" name="address" id="address" value="{{ competition.address }}">
+                                            <input type="text" name="address" id="address"
+                                                   value="{{ competition.address }}">
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary button-light" data-dismiss="modal">Fermer</button>
-                                            <button type="submit" class="btn btn-primary button-light">Appliquer</button>
+                                            <button type="button" class="btn btn-primary button-light"
+                                                    data-dismiss="modal">Fermer
+                                            </button>
+                                            <button type="submit" class="btn btn-primary button-light">Appliquer
+                                            </button>
                                         </div>
                                     </form>
                                 </div>
