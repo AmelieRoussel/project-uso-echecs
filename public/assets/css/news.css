@@ -4,7 +4,7 @@
 
 .news-header {
     height: calc(var(--header-height) / 2);
-    background: linear-gradient(var(--darken-image), var(--darken-image)), url("../images/header_news.jpg") no-repeat fixed;
+    background: linear-gradient(var(--darken-image), var(--darken-image)), url("../images/header_news.jpg") no-repeat center fixed;
     background-size: contain, cover;
     width: 100%;
 }

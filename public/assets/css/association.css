@@ -17,7 +17,7 @@
 }
 
 section {
-    margin-bottom: var(--spacing4);
+    padding-bottom: var(--spacing4);
 }
 
 .partners-title {
@@ -41,7 +41,6 @@ section {
 }
 
 .boardMembers-title {
-    margin-top: var(--spacing5);
     margin-bottom: var(--spacing4);
 }
 
@@ -54,3 +53,7 @@ section {
     text-align: center;
 }
 
+.boardMembers-section {
+    background: url("../images/chess_pattern.jpg");
+    padding-top: var(--spacing5);
+}
