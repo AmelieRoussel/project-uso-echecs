@@ -5,6 +5,9 @@
 {% block stylesheet %}
     <link rel="stylesheet" href="/assets/css/adminHome.css">
 {% endblock %}
+{% block header %}
+    {% include 'includes/_adminNavbar.html.twig' %}
+{% endblock %}
 
 {% block content %}
     <header class="d-flex text-center justify-content-around align-items-center admin-header">

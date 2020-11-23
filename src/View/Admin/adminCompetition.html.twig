@@ -4,6 +4,10 @@
     <link rel="stylesheet" href="/assets/css/admin.css">
 {% endblock %}
 
+{% block header %}
+    {% include 'includes/_adminNavbar.html.twig' %}
+{% endblock %}
+
 {% block content %}
     <section class="competitions">
         <h2 class="title-light">Compétitions à venir</h2>
