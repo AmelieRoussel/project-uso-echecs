@@ -14,7 +14,7 @@
             {% for newCompetition in newCompetitions %}
                 <div class="competition-block row mx-0 justify-content-around section">
                     <div class="competition-picture col-10 col-sm-12 mb-4 col-md-12 col-lg-5">
-                        <img class="competition-img" src="{{ newCompetition.picture }}" alt="Image archive">
+                        <img class="competition-img" src="/uploads/{{ newCompetition.picture }}" alt="Image archive">
                     </div>
                     <div class="competition-description col-10 col-sm-12 col-md-12 col-lg-5">
                         <h3 class="card-title">{{ newCompetition.name }}</h3>
@@ -26,14 +26,13 @@
             {% endfor %}
         </div>
     </section>
-
     <section class="archive">
         <h2 class="title-light">Compétitions passées</h2>
         <div class="container-fluid">
             <div class="row mx-0 justify-content-around">
                 {% for competition in competitions %}
                     <div class="card col-12 col-sm-8 col-md-5 col-lg-3">
-                        <img class="archive-img" src="{{ competition.picture }}" alt="Image archive">
+                        <img class="archive-img" src="/uploads/{{ competition.picture }}" alt="Image archive">
                         <div class="card-body">
                             <h3 class="card-title">{{ competition.name }}</h3>
                             <p class="card-date icon-before-date">{{ competition.date|date("d m Y") }}</p>
