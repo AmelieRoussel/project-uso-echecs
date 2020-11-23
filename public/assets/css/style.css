@@ -153,6 +153,7 @@ nav a {
     background-color: var(--dark);
     opacity: 0.9;
     border: none;
+    padding-top: var(--spacing2);
 }
 
 .dropdown-toggle::after {
