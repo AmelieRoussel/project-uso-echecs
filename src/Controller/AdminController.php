@@ -50,6 +50,9 @@ class AdminController extends AbstractController
             $data = array_map('trim', $_POST);
             $errorsAdd = $this->memberValidation($data);
             if (empty($errorsAdd)) {
+                if (empty($data['status'])) {
+                    $data['status'] = null;
+                }
                 $inscriptionManager = new InscriptionManager();
                 $inscriptionManager->addMember($data);
 
@@ -73,6 +76,9 @@ class AdminController extends AbstractController
             $memberEdit = array_map('trim', $_POST);
             $errorsEdit = $this->memberValidation($memberEdit);
             if (empty($errorsEdit)) {
+                if (empty($memberEdit['status'])) {
+                    $memberEdit['status'] = null;
+                }
                 $inscriptionManager->updateMember($memberEdit);
                 header('Location: /admin/members');
             }
