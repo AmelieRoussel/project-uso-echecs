@@ -30,7 +30,7 @@ class AdminCompetitionManager extends AbstractManager
      */
     public function add(array $item): void
     {
-        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " 
+        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . "
         (name, `date`, address, description, picture)
         VALUES (:name, :date, :address, :description, :picture)");
         $statement->bindValue('name', $item['name'], \PDO::PARAM_STR);

@@ -44,6 +44,22 @@ class CompetitionManager extends AbstractManager
         return $this->pdo->query("SELECT * FROM $this->table WHERE date > NOW()")->fetchAll();
     }
 
+    /***
+     * @param array $item
+     */
+    public function add(array $item): void
+    {
+        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " 
+        (name, `date`, address, description, picture)
+        VALUES (:name, :date, :address, :description, :picture)");
+        $statement->bindValue('name', $item['name'], \PDO::PARAM_STR);
+        $statement->bindValue('date', $item['date']);
+        $statement->bindValue('description', $item['description'], \PDO::PARAM_STR);
+        $statement->bindValue('address', $item['address'], \PDO::PARAM_STR);
+        $statement->bindValue('picture', $item['picture']);
+        $statement->execute();
+    }
+
     /**
      * @param int $id
      */
