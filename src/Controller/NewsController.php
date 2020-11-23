@@ -21,6 +21,13 @@ class NewsController extends AbstractController
      *
      */
 
+    public function index()
+    {
+        $newsManager = new NewsManager();
+        $news = $newsManager->selectAll();
+
+        return $this->twig->render('News/news.html.twig', ['news' => $news]);
+    }
     public function show(int $id)
     {
         $newsManager = new NewsManager();
