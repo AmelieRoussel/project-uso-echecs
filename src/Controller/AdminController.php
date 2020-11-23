@@ -179,7 +179,7 @@ class AdminController extends AbstractController
         $errorsAdd = [];
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $data = array_map('trim', $_POST);
-            $errorsAdd = $this->partnerAddValidation($data, $_FILES['image']);
+            $errorsAdd = $this->partnerValidation($data, $_FILES['image'], 'add');
             if (empty($errorsAdd)) {
                 $filename = uniqid() . '.' . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
                 move_uploaded_file($_FILES['image']['tmp_name'], 'uploads/' . $filename);
@@ -207,7 +207,7 @@ class AdminController extends AbstractController
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $partnerEdit = array_map('trim', $_POST);
 
-            $errorsEdit = $this->partnerEditValidation($partnerEdit, $_FILES['image']);
+            $errorsEdit = $this->partnerValidation($partnerEdit, $_FILES['image'], 'update');
             if (empty($errorsEdit)) {
                 $uploadDir = 'uploads/';
                 if (!empty($_FILES['image']['tmp_name'])) {
@@ -233,7 +233,7 @@ class AdminController extends AbstractController
         ]);
     }
 
-    private function partnerAddValidation(array $data, array $files)
+    private function partnerValidation(array $data, array $files, string $method)
     {
         $errors = [];
         $maxlength = 100;
@@ -244,33 +244,13 @@ class AdminController extends AbstractController
             $errors[] = 'Le nom du partenaire ne doit pas être vide';
         } elseif (strlen($data['name']) > $maxlength) {
             $errors[] = 'Le nom doit faire moins de ' . $maxlength . ' caractères';
+        }
+        if ($method === 'add') {
+            if (empty($files['tmp_name'])) {
+                $errors[] = 'Le fichier ne peut pas être manquant';
+            }
         }
         if ($files['size'] > $fileSize) {
-            $errors[] = 'Le fichier ne doit pas excéder ' . $fileSize / 1000000 . ' Mo';
-        }
-        if (empty($files['tmp_name'])) {
-            $errors[] = 'Le fichier ne peut pas être manquant';
-        }
-        if (!empty($files['tmp_name']) && !in_array(mime_content_type($files['tmp_name']), $authorizedMimes)) {
-            $errors[] = 'Ce type de fichier n\'est pas valide';
-        }
-
-        return $errors;
-    }
-
-    private function partnerEditValidation(array $data, array $files)
-    {
-        $errors = [];
-        $maxlength = 100;
-        $fileSize = 1000000;
-        $authorizedMimes = ['image/jpeg', 'image/png', 'image/gif'];
-
-        if (empty($data['name'])) {
-            $errors[] = 'Le nom du partenaire ne doit pas être vide';
-        } elseif (strlen($data['name']) > $maxlength) {
-            $errors[] = 'Le nom doit faire moins de ' . $maxlength . ' caractères';
-        }
-        if (!empty($files['tmp_name']) && $files['size'] > $fileSize) {
             $errors[] = 'Le fichier ne doit pas excéder ' . $fileSize / 1000000 . ' Mo';
         }
         if (!empty($files['tmp_name']) && !in_array(mime_content_type($files['tmp_name']), $authorizedMimes)) {
