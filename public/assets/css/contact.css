@@ -33,17 +33,16 @@
 }
 
 .card img {
-    height: calc(var(--icon-height)*2);
+    height: calc(var(--icon-height)*4);
 }
 
 .contact-card {
-    --card-height: 300px;
-    --card-width: 350px;
+    --card-height: 360px;
+    --card-width: 300px;
     padding: var(--spacing2);
     margin: var(--spacing2);
     height: var(--card-height);
     width: var(--card-width);
-    box-shadow: var(--box-shadow);
 }
 
 .card-row {
