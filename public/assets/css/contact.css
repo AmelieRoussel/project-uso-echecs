@@ -3,7 +3,7 @@
 }
 
 .form-title, .title-card, .find-us {
-    margin-top: var(--spacing5);
+    padding-top: var(--spacing5);
     margin-bottom: var(--spacing4);
     display: flex;
     justify-content: center;
@@ -28,7 +28,8 @@
 }
 
 .contact-informations {
-    margin-bottom: var(--spacing4);
+    background: url("../images/chess_pattern.jpg");
+    padding-bottom: var(--spacing4);
 }
 
 .card img {

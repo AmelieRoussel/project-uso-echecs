@@ -4,7 +4,7 @@
 
 .home-header {
     height: var(--header-height);
-    background: linear-gradient(var(--darken-image), var(--darken-image)), url("../images/header_accueil.jpg") no-repeat fixed;
+    background: linear-gradient(var(--darken-image), var(--darken-image)), url("../images/header_accueil.jpg") no-repeat center fixed;
     background-size: contain, cover;
     width: 100%;
 }
