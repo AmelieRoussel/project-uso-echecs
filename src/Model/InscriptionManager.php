@@ -50,8 +50,8 @@ class InscriptionManager extends AbstractManager
     public function updateMember(array $member)
     {
         $query = ('UPDATE ' . self::TABLE . ' SET firstname = :firstname, lastname = :lastname, email = :email, ' .
-            'phone = :phone, birthday = :birthday, address = :address, postal_code = :postal_code, city = :city ' .
-            'WHERE id = :id');
+            'phone = :phone, birthday = :birthday, address = :address, postal_code = :postal_code, city = :city, ' .
+            'status = :status WHERE id = :id');
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':id', $member['id'], \PDO::PARAM_INT);
         $statement->bindValue(':firstname', $member['firstname'], \PDO::PARAM_STR);
@@ -62,6 +62,7 @@ class InscriptionManager extends AbstractManager
         $statement->bindValue(':address', $member['address'], \PDO::PARAM_STR);
         $statement->bindValue(':postal_code', $member['postal_code']);
         $statement->bindValue(':city', $member['city'], \PDO::PARAM_STR);
+        $statement->bindValue(':status', $member['status'], \PDO::PARAM_STR);
         $statement->execute();
     }
 
