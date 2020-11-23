@@ -24,6 +24,11 @@ class InscriptionManager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
+    public function selectStatus()
+    {
+        return $this->pdo->query('SELECT * FROM ' . self::TABLE . ' WHERE status IS NOT NULL')->fetchAll();
+    }
+
     public function addMember($data)
     {
         $query = ("INSERT INTO " . self::TABLE . " 
@@ -57,6 +62,13 @@ class InscriptionManager extends AbstractManager
         $statement->bindValue(':address', $member['address'], \PDO::PARAM_STR);
         $statement->bindValue(':postal_code', $member['postal_code']);
         $statement->bindValue(':city', $member['city'], \PDO::PARAM_STR);
+        $statement->execute();
+    }
+
+    public function delete(int $id)
+    {
+        $statement = $this->pdo->prepare("DELETE FROM " . self::TABLE . " WHERE id=:id");
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
     }
 }

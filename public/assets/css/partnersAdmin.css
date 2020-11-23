@@ -6,34 +6,34 @@ section {
     font-size: var(--h2-font-size);
 }
 
-.title, .members-add {
+.title, .partners-add {
     margin-top: var(--spacing3);
     margin-bottom: var(--spacing3);
 }
 
-.members_list {
+.partners_list {
     margin-top: var(--spacing2);
 }
 
-.members-link {
+.partners-link {
     border: none;
     background-color: transparent;
     color: var(--main-color);
 }
 
-.info-member {
+.info-partner {
     margin: var(--spacing2);
 }
 
-.members-add button {
+.partners-add button {
     background-color: var(--main-color);
 }
 
-.members-add button:hover {
+.partners-add button:hover {
     background-color: var(--second-color);
 }
 
-.members-add button.close {
+.partners-add button.close {
     background-color: transparent;
     opacity: 1;
 }
@@ -49,4 +49,9 @@ span {
 
 .buttons button {
     margin: var(--spacing);
+}
+
+img {
+    --width-logo-partners: 450px;
+    max-width: var(--width-logo-partners);
 }

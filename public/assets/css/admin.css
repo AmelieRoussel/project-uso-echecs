@@ -10,8 +10,19 @@
     margin-bottom: var(--spacing4);
 }
 
+.competition-button-update {
+    margin-right: var(--spacing);
+}
 
 .competitions img {
     width: 100%;
     display: block;
+}
+
+.modal-body input {
+    width: 100%;
+}
+
+.modal-body li {
+    color:red;
 }

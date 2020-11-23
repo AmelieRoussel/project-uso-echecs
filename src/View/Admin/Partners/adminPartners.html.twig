@@ -1,34 +1,30 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}{{ parent() }} | Admin | Membres{% endblock %}
+{% block title %}{{ parent() }} | Admin | Partenaires{% endblock %}
 
 {% block stylesheet %}
-    <link rel="stylesheet" href="/assets/css/membersAdmin.css">
-{% endblock %}
-
-{% block header %}
-    {% include 'includes/_adminNavbar.html.twig' %}
+    <link rel="stylesheet" href="/assets/css/partnersAdmin.css">
 {% endblock %}
 
 {% block content %}
     <section>
         <div class="text-center title">
-            <h1>Membres - administration</h1>
+            <h1>Partenaires - administration</h1>
         </div>
         <hr>
         <div class="container d-flex flex-column">
-            <div class="container members-add">
-                {% include 'Admin/Members/_add.html.twig' %}
+            <div class="container partners-add">
+                {% include 'Admin/Partners/_add.html.twig' %}
             </div>
-            {% for member in members %}
-                <div class="container members_list">
+            {% for partner in partners %}
+                <div class="container partners_list">
                     <div class="d-flex flex-wrap justify-content-between align-items-center">
-                        <div class="col-md-4 col-sm-8 offset-lg-1 members-link">
-                            {% include 'Admin/Members/_show.html.twig' %}
+                        <div class="col-md-6 col-sm-8 offset-lg-1 partners-link">
+                            {% include 'Admin/Partners/_show.html.twig' %}
                         </div>
                         <div class="col-md-4 col-8 offset-lg-1 d-flex justify-content-around buttons">
-                            {% include 'Admin/Members/_edit.html.twig' %}
-                            {% include 'Admin/Members/_delete.html.twig' %}
+                            {% include 'Admin/Partners/_edit.html.twig' %}
+                            {% include 'Admin/Partners/_delete.html.twig' %}
                         </div>
                     </div>
                     <hr>
@@ -44,7 +40,7 @@
 {% endif %}
 {% if errorsEdit is not empty %}
 <script>$(document).ready(function () {
-    $('#modalFormEdit{{ memberEdit.id }}').modal();
+    $('#modalFormEdit{{ partnerEdit.id }}').modal();
 });</script>
 {% endif %}
 {% endblock %}
