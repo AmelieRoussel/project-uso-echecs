@@ -170,4 +170,55 @@ class AdminController extends AbstractController
             'partners' => $partners,
         ]);
     }
+
+    public function addPartnerAdmin()
+    {
+        $partnerManager = new PartnerManager();
+        $partners = $partnerManager->selectAll();
+        $data = [];
+        $errorsAdd = [];
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $data = array_map('trim', $_POST);
+            $errorsAdd = $this->partnerAddValidation($data, $_FILES['image']);
+            if (empty($errorsAdd)) {
+                $filename = uniqid() . '.' . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+                move_uploaded_file($_FILES['image']['tmp_name'], 'uploads/' . $filename);
+                $data['image'] = $filename;
+                $partnerManager->addPartner($data);
+
+                header('Location: /admin/partners');
+            }
+        }
+
+        return $this->twig->render('Admin/Partners/adminPartners.html.twig', [
+            'errorsAdd' => $errorsAdd,
+            'data' => $data,
+            'partners' => $partners
+        ]);
+    }
+
+    private function partnerAddValidation(array $data, array $files)
+    {
+        $errors = [];
+        $maxlength = 100;
+        $fileSize = 1000000;
+        $authorizedMimes = ['image/jpeg', 'image/png', 'image/gif'];
+
+        if (empty($data['name'])) {
+            $errors[] = 'Le nom du partenaire ne doit pas être vide';
+        } elseif (strlen($data['name']) > $maxlength) {
+            $errors[] = 'Le nom doit faire moins de ' . $maxlength . ' caractères';
+        }
+        if ($files['size'] > $fileSize) {
+            $errors[] = 'Le fichier ne doit pas excéder ' . $fileSize / 1000000 . ' Mo';
+        }
+        if (empty($files['tmp_name'])) {
+            $errors[] = 'Le fichier ne peut pas être manquant';
+        }
+        if (!empty($files['tmp_name']) && !in_array(mime_content_type($files['tmp_name']), $authorizedMimes)) {
+            $errors[] = 'Ce type de fichier n\'est pas valide';
+        }
+
+        return $errors;
+    }
 }
