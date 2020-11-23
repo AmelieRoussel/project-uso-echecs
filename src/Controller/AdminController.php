@@ -3,11 +3,12 @@
 namespace App\Controller;
 
 use App\Model\InscriptionManager;
+use App\Model\PartnerManager;
 
 class AdminController extends AbstractController
 {
     /**
-     * Display members admin page
+     * Display home admin page
      *
      * @return string
      * @throws \Twig\Error\LoaderError
@@ -149,5 +150,24 @@ class AdminController extends AbstractController
             $errors[] = 'La ville ne doit pas avoir plus de ' . $maxlength . ' caractères.';
         }
         return $errors;
+    }
+
+    /**
+     * Display partners admin page
+     *
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     *
+     */
+    public function partners()
+    {
+        $partnersManager = new PartnerManager();
+        $partners = $partnersManager->selectAll();
+
+        return $this->twig->render('Admin/Partners/adminPartners.html.twig', [
+            'partners' => $partners,
+        ]);
     }
 }
