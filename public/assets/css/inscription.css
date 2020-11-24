@@ -39,7 +39,6 @@ span {
     position: absolute;
     right: var(--spacing2);
     font-weight: var(--bold);
-    margin-left: var(--spacing);
 }
 
 .inscriptionForm {
