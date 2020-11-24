@@ -1,6 +1,6 @@
 <form action="/news/edit" method="post">
     <input type="hidden" name="id" value="{{ newsItem.id }}">
-    <button type="button" class="btn btn-primary button-light" data-toggle="modal"
+    <button type="button" class="btn button-light my-3" data-toggle="modal"
             data-target="#modalFormEdit{{ newsItem.id }}">
         Modifier
     </button>
@@ -11,7 +11,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h3 class="modal-title" id="modalFormLongTitle">Modifier une actualité</h3>
-                <button type="button" class="closecover_image" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close closecover_image" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -40,7 +40,7 @@
                     <input type="file" name="cover_image" id="cover_image">
                     <form action="/news/edit" method="post">
                         <input type="hidden" name="id" value="{{ newsItem.id }}">
-                        <button class="btn btn-primary button-light edit">Modifier l'article</button>
+                        <button class="btn button-light edit">Modifier l'article</button>
                     </form>
                 </div>
             </form>

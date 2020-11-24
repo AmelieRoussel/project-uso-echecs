@@ -12,15 +12,15 @@
 
 {% block content %}
     <section class="competitions">
-        <h2 class="title-light text-center">Compétitions à venir</h2>
+        <div class="text-center title">
+            <h1>Compétitions - administration</h1>
+        </div>
         <div class="container">
-            <div class="row">
-                <div class="competition-button-add col-1 offset-7 offset-sm-9 offset-lg-10 mb-lg-5">
-                    <button type="button" class="btn btn-primary button-light" data-toggle="modal"
-                            data-target="#modalForm{{ competition.id }}">
-                        Ajouter
-                    </button>
-                </div>
+            <div class="row mx-0 competitions-add">
+                <button type="button" class="btn button-light my-4" data-toggle="modal"
+                        data-target="#modalForm{{ competition.id }}">
+                    Ajouter une compétition
+                </button>
                 <div>
                     <div class="modal fade" id="modalForm{{ competition.id }}" tabindex="-1" role="dialog"
                          aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -35,39 +35,28 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="/AdminCompetition/add" method="post" enctype="multipart/form-data">
+                                    <form class="form" action="/AdminCompetition/add" method="post"
+                                          enctype="multipart/form-data">
                                         <input type="hidden" name="id" value="{{ competition.id }}">
                                         <ul>
                                             {% for error in errors %}
                                                 <li>{{ error }}</li>
                                             {% endfor %}
                                         </ul>
-                                        <div>
-                                            <label for="picture">Image</label>
-                                            <input type="file" name="picture" id="picture">
-                                        </div>
-                                        <div>
-                                            <label for="title">Titre</label>
-                                            <input type="text" name="name" id="title">
-                                        </div>
-                                        <div>
-                                            <label for="content">Contenu</label>
-                                            <input type="text" name="description" id="content">
-                                        </div>
-                                        <div>
-                                            <label for="date">Date</label>
-                                            <input type="date" name="date" id="date">
-                                        </div>
-                                        <div>
-                                            <label for="address">Adresse</label>
-                                            <input type="text" name="address" id="address">
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                                                Fermer
-                                            </button>
-                                            <button type="submit" class="btn btn-primary button-light">Ajouter</button>
-                                        </div>
+                                        <label for="picture">Image</label>
+                                        <input type="file" name="picture" id="picture">
+                                        <label for="title">Titre</label>
+                                        <input type="text" name="name" id="title">
+                                        <label for="content">Contenu</label>
+                                        <input type="text" name="description" id="content">
+                                        <label for="date">Date</label>
+                                        <input type="date" name="date" id="date">
+                                        <label for="address">Adresse</label>
+                                        <input type="text" name="address" id="address">
+                                        <button type="submit" class="btn button-light mx-2">Ajouter</button>
+                                        <button type="button" class="btn btn-secondary mx-2" data-dismiss="modal">
+                                            Fermer
+                                        </button>
                                     </form>
                                 </div>
                             </div>
@@ -76,7 +65,7 @@
                 </div>
             </div>
             {% for competition in competitions %}
-                <div class="competition-block row justify-content-center">
+                <div class="competition-block row mx-0 justify-content-center">
                     <div class="competition-picture col-12 mb-4 col-lg-4 mb-lg-5">
                         <img class="competition-img" src="/uploads/{{ competition.picture }}" alt="Image archive">
                     </div>
@@ -88,7 +77,7 @@
                     </div>
                     <div class="competition-button-update">
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary button-light" data-toggle="modal"
+                        <button type="button" class="btn button-light" data-toggle="modal"
                                 data-target="#modalForm{{ competition.id }}">
                             Modifier
                         </button>
@@ -97,18 +86,14 @@
                           method="post">
                         <div>
                             <input type="hidden" name="id" value="{{ competition.id }}">
-                            <button class="btn btn-primary button-light">Supprimer</button>
+                            <button class="btn button-light">Supprimer</button>
                         </div>
                     </form>
-
                 </div>
-
-
-
                 <div>
-
                     <!-- Modal -->
-                    <div class="modal fade" id="modalForm{{ competition.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal fade" id="modalForm{{ competition.id }}" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -118,32 +103,27 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="/AdminCompetition/update/{{ competition.id }}" method="post" enctype="multipart/form-data">
+                                    <form class="form" action="/AdminCompetition/update/{{ competition.id }}"
+                                          method="post"
+                                          enctype="multipart/form-data">
                                         <input type="hidden" name="id" value="{{ competition.id }}">
-                                        <div>
-                                            <label for="picture">Image</label>
-                                            <input type="file" name="picture" id="picture">
-                                        </div>
-                                        <div>
-                                            <label for="name">Titre</label>
-                                            <input type="text" name="name" id="name" value="{{ competition.name }}">
-                                        </div>
-                                        <div>
-                                            <label for="description">Contenu</label>
-                                            <input type="text" name="description" id="description" value="{{ competition.description }}">
-                                        </div>
-                                        <div>
-                                            <label for="date">Date</label>
-                                            <input type="date" name="date" id="date" value="{{ competition.date }}">
-                                        </div>
-                                        <div>
-                                            <label for="address">Adresse</label>
-                                            <input type="text" name="address" id="address" value="{{ competition.address }}">
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary button-light" data-dismiss="modal">Fermer</button>
-                                            <button type="submit" class="btn btn-primary button-light">Appliquer</button>
-                                        </div>
+                                        <label for="picture">Image</label>
+                                        <input type="file" name="picture" id="picture">
+                                        <label for="name">Titre</label>
+                                        <input type="text" name="name" id="name" value="{{ competition.name }}">
+                                        <label for="description">Contenu</label>
+                                        <input type="text" name="description" id="description"
+                                               value="{{ competition.description }}">
+                                        <label for="date">Date</label>
+                                        <input type="date" name="date" id="date" value="{{ competition.date }}">
+                                        <label for="address">Adresse</label>
+                                        <input type="text" name="address" id="address"
+                                               value="{{ competition.address }}">
+                                        <button type="submit" class="btn btn-primary button-light mx-2">Appliquer
+                                        </button>
+                                        <button type="button" class="btn btn-secondary button-light mx-2"
+                                                data-dismiss="modal">Fermer
+                                        </button>
                                     </form>
                                 </div>
                             </div>
@@ -162,43 +142,33 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="/AdminCompetition/update/{{ competition.id }}" method="post"
+                                    <form class="form" action="/AdminCompetition/update/{{ competition.id }}"
+                                          method="post"
                                           enctype="multipart/form-data">
                                         <input type="hidden" name="id" value="{{ competition.id }}">
-                                        <div>
-                                            <label for="picture">Image</label>
-                                            <input type="file" name="picture" id="picture">
-                                        </div>
-                                        <div>
-                                            <label for="name">Titre</label>
-                                            <input type="text" name="name" id="name" value="{{ competition.name }}">
-                                        </div>
-                                        <div>
-                                            <label for="description">Contenu</label>
-                                            <input type="text" name="description" id="description"
-                                                   value="{{ competition.description }}">
-                                        </div>
-                                        <div>
-                                            <label for="date">Date</label>
-                                            <input type="date" name="date" id="date" value="{{ competition.date }}">
-                                        </div>
-                                        <div>
-                                            <label for="address">Adresse</label>
-                                            <input type="text" name="address" id="address"
-                                                   value="{{ competition.address }}">
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary button-light"
-                                                    data-dismiss="modal">Fermer
-                                            </button>
-                                            <button type="submit" class="btn btn-primary button-light">Appliquer
-                                            </button>
-                                        </div>
+                                        <label for="picture">Image</label>
+                                        <input type="file" name="picture" id="picture">
+                                        <label for="name">Titre</label>
+                                        <input type="text" name="name" id="name" value="{{ competition.name }}">
+                                        <label for="description">Contenu</label>
+                                        <input type="text" name="description" id="description"
+                                               value="{{ competition.description }}">
+                                        <label for="date">Date</label>
+                                        <input type="date" name="date" id="date" value="{{ competition.date }}">
+                                        <label for="address">Adresse</label>
+                                        <input type="text" name="address" id="address"
+                                               value="{{ competition.address }}">
+                                        <button type="submit" class="btn btn-primary mx-2 button-light">Appliquer
+                                        </button>
+                                        <button type="button" class="btn btn-secondary mx-2 button-light"
+                                                data-dismiss="modal">Fermer
+                                        </button>
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <hr>
                 </div>
             {% endfor %}
         </div>

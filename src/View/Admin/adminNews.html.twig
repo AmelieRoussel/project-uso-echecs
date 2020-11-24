@@ -16,7 +16,7 @@
             <h1>Actualités - administration</h1>
         </div>
         <div class="container news-add">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalForm">
+            <button type="button" class="btn button-light my-4" data-toggle="modal" data-target="#modalForm">
                 Ajouter une actualité
             </button>
             <div class="modal fade" id="modalForm" tabindex="-1" role="dialog"
@@ -25,7 +25,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h3 class="modal-title" id="modalFormLongTitle">Ajouter une actualité</h3>
-                            <button type="button" class="closecover_image" data-dismiss="modal" aria-label="Close">
+                            <button type="button" class="close closecover_image" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
@@ -52,23 +52,24 @@
                                           required>{{ newsData.excerpt ?? '' }}</textarea>
                                 <label for="cover_image">Image</label>
                                 <input type="file" name="cover_image" id="cover_image" required>
-                                <button class="btn btn-primary">Publier l'article</button>
+                                <button class="btn button-light">Publier l'article</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
+        <!--</div>
         <hr>
-        <div class="container d-flex flex-column">
+        <div class="container d-flex flex-column">-->
             {% for newsItem in news %}
-                <div class="container news-item">
+               <!-- <div class="container news-item">
                     <div class="d-flex flex-wrap justify-content-between align-items-center">
                         <div class="col-lg-4 col-md-4 col-sm-8 offset-lg-1 article-link">
                             <a href="#" class="view">{{ newsItem.title }}</a>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-12 col-8 offset-lg-1 buttons">
-                            <div class="edit-form">
+                            <div class="edit-form text-right">
                                 {% include 'Admin/_newsEdit.html.twig' %}
                             </div>
                             <form action="/news/delete" method="post">
@@ -78,9 +79,28 @@
                         </div>
                     </div>
                     <hr>
+                </div>-->
+
+                <div class="container news-item">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center">
+                        <div class="col-md-4 col-sm-8 offset-lg-1 article-link">
+                            <a href="/news/show/{{ newsItem.id }}" class="view">{{ newsItem.title }}</a>
+                        </div>
+                        <div class="col-md-4 col-8 offset-lg-1 d-flex justify-content-around buttons">
+                            <div class="edit-form">
+                                {% include 'Admin/_newsEdit.html.twig' %}
+
+                            <form action="/news/delete" method="post">
+                                <input type="hidden" name="id" value="{{ newsItem.id }}">
+                                <button class="btn button-light my-3 delete">Supprimer</button>
+                            </form>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
                 </div>
+
             {% endfor %}
-        </div>
     </section>
 {% endblock %}
 
