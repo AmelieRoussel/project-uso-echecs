@@ -33,7 +33,7 @@ class AdminController extends AbstractController
     public function members()
     {
         $inscriptionManager = new InscriptionManager();
-        $members = $inscriptionManager->selectAll();
+        $members = $inscriptionManager->selectValidate();
 
         return $this->twig->render('Admin/Members/adminMembers.html.twig', [
             'members' => $members,
@@ -101,8 +101,22 @@ class AdminController extends AbstractController
         }
     }
 
+    public function acceptMembers()
+    {
+        $inscriptionManager = new InscriptionManager();
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+            $inscriptionManager->acceptMember($id);
+            header("Location:/admin/acceptMembers");
+        }
+        $members = $inscriptionManager->selectNonValidate();
+        return $this->twig->render('Admin/Members/validateMembers.html.twig', [
+            'members' => $members
+        ]);
+    }
+
     /**
-     * Display home page
      *
      * @return array
      * @throws \Twig\Error\LoaderError
