@@ -18,11 +18,15 @@
                 <p>Nom : {{ partner.name|capitalize }}</p>
                 <p>Site : {{ partner.url }}</p>
                 <p>Logo ou image : <img src="/uploads/{{ partner.image }}" alt="{{ partner.name }}"></p>
-                <div class="buttons">
+                <div class="buttons d-flex">
                     <button type="button" class="btn button-light" data-toggle="modal"
                             data-target="#modalFormEdit{{ partner.id }}">
                         Modifier
                     </button>
+                    <form action="/admin/deletePartner" method="post">
+                        <input type="hidden" name="id" value="{{ partner.id }}">
+                        <button class="btn button-light delete">Supprimer</button>
+                    </form>
                 </div>
             </div>
         </div>

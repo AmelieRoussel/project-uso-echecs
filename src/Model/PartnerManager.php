@@ -37,4 +37,11 @@ class PartnerManager extends AbstractManager
         $statement->bindValue(':image', $partner['image']);
         $statement->execute();
     }
+
+    public function delete(int $id)
+    {
+        $statement = $this->pdo->prepare("DELETE FROM " . self::TABLE . " WHERE id=:id");
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+    }
 }
