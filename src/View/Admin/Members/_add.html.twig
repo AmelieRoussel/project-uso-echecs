@@ -2,6 +2,9 @@
         data-target="#modalFormAdd{{ member.id }}">
     Ajouter un membre
 </button>
+<div class="my-3">
+    <a href="/admin/acceptMembers" class="btn button-light">Voir les membres en attente de validation</a>
+</div>
 <div class="modal fade" id="modalFormAdd{{ member.id }}" tabindex="-1" role="dialog"
      aria-labelledby="modalFormTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -52,6 +55,7 @@
                     <label for="inputCity">Ville</label>
                     <input type="text" id="inputCity" class="form-control" name="city"
                            placeholder="Orléans" value="{{ data.city ?? '' }}" required>
+                    <input type="hidden" name="is_validate" value=1>
                     <button class="btn button-light modal-button">Ajouter le membre</button>
                 </div>
             </form>
