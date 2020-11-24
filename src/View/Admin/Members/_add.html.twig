@@ -27,6 +27,11 @@
                     <label for="inputLastname">Nom</label>
                     <input type="text" id="inputLastname" class="form-control" name="lastname"
                            placeholder="Paul" value="{{ data.lastname ?? '' }}" required>
+                    <label for="inputStatus">Status (optionnel)</label>
+                    <input type="text" id="inputStatus" class="form-control"
+                           name="status"
+                           placeholder="Président"
+                           value="{{ data.status ?? '' }}">
                     <label for="inputEmail">Email</label>
                     <input type="email" id="inputEmail" class="form-control" name="email"
                            placeholder="paul.martin@email.com" value="{{ data.email ?? '' }}"
