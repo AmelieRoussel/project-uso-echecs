@@ -106,20 +106,22 @@ class AdminCompetitionController extends AbstractController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $item = array_map('trim', $_POST);
-            $errors = $this->validate($item);
+            $errors = $this->validateUpdate($item, $_FILES['picture']);
 
             if (empty($errors)) {
                 $uploadDir = 'uploads/';
-                if (!empty($_FILES['picture'])) {
+                if (!empty($_FILES['picture']['tmp_name'])) {
                     $extension = pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION);
                     $filename = uniqid() . '.' . $extension;
                     $uploadFile = $uploadDir . basename($filename);
                     move_uploaded_file($_FILES['picture']['tmp_name'], $uploadFile);
                     $item['picture'] = $filename;
+                    unlink('uploads/' . $initialPicture);
+                } else {
+                    $item['picture'] = $initialPicture;
                 }
                 $competitionManager = new CompetitionManager();
                 $competitionManager->update($item);
-                unlink('uploads/' . $initialPicture);
             }
         }
         $adminCompetition = new CompetitionManager();
@@ -129,5 +131,32 @@ class AdminCompetitionController extends AbstractController
             'competitions' => $competition,
             'item' => $item,
         ]);
+    }
+
+    public function validateUpdate(array $data, array $files)
+    {
+        $errors = [];
+        $fileSize = 1000000;
+        $mime = ['image/jpeg', 'image/png', 'image/gif'];
+
+        if (empty($data['name'])) {
+            $errors[] = 'Le champ concernant le titre ne doit pas être vide';
+        }
+        if (empty($data['description'])) {
+            $errors[] = 'Le champ concernant le contenu ne doit pas être vide';
+        }
+        if (empty($data['date'])) {
+            $errors[] = 'Le champ concernant la date ne doit pas être vide';
+        }
+        if (empty($data['address'])) {
+            $errors[] = "Le champ concernant l'adresse ne doit pas être vide";
+        }
+        if ($files['size'] > $fileSize) {
+            $errors[] = 'Le fichier ne doit pas excéder ' . $fileSize / 1000000 . ' Mo';
+        }
+        if (!empty($files['tmp_name']) && !in_array(mime_content_type($files['tmp_name']), $mime)) {
+            $errors[] = 'Ce type de fichier n\'est pas valide';
+        }
+        return $errors;
     }
 }
