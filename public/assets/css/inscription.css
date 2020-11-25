@@ -42,7 +42,7 @@ p {
     font-weight: var(--bold);
 }
 
-span {
+.span {
     position: absolute;
     right: var(--spacing2);
     font-weight: var(--bold);
