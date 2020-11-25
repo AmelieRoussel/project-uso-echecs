@@ -1,3 +1,6 @@
+:root {
+    --competition-image-height: 300px;
+}
 .competition-header {
     height: var(--header-height);
     background: linear-gradient(var(--darken-image), var(--darken-image)), url("../images/header_competition.jpg") no-repeat center fixed;
@@ -32,6 +35,8 @@
 .competition-img, .archive-img {
     width: 100%;
     display: block;
+    max-height: var(--competition-image-height);
+    object-fit: cover;
 }
 
 .competitions .row:nth-child(2n) {
