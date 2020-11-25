@@ -35,7 +35,7 @@ class HomeController extends AbstractController
         $newsManager = new NewsManager();
         $news = $newsManager->selectAll();
         $competitionManager = new CompetitionManager();
-        $competitions = $competitionManager->competitionNewDate();
+        $competitions = $competitionManager->getLatestCompetitions();
         return $this->twig->render('Home/index.html.twig', [
             'news' => $news,
             'competitions' => $competitions,

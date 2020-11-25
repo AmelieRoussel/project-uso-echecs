@@ -90,4 +90,9 @@ class CompetitionManager extends AbstractManager
 
         return $statement->execute();
     }
+
+    public function getLatestCompetitions(): array
+    {
+        return $this->pdo->query("SELECT * FROM $this->table WHERE date > NOW() LIMIT 3")->fetchAll();
+    }
 }
