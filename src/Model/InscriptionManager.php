@@ -26,13 +26,15 @@ class InscriptionManager extends AbstractManager
 
     public function selectValidate()
     {
-        $query = ('SELECT * FROM ' . $this->table . ' WHERE is_validate = true');
+        $query = ('SELECT * FROM ' . $this->table . ' WHERE is_validate = true ' .
+            ' ORDER BY status is NULL, status, lastname');
         return $this->pdo->query($query)->fetchAll();
     }
 
     public function selectNonValidate()
     {
-        $query = ('SELECT * FROM ' . $this->table . ' WHERE is_validate = false');
+        $query = ('SELECT * FROM ' . $this->table . ' WHERE is_validate = false' .
+            ' ORDER BY status is NULL, status, lastname');
         return $this->pdo->query($query)->fetchAll();
     }
 
