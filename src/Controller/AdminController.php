@@ -275,6 +275,9 @@ class AdminController extends AbstractController
         } elseif (strlen($data['name']) > $maxlength) {
             $errors[] = 'Le nom doit faire moins de ' . $maxlength . ' caractères';
         }
+        if (!filter_var($data['url'], FILTER_VALIDATE_URL)) {
+            $errors[] = 'Le format de l\'URL n\'est pas valide';
+        }
         if ($method === 'add') {
             if (empty($files['tmp_name'])) {
                 $errors[] = 'Le fichier ne peut pas être manquant';

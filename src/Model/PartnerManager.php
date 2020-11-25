@@ -17,6 +17,11 @@ class PartnerManager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
+    public function selectAll(): array
+    {
+        return $this->pdo->query('SELECT * FROM ' . $this->table . ' ORDER BY name')->fetchAll();
+    }
+
     public function addPartner(array $partner)
     {
         $query = ("INSERT INTO " . self::TABLE . "(name, url, image) VALUES (:name,:url, :image)");
