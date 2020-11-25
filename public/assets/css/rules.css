@@ -11,9 +11,6 @@
     padding-top: var(--spacing4);
 }
 
-.rules-title {
-}
-
 .title-size {
     margin-bottom: var(--spacing3);
     font-size: var(--h4-font-size);
