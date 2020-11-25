@@ -6,7 +6,7 @@
 
 .rules-title, h2, h3 {
     text-align: center;
-    margin-top: var(--spacing2);
+    margin-top: var(--spacing);
     margin-bottom: var(--spacing4);
 }
 
