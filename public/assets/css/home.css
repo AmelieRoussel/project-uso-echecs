@@ -111,6 +111,6 @@
 }
 
 .card img {
-    max-height: 300px;
+    max-height: var(--competition-image-height);
     object-fit: cover;
 }
