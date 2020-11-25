@@ -48,4 +48,9 @@ class NewsManager extends AbstractManager
         $statement->bindValue('id', $news['id'], \PDO::PARAM_INT);
         $statement->execute();
     }
+
+    public function latestNews(): array
+    {
+        return $this->pdo->query('SELECT * FROM ' . $this->table . ' ORDER BY date DESC LIMIT 3')->fetchAll();
+    }
 }
