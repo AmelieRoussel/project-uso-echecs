@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Model\InscriptionManager;
 use App\Model\PartnerManager;
 
 class AssociationController extends AbstractController
@@ -23,6 +24,15 @@ class AssociationController extends AbstractController
 
         return $this->twig->render('Association/partner.html.twig', [
             'partners' => $partners
+        ]);
+    }
+
+    public function boardMembers()
+    {
+        $inscriptionManager = new InscriptionManager();
+        $boardMembers = $inscriptionManager->selectStatus();
+        return $this->twig->render('Association/boardMembers.html.twig', [
+            'boardMembers' => $boardMembers,
         ]);
     }
 }

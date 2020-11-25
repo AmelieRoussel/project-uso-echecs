@@ -17,16 +17,21 @@
             <div class="info-member">
                 <p>Prénom : {{ member.firstname|capitalize }}</p>
                 <p>Nom : {{ member.lastname|capitalize }}</p>
+                <p>Status : {{ member.status|capitalize }}</p>
                 <p>Email : {{ member.email }}</p>
                 <p>Téléphone : {{ member.phone }}</p>
                 <p>Date de naissance : {{ member.birthday }}</p>
                 <p>Adresse : {{ member.address }}
                     , {{ member.postal_code }} {{ member.city|capitalize }}</p>
-                <div class="buttons">
+                <div class="buttons d-flex">
                     <button type="button" class="btn button-light" data-toggle="modal"
                             data-target="#modalFormEdit{{ member.id }}">
                         Modifier
                     </button>
+                    <form action="/admin/deleteMember" method="post">
+                        <input type="hidden" name="id" value="{{ member.id }}">
+                        <button class="btn button-light delete">Supprimer</button>
+                    </form>
                 </div>
             </div>
         </div>

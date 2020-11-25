@@ -9,7 +9,7 @@
 
 namespace App\Controller;
 
-use App\Model\AdminCompetitionManager;
+use App\Model\CompetitionManager;
 
 class AdminCompetitionController extends AbstractController
 {
@@ -23,8 +23,8 @@ class AdminCompetitionController extends AbstractController
      */
     public function index()
     {
-        $adminCompetition = new AdminCompetitionManager();
-        $competition = $adminCompetition->selectAll();
+        $competitionManager = new CompetitionManager();
+        $competition = $competitionManager->selectAll();
         return $this->twig->render('Admin/adminCompetition.html.twig', [
             'competitions' => $competition,
         ]);
@@ -33,9 +33,8 @@ class AdminCompetitionController extends AbstractController
     public function add()
     {
         $errors = [];
-        $item = [];
-        $adminCompetition = new AdminCompetitionManager();
-        $competition = $adminCompetition->selectAll();
+        $competitionManager = new CompetitionManager();
+        $competition = $competitionManager->selectAll();
 
         if ($_SERVER["REQUEST_METHOD"] === 'POST') {
             $item = array_map('trim', $_POST);
@@ -47,7 +46,7 @@ class AdminCompetitionController extends AbstractController
                 $uploadFile = $uploadDir . basename($filename);
                 move_uploaded_file($_FILES['picture']['tmp_name'], $uploadFile);
                 $item['picture'] = $filename;
-                $adminCompetition = new AdminCompetitionManager();
+                $adminCompetition = new CompetitionManager();
                 $adminCompetition->add($item);
                 header('Location: /AdminCompetition/index');
             }
@@ -73,20 +72,62 @@ class AdminCompetitionController extends AbstractController
             $errors[] = 'Le champ concernant la date ne doit pas être vide';
         }
         if (empty($item['address'])) {
-            $errors[] = "Le champ concernant l'adrese ne doit pas être vide";
+            $errors[] = "Le champ concernant l'adresse ne doit pas être vide";
         }
-
         if (empty($_FILES['picture']['name'])) {
-            $errors[] = "Erreur! Aucune image séléctionné.";
+            $errors[] = "Erreur! Aucune image séléctionnée.";
         }
-
         if ($_FILES['picture']['size'] > 1000000) {
-            $errors[] = "Erreur! Image trop volumineux.";
+            $errors[] = "Erreur! Image trop volumineuse.";
         }
 
         if (!in_array($_FILES['picture']['type'], $mime)) {
             $errors[] = "Erreur! Type d'image invalide.";
         }
         return $errors;
+    }
+
+    public function delete()
+    {
+        if ($_SERVER["REQUEST_METHOD"] === 'POST') {
+            $id = $_POST['id'];
+            $competitionManager = new CompetitionManager();
+            $competitionManager->delete($id);
+            header('Location: /AdminCompetition/index');
+        }
+    }
+
+    public function update(int $id)
+    {
+        $errors = [];
+        $competitionManager = new CompetitionManager();
+        $item = $competitionManager->selectOneById($id);
+        $initialPicture = $item['picture'];
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $item = array_map('trim', $_POST);
+            $errors = $this->validate($item);
+
+            if (empty($errors)) {
+                $uploadDir = 'uploads/';
+                if (!empty($_FILES['picture'])) {
+                    $extension = pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION);
+                    $filename = uniqid() . '.' . $extension;
+                    $uploadFile = $uploadDir . basename($filename);
+                    move_uploaded_file($_FILES['picture']['tmp_name'], $uploadFile);
+                    $item['picture'] = $filename;
+                }
+                $competitionManager = new CompetitionManager();
+                $competitionManager->update($item);
+                unlink('uploads/' . $initialPicture);
+            }
+        }
+        $adminCompetition = new CompetitionManager();
+        $competition = $adminCompetition->selectAll();
+        return $this->twig->render('Admin/adminCompetition.html.twig', [
+            'errors' => $errors,
+            'competitions' => $competition,
+            'item' => $item,
+        ]);
     }
 }

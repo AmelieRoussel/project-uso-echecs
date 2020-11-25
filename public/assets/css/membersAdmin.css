@@ -46,3 +46,7 @@ section {
 span {
     color: var(--main-color);
 }
+
+.buttons button {
+    margin: var(--spacing);
+}

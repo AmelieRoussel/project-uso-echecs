@@ -3,9 +3,24 @@
 namespace App\Controller;
 
 use App\Model\InscriptionManager;
+use App\Model\PartnerManager;
 
 class AdminController extends AbstractController
 {
+    /**
+     * Display home admin page
+     *
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     *
+     */
+    public function home()
+    {
+        return $this->twig->render('Admin/home.html.twig');
+    }
+
     /**
      * Display members admin page
      *
@@ -18,7 +33,7 @@ class AdminController extends AbstractController
     public function members()
     {
         $inscriptionManager = new InscriptionManager();
-        $members = $inscriptionManager->selectAll();
+        $members = $inscriptionManager->selectValidate();
 
         return $this->twig->render('Admin/Members/adminMembers.html.twig', [
             'members' => $members,
@@ -35,6 +50,9 @@ class AdminController extends AbstractController
             $data = array_map('trim', $_POST);
             $errorsAdd = $this->memberValidation($data);
             if (empty($errorsAdd)) {
+                if (empty($data['status'])) {
+                    $data['status'] = null;
+                }
                 $inscriptionManager = new InscriptionManager();
                 $inscriptionManager->addMember($data);
 
@@ -58,6 +76,9 @@ class AdminController extends AbstractController
             $memberEdit = array_map('trim', $_POST);
             $errorsEdit = $this->memberValidation($memberEdit);
             if (empty($errorsEdit)) {
+                if (empty($memberEdit['status'])) {
+                    $memberEdit['status'] = null;
+                }
                 $inscriptionManager->updateMember($memberEdit);
                 header('Location: /admin/members');
             }
@@ -70,8 +91,32 @@ class AdminController extends AbstractController
         ]);
     }
 
+    public function deleteMember()
+    {
+        if ($_SERVER["REQUEST_METHOD"] === 'POST') {
+            $id = $_POST['id'];
+            $inscriptionManager = new InscriptionManager();
+            $inscriptionManager->delete($id);
+            header('Location: /admin/members');
+        }
+    }
+
+    public function acceptMembers()
+    {
+        $inscriptionManager = new InscriptionManager();
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+            $inscriptionManager->acceptMember($id);
+            header("Location:/admin/acceptMembers");
+        }
+        $members = $inscriptionManager->selectNonValidate();
+        return $this->twig->render('Admin/Members/validateMembers.html.twig', [
+            'members' => $members
+        ]);
+    }
+
     /**
-     * Display home page
      *
      * @return array
      * @throws \Twig\Error\LoaderError
@@ -124,6 +169,124 @@ class AdminController extends AbstractController
         } elseif (strlen($data['city']) > $maxlength) {
             $errors[] = 'La ville ne doit pas avoir plus de ' . $maxlength . ' caractères.';
         }
+        return $errors;
+    }
+
+    /**
+     * Display partners admin page
+     *
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     *
+     */
+    public function partners()
+    {
+        $partnersManager = new PartnerManager();
+        $partners = $partnersManager->selectAll();
+
+        return $this->twig->render('Admin/Partners/adminPartners.html.twig', [
+            'partners' => $partners,
+        ]);
+    }
+
+    public function addPartnerAdmin()
+    {
+        $partnerManager = new PartnerManager();
+        $partners = $partnerManager->selectAll();
+        $data = [];
+        $errorsAdd = [];
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $data = array_map('trim', $_POST);
+            $errorsAdd = $this->partnerValidation($data, $_FILES['image'], 'add');
+            if (empty($errorsAdd)) {
+                $filename = uniqid() . '.' . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+                move_uploaded_file($_FILES['image']['tmp_name'], 'uploads/' . $filename);
+                $data['image'] = $filename;
+                $partnerManager->addPartner($data);
+
+                header('Location: /admin/partners');
+            }
+        }
+
+        return $this->twig->render('Admin/Partners/adminPartners.html.twig', [
+            'errorsAdd' => $errorsAdd,
+            'data' => $data,
+            'partners' => $partners
+        ]);
+    }
+
+    public function editPartner(int $id)
+    {
+        $partnerManager = new PartnerManager();
+        $partnerEdit = $partnerManager->selectOneById($id);
+        $initialPicture = $partnerEdit['image'];
+        $errorsEdit = [];
+
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $partnerEdit = array_map('trim', $_POST);
+
+            $errorsEdit = $this->partnerValidation($partnerEdit, $_FILES['image'], 'update');
+            if (empty($errorsEdit)) {
+                $uploadDir = 'uploads/';
+                if (!empty($_FILES['image']['tmp_name'])) {
+                    $extension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+                    $filename = uniqid() . '.' . $extension;
+                    $uploadFile = $uploadDir . basename($filename);
+                    move_uploaded_file($_FILES['image']['tmp_name'], $uploadFile);
+                    $partnerEdit['image'] = $filename;
+                    unlink('uploads/' . $initialPicture);
+                } else {
+                    $partnerEdit['image'] = $initialPicture;
+                }
+                $partnerManager->updatepartner($partnerEdit);
+                header('Location: /admin/partners');
+            }
+        }
+
+        $partners = $partnerManager->selectAll();
+        return $this->twig->render('Admin/Partners/adminPartners.html.twig', [
+            'errorsEdit' => $errorsEdit,
+            'partners' => $partners,
+            'partnerEdit' => $partnerEdit
+        ]);
+    }
+
+    public function deletePartner()
+    {
+        if ($_SERVER["REQUEST_METHOD"] === 'POST') {
+            $id = $_POST['id'];
+            $partnerManager = new PartnerManager();
+            $partnerManager->delete($id);
+            header('Location: /admin/partners');
+        }
+    }
+
+    private function partnerValidation(array $data, array $files, string $method)
+    {
+        $errors = [];
+        $maxlength = 100;
+        $fileSize = 1000000;
+        $authorizedMimes = ['image/jpeg', 'image/png', 'image/gif'];
+
+        if (empty($data['name'])) {
+            $errors[] = 'Le nom du partenaire ne doit pas être vide';
+        } elseif (strlen($data['name']) > $maxlength) {
+            $errors[] = 'Le nom doit faire moins de ' . $maxlength . ' caractères';
+        }
+        if ($method === 'add') {
+            if (empty($files['tmp_name'])) {
+                $errors[] = 'Le fichier ne peut pas être manquant';
+            }
+        }
+        if ($files['size'] > $fileSize) {
+            $errors[] = 'Le fichier ne doit pas excéder ' . $fileSize / 1000000 . ' Mo';
+        }
+        if (!empty($files['tmp_name']) && !in_array(mime_content_type($files['tmp_name']), $authorizedMimes)) {
+            $errors[] = 'Ce type de fichier n\'est pas valide';
+        }
+
         return $errors;
     }
 }

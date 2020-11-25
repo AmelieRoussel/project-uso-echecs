@@ -2,6 +2,9 @@
         data-target="#modalFormAdd{{ member.id }}">
     Ajouter un membre
 </button>
+<div class="my-3">
+    <a href="/admin/acceptMembers" class="btn button-light">Voir les membres en attente de validation</a>
+</div>
 <div class="modal fade" id="modalFormAdd{{ member.id }}" tabindex="-1" role="dialog"
      aria-labelledby="modalFormTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -13,7 +16,7 @@
                 </button>
             </div>
             <form id="members-form" class="form" method="post" action="/admin/addMemberAdmin">
-                <div class="d-flex flex-column modal-body">
+                <div class="d-flex flex-column modal-body text-left">
                     {% if errorsAdd is not empty %}
                         <ul class="text-danger">
                             {% for error in errorsAdd %}
@@ -27,6 +30,11 @@
                     <label for="inputLastname">Nom</label>
                     <input type="text" id="inputLastname" class="form-control" name="lastname"
                            placeholder="Paul" value="{{ data.lastname ?? '' }}" required>
+                    <label for="inputStatus">Status (optionnel)</label>
+                    <input type="text" id="inputStatus" class="form-control"
+                           name="status"
+                           placeholder="Président"
+                           value="{{ data.status ?? '' }}">
                     <label for="inputEmail">Email</label>
                     <input type="email" id="inputEmail" class="form-control" name="email"
                            placeholder="paul.martin@email.com" value="{{ data.email ?? '' }}"
@@ -47,6 +55,7 @@
                     <label for="inputCity">Ville</label>
                     <input type="text" id="inputCity" class="form-control" name="city"
                            placeholder="Orléans" value="{{ data.city ?? '' }}" required>
+                    <input type="hidden" name="is_validate" value=1>
                     <button class="btn button-light modal-button">Ajouter le membre</button>
                 </div>
             </form>

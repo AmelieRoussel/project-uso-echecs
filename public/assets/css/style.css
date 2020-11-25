@@ -18,6 +18,7 @@
     --h1-font-size: 5rem;
     --h2-font-size: 1.75rem;
     --h3-font-size: 1.5rem;
+    --h4-font-size: 1.2rem;
     --bold: 700;
     --spacing: 8px;
     --spacing2: calc(var(--spacing) * 2);
@@ -28,7 +29,7 @@
     --border-radius: 3px;
     --logo-height: 55px;
     --navbar-height: 80px;
-    --header-height: 94vh;
+    --header-height: 91vh;
     --icon-height: 40px;
 }
 
@@ -153,6 +154,7 @@ nav a {
     background-color: var(--dark);
     opacity: 0.9;
     border: none;
+    padding-top: var(--spacing2);
 }
 
 .dropdown-toggle::after {
