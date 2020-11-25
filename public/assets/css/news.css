@@ -12,7 +12,7 @@
 
 .news-header-large {
     height: var(--header-height);
-    background: linear-gradient(var(--darken-image), var(--darken-image)), url("../images/header_news_large.jpg") no-repeat fixed;
+    background: linear-gradient(var(--darken-image), var(--darken-image)), url("../images/header_news_large.jpg") no-repeat fixed center;
     background-size: contain, cover;
     width: 100%;
 }
@@ -22,7 +22,7 @@
 }
 
 @media screen and (max-width: 550px) {
-    .news-header-large h1 {
+    .news-header-large h1, .news-header h1 {
         font-size: calc(var(--h2-font-size) * 2);
     }
 }
