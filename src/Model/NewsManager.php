@@ -5,6 +5,7 @@ namespace App\Model;
 class NewsManager extends AbstractManager
 {
     public const TABLE = 'news';
+    public const LIMIT = 3;
 
     public function __construct()
     {
@@ -47,5 +48,11 @@ class NewsManager extends AbstractManager
         $statement->bindValue(':cover_image', $news['cover_image']);
         $statement->bindValue('id', $news['id'], \PDO::PARAM_INT);
         $statement->execute();
+    }
+
+    public function latestNews(): array
+    {
+        return $this->pdo->query('SELECT * FROM ' . $this->table .
+            ' ORDER BY date DESC LIMIT ' . self::LIMIT)->fetchAll();
     }
 }
