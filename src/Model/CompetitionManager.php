@@ -34,7 +34,7 @@ class CompetitionManager extends AbstractManager
      */
     public function competitionDateArchive(): array
     {
-        return $this->pdo->query("SELECT * FROM $this->table WHERE date < NOW()")->fetchAll();
+        return $this->pdo->query("SELECT * FROM $this->table WHERE date < NOW() ORDER BY date DESC")->fetchAll();
     }
 
     /**
