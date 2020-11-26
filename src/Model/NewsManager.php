@@ -52,6 +52,7 @@ class NewsManager extends AbstractManager
 
     public function latestNews(): array
     {
-        return $this->pdo->query('SELECT * FROM ' . $this->table . ' ORDER BY date DESC LIMIT ' . self::LIMIT)->fetchAll();
+        return $this->pdo->query('SELECT * FROM ' . $this->table .
+            ' ORDER BY date DESC LIMIT ' . self::LIMIT)->fetchAll();
     }
 }
