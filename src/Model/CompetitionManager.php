@@ -19,6 +19,7 @@ class CompetitionManager extends AbstractManager
      *
      */
     public const TABLE = 'competition';
+    public const LIMIT = 3;
 
     /**
      *  Initializes this class.
@@ -93,6 +94,7 @@ class CompetitionManager extends AbstractManager
 
     public function getLatestCompetitions(): array
     {
-        return $this->pdo->query("SELECT * FROM $this->table WHERE date > NOW() LIMIT 3")->fetchAll();
+        return $this->pdo->query("SELECT * FROM $this->table WHERE date > NOW() LIMIT " .
+            self::LIMIT)->fetchAll();
     }
 }
