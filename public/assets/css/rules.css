@@ -82,3 +82,10 @@
 span {
     font-weight: var(--bold);
 }
+
+.checkmate {
+    margin-top: var(--spacing3);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    max-width: 100%;
+}
