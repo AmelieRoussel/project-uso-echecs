@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="/assets/css/inscription.css">{% endblock %}
 {% block content %}
     <header class="inscriptionHeader">
-        <h1 class="title-light">Tarifs et inscription</h1>
+        <h1 class="title-light text-center">Tarifs et inscription</h1>
     </header>
     <section class="inscriptionPrice">
         <div class="imageTitle">
@@ -20,7 +20,7 @@
                         {% for category in license %}
                             <p class="card-text">{{ category.category }}</p>
                             <ul>
-                                <li>{{ category.rate }}<span>{{ category.price }} €</span></li>
+                                <li>{{ category.rate }}<span class="span">{{ category.price }} €</span></li>
                             </ul>
                         {% endfor %}
                     </div>
@@ -83,8 +83,9 @@
                                placeholder="Orléans" value="{{ data.city ?? '' }}" required>
                     </div>
                     <input type="hidden" name="is_validate" value=0>
+                    <input type="hidden" name="status" value="">
                     <div class="button">
-                        <button type="submit" class="button-dark">S'inscrire</button>
+                        <button type="submit" class="button-dark mt-5">S'inscrire</button>
                     </div>
                 </div>
             </div>
@@ -92,7 +93,7 @@
         <div class="card col-md-4 offset-md-4 sm-6 h-25">
             <div class="card-body">
                 <h5 class="card-title">Vous préférez le papier ?</h5>
-                <p class="card-text">Pas de problème, voici notre formulaire de contact !</p>
+                <p class="card-text">Pas de problème, voici notre formulaire d'adhésion !</p>
                 <div class="link">
                     <a href="/assets/Documents/registration_form.jpg"
                        download="/assets/Documents/registration_form.jpg"

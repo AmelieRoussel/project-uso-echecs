@@ -1,5 +1,6 @@
 :root {
     --carousel-height: 640px;
+    --competition-image-height: 300px;
 }
 
 .home-header {
@@ -45,6 +46,7 @@
 
 .presentation img {
     box-shadow: var(--box-shadow);
+    object-fit: cover;
 }
 
 .carousel-item > img {
@@ -106,4 +108,9 @@
     margin-bottom: var(--spacing4);
     padding-left: 0;
     padding-right: 0;
+}
+
+.card img {
+    max-height: var(--competition-image-height);
+    object-fit: cover;
 }

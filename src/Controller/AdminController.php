@@ -5,6 +5,13 @@ namespace App\Controller;
 use App\Model\InscriptionManager;
 use App\Model\PartnerManager;
 
+/**
+ * Class AdminController
+ * @package App\Controller
+ *
+ * @SuppressWarnings(PHPMD)
+ */
+
 class AdminController extends AbstractController
 {
     /**
@@ -98,6 +105,16 @@ class AdminController extends AbstractController
             $inscriptionManager = new InscriptionManager();
             $inscriptionManager->delete($id);
             header('Location: /admin/members');
+        }
+    }
+
+    public function refuseMember()
+    {
+        if ($_SERVER["REQUEST_METHOD"] === 'POST') {
+            $id = $_POST['id'];
+            $inscriptionManager = new InscriptionManager();
+            $inscriptionManager->delete($id);
+            header('Location: /admin/acceptMembers');
         }
     }
 
@@ -217,6 +234,15 @@ class AdminController extends AbstractController
         ]);
     }
 
+    /**
+     * @param int $id
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     *
+     * @SuppressWarnings(PHPMD)
+     */
     public function editPartner(int $id)
     {
         $partnerManager = new PartnerManager();
@@ -274,6 +300,9 @@ class AdminController extends AbstractController
             $errors[] = 'Le nom du partenaire ne doit pas être vide';
         } elseif (strlen($data['name']) > $maxlength) {
             $errors[] = 'Le nom doit faire moins de ' . $maxlength . ' caractères';
+        }
+        if (!filter_var($data['url'], FILTER_VALIDATE_URL)) {
+            $errors[] = 'Le format de l\'URL n\'est pas valide';
         }
         if ($method === 'add') {
             if (empty($files['tmp_name'])) {

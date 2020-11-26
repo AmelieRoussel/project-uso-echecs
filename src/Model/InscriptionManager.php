@@ -26,13 +26,15 @@ class InscriptionManager extends AbstractManager
 
     public function selectValidate()
     {
-        $query = ('SELECT * FROM ' . $this->table . ' WHERE is_validate = true');
+        $query = ('SELECT * FROM ' . $this->table . ' WHERE is_validate = true ' .
+            ' ORDER BY status is NULL, status, lastname');
         return $this->pdo->query($query)->fetchAll();
     }
 
     public function selectNonValidate()
     {
-        $query = ('SELECT * FROM ' . $this->table . ' WHERE is_validate = false');
+        $query = ('SELECT * FROM ' . $this->table . ' WHERE is_validate = false' .
+            ' ORDER BY status is NULL, status, lastname');
         return $this->pdo->query($query)->fetchAll();
     }
 
@@ -44,9 +46,9 @@ class InscriptionManager extends AbstractManager
     public function addMember($data)
     {
         $query = ("INSERT INTO " . self::TABLE . " 
-        (firstname, lastname, email, phone, birthday, address, postal_code, city, is_validate) 
+        (firstname, lastname, email, phone, birthday, address, postal_code, city, is_validate, status) 
         VALUES (:inputFirstname,:inputLastname, :inputEmail, :inputPhone, :inputBirthday, :inputAddress, 
-        :inputPostalCode, :inputCity, :is_validate)");
+        :inputPostalCode, :inputCity, :is_validate, :status)");
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':inputFirstname', $data['firstname']);
         $statement->bindValue(':inputLastname', $data['lastname']);
@@ -57,6 +59,7 @@ class InscriptionManager extends AbstractManager
         $statement->bindValue(':inputPostalCode', $data['postal_code']);
         $statement->bindValue(':inputCity', $data['city']);
         $statement->bindValue(':is_validate', $data['is_validate']);
+        $statement->bindValue(':status', $data['status']);
         $statement->execute();
     }
 

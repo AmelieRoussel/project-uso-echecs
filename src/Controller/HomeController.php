@@ -33,9 +33,9 @@ class HomeController extends AbstractController
     public function index()
     {
         $newsManager = new NewsManager();
-        $news = $newsManager->selectAll();
+        $news = $newsManager->latestNews();
         $competitionManager = new CompetitionManager();
-        $competitions = $competitionManager->competitionNewDate();
+        $competitions = $competitionManager->getLatestCompetitions();
         return $this->twig->render('Home/index.html.twig', [
             'news' => $news,
             'competitions' => $competitions,
@@ -192,6 +192,9 @@ class HomeController extends AbstractController
         }
         if (empty($errors)) {
             $errors[] = 'Votre inscription a bien été prise en compte !';
+            if (empty($data['status'])) {
+                $data['status'] = null;
+            }
             $inscription = new InscriptionManager();
             $inscription->addMember($data);
         }

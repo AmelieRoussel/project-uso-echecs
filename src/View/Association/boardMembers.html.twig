@@ -21,15 +21,15 @@
                 <div class="col-md-8 offset-md-2 d-flex flex-column flex-md-row justify-content-around align-items-center labels">
                     <h3>Nom</h3>
                     <h3>Prénom</h3>
-                    <h3>Status</h3>
+                    <h3>Statut</h3>
                     <h3>Email</h3>
                 </div>
             </div>
             {% for boardMember in boardMembers %}
                 <div class="row mx-0 my-4">
                     <div class="col-md-8 offset-md-2 d-flex flex-column flex-md-row justify-content-around align-items-center boardMembers">
-                        <p>{{ boardMember.firstname|capitalize }}</p>
                         <p>{{ boardMember.lastname|capitalize }}</p>
+                        <p>{{ boardMember.firstname|capitalize }}</p>
                         <p>{{ boardMember.status|capitalize }}</p>
                         <p>{{ boardMember.email }}</p>
                     </div>

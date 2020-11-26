@@ -24,13 +24,17 @@
                 <p>Adresse : {{ member.address }}
                     , {{ member.postal_code }} {{ member.city|capitalize }}</p>
                 <div class="buttons d-flex">
+                    <form action="/admin/acceptMembers" method="post">
+                        <input type="hidden" name="id" value="{{ member.id }}">
+                        <button class="btn button-light validate">Valider</button>
+                    </form>
                     <button type="button" class="btn button-light" data-toggle="modal"
                             data-target="#modalFormEdit{{ member.id }}">
                         Modifier
                     </button>
-                    <form action="/admin/deleteMember" method="post">
+                    <form action="/admin/refuseMember" method="post">
                         <input type="hidden" name="id" value="{{ member.id }}">
-                        <button class="btn button-light delete">Supprimer</button>
+                        <button class="btn button-light delete">Refuser</button>
                     </form>
                 </div>
             </div>
