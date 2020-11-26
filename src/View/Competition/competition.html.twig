@@ -35,7 +35,7 @@
                         <img class="archive-img" src="/uploads/{{ competition.picture }}" alt="Image archive">
                         <div class="card-body">
                             <h3 class="card-title">{{ competition.name }}</h3>
-                            <p class="card-date icon-before-date">{{ competition.date|date("d m Y") }}</p>
+                            <p class="card-date icon-before-date">{{ competition.date|date("d / m / Y") }}</p>
                             <p class="card-position icon-before-position">{{ competition.address }}</p>
                             <a href="/Competition/ranking/{{ competition.id }}" class="btn btn-primary button-light">Voir les résultats</a>
                         </div>
