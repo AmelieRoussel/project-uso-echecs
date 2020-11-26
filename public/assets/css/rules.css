@@ -4,10 +4,11 @@
     background-size: cover;
 }
 
-.rules-title, h2, h3 {
+.rules-title, h3 {
     text-align: center;
     margin-top: var(--spacing);
     margin-bottom: var(--spacing4);
+    padding-top: var(--spacing4);
 }
 
 .title-size {
@@ -18,17 +19,21 @@
 
 .icon {
     height: var(--icon-height);
+    padding-bottom: var(--spacing);
 }
 
 .equipment-section {
     background: url(../images/chess_pattern.jpg);
-    padding-top: var(--spacing4);
 }
 
 .progress-section {
     background: url(../images/chess_pattern.jpg);
     padding-top: var(--spacing4);
     padding-bottom: var(--spacing4);
+}
+
+.progress-section h4 {
+    margin-top: var(--spacing4);
 }
 
 .presentation-text {
